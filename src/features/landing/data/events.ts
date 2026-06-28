@@ -4,23 +4,23 @@
  */
 export const EVENT_MEDIA = [
   {
-    image: "/landingpageasset/festivalpesonabau.png",
+    image: "/landingpageasset/festivalpesonabau.webp",
     className: "col-span-1 md:row-span-2 md:col-span-1 h-[400px] md:h-full",
   },
   {
-    image: "/landingpageasset/motogp.png",
+    image: "/landingpageasset/motogp.webp",
     className: "col-span-1 h-[300px] md:h-auto",
   },
   {
-    image: "/landingpageasset/preseencaltural.png",
+    image: "/landingpageasset/preseencaltural.webp",
     className: "col-span-1 h-[300px] md:h-auto",
   },
   {
-    image: "/landingpageasset/lomboktenggah.png",
+    image: "/landingpageasset/lomboktenggah.webp",
     className: "col-span-1 h-[300px] md:h-auto",
   },
   {
-    image: "/landingpageasset/mandalikakorprifun.png",
+    image: "/landingpageasset/mandalikakorprifun.webp",
     className: "col-span-1 h-[300px] md:h-auto",
   },
 ] as const;

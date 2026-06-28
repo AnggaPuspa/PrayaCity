@@ -14,18 +14,20 @@ export async function AboutSection() {
             {/* Main Image */}
             <div className="relative w-full h-[400px] lg:h-[480px] overflow-hidden rounded-[2rem] md:rounded-[2.5rem]">
               <Image
-                src="/aboutsectionimg/aboutsec1.png"
+                src="/aboutsectionimg/aboutsec1.webp"
                 alt="Sasak traditional dance"
                 fill
+                sizes="(max-width: 768px) 360px, 480px"
                 className="object-cover object-[20%_center]"
               />
             </div>
             {/* Overlapping Asset (Already rounded with shadow from asset) */}
             <div className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-24 lg:-right-32 w-[240px] lg:w-[280px] h-[300px] lg:h-[340px]">
               <Image
-                src="/aboutsectionimg/aboutsec2.png"
+                src="/aboutsectionimg/aboutsec2.webp"
                 alt="Traditional weaving textiles"
                 fill
+                sizes="(max-width: 1024px) 240px, 280px"
                 className="object-contain"
               />
             </div>

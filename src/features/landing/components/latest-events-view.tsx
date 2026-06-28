@@ -25,6 +25,7 @@ export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
                 src={event.image}
                 alt={event.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
