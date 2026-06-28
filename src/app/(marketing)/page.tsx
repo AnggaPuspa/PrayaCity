@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Button, Typography } from "@/components/atoms";
-import { HeroSection, LatestEvents, AboutSection, DiscoverSection, MustVisitSection } from "@/components/organisms";
-import { Counter } from "@/features/counter";
-import { ContactForm } from "@/features/contact";
+import {
+  HeroSection,
+  LatestEvents,
+  AboutSection,
+  DiscoverSection,
+  MustVisitSection,
+} from "@/features/landing";
 
 export const metadata: Metadata = {
   title: "Praya City - The Soul of Central Lombok",

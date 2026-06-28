@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Typography } from "@/components/atoms";
 import { siteConfig } from "@/config/site";
-import { useScroll } from "@/hooks/use-scroll";
+import { useScroll } from "@/hooks";
 import { cn } from "@/lib/utils/cn";
 
 /**

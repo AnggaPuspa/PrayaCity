@@ -1,45 +1,13 @@
 import Image from "next/image";
 import { Typography } from "@/components/atoms";
+import type { EventItem } from "../types";
 
-const events = [
-  {
-    title: "Festival PesonaBau Nyale\n2025",
-    date: "February 2025",
-    location: "Seger Beach, Kuta Mandalika",
-    image: "/landingpageasset/festivalpesonabau.png",
-    className: "col-span-1 md:row-span-2 md:col-span-1 h-[400px] md:h-full",
-  },
-  {
-    title: "MotoGP Pertamina\nGrand Prix of Indonesia",
-    date: "October 2025",
-    location: "Pertamina Mandalika\nInternational Circuit",
-    image: "/landingpageasset/motogp.png",
-    className: "col-span-1 h-[300px] md:h-auto",
-  },
-  {
-    title: "Presean Cultural\nChampionship",
-    date: "August 2025",
-    location: "Sade Traditional Village, Pujut",
-    image: "/landingpageasset/preseencaltural.png",
-    className: "col-span-1 h-[300px] md:h-auto",
-  },
-  {
-    title: "Lombok Tengah Weaving\nFestival",
-    date: "September 2025",
-    location: "Sukarara Village",
-    image: "/landingpageasset/lomboktenggah.png",
-    className: "col-span-1 h-[300px] md:h-auto",
-  },
-  {
-    title: "Mandalika Korpri Fun\nNight Run",
-    date: "December 2025",
-    location: "Kuta Mandalika Beach Park",
-    image: "/landingpageasset/mandalikakorprifun.png",
-    className: "col-span-1 h-[300px] md:h-auto",
-  },
-];
+interface LatestEventsViewProps {
+  events: EventItem[];
+}
 
-export function LatestEvents() {
+/** Presentational: renders the events grid from props only. */
+export function LatestEventsView({ events }: LatestEventsViewProps) {
   return (
     <section className="w-full bg-[#0a0a0a] pt-16 pb-0 text-white">
       <div className="mx-auto w-full max-w-7xl px-8 mb-10">
@@ -47,7 +15,7 @@ export function LatestEvents() {
           Latest from Praya
         </Typography>
       </div>
-      
+
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:h-[650px] w-full">
           {events.map((event, index) => (

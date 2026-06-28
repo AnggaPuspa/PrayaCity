@@ -1,50 +1,25 @@
-"use client";
-
 import Image from "next/image";
-import { useRef } from "react";
+import type { RefObject } from "react";
+import type { Destination } from "../types";
 
-const DESTINATIONS = [
-  {
-    title: "Bukit Merese",
-    description: "Central Lombok's finest sunset spot. Stand above rolling green hills as...",
-    image: "/mustvisisection/Rectangle 10.svg",
-  },
-  {
-    title: "Gerupuk Beach",
-    description: "A world-class surf break that draws riders from every corner of the glob...",
-    image: "/mustvisisection/Rectangle 11.svg",
-  },
-  {
-    title: "Sade Traditional Village",
-    description: "Step into a living museum of Sasak culture. 150 homes, 700 residents...",
-    image: "/mustvisisection/Rectangle 10 (1).png",
-  },
-  {
-    title: "Kuta Mandalika Beach",
-    description: "The only beach in the world with pepper-shaped sand grains. Cryst...",
-    image: "/mustvisisection/Rectangle 11 (2).svg",
-  }
-];
+interface MustVisitSectionViewProps {
+  destinations: Destination[];
+  scrollRef: RefObject<HTMLDivElement | null>;
+  scrollLeft: () => void;
+  scrollRight: () => void;
+}
 
-export function MustVisitSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
-    }
-  };
-
+/** Presentational: renders the destinations carousel from props only. */
+export function MustVisitSectionView({
+  destinations,
+  scrollRef,
+  scrollLeft,
+  scrollRight,
+}: MustVisitSectionViewProps) {
   return (
     <section className="w-full bg-white py-24 lg:py-32 overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        
+
         {/* Header */}
         <div className="text-center flex flex-col items-center mb-16">
           <span className="text-[#333333] text-[18px] md:text-[20px] font-medium mb-2">
@@ -58,7 +33,7 @@ export function MustVisitSection() {
         {/* Carousel Container */}
         <div className="relative">
           {/* Navigation Arrows */}
-          <button 
+          <button
             onClick={scrollLeft}
             className="flex absolute top-[40%] -translate-y-1/2 -left-4 sm:-left-6 md:left-0 md:-translate-x-1/2 w-[48px] h-[48px] md:w-[60px] md:h-[60px] bg-[#1A1A1A] hover:bg-black text-white rounded-full items-center justify-center z-10 transition-colors border-[4px] md:border-[6px] border-white"
           >
@@ -67,7 +42,7 @@ export function MustVisitSection() {
             </svg>
           </button>
 
-          <button 
+          <button
             onClick={scrollRight}
             className="flex absolute top-[40%] -translate-y-1/2 -right-4 sm:-right-6 md:right-0 md:translate-x-1/2 w-[48px] h-[48px] md:w-[60px] md:h-[60px] bg-[#1A1A1A] hover:bg-black text-white rounded-full items-center justify-center z-10 transition-colors border-[4px] md:border-[6px] border-white"
           >
@@ -77,13 +52,13 @@ export function MustVisitSection() {
           </button>
 
           {/* Slider */}
-          <div 
+          <div
             ref={scrollRef}
             className="flex overflow-x-auto gap-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
           >
-            {DESTINATIONS.map((item, index) => (
-              <div 
-                key={index} 
+            {destinations.map((item, index) => (
+              <div
+                key={index}
                 className="flex flex-col group cursor-pointer shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] snap-start"
               >
                 {/* Image */}
@@ -95,7 +70,7 @@ export function MustVisitSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                
+
                 {/* Content */}
                 <h3 className="text-[#1A1A1A] text-[18px] md:text-[20px] font-bold mb-2">
                   {item.title}
