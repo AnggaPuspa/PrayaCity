@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "Praya City",
   description:
     "A production-grade Next.js starter using Atomic Design for UI and feature-sliced modules for business logic.",
-  url: "https://praya.city",
+  url: "https://www.parayacity.id",
   nav: [
     { key: "home", href: "/" },
     { key: "history", href: "/#history" },
