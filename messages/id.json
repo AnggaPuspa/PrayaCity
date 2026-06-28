@@ -103,5 +103,26 @@
         "description": "Satu-satunya pantai di dunia dengan butiran pasir berbentuk merica. Krist..."
       }
     ]
+  },
+  "Cta": {
+    "eyebrow": "Mulai Perjalanan Anda",
+    "titleLine1": "Lombok Tengah Menanti",
+    "titleLine2": "Lebih Dari yang Anda Bayangkan",
+    "description1": "Baik Anda mencari ombak sempurna atau tradisi kuno — Lombok Tengah punya cerita khusus untuk Anda.",
+    "description2": "Jelajahi sesuai keinginan Anda, atau biarkan AI kami memandu Anda menemukan apa yang Anda cari.",
+    "explore": "Jelajahi PrayaCity",
+    "more": "Lebih Lanjut"
+  },
+  "Footer": {
+    "tagline": "Gerbang digital Anda menuju Lombok Tengah.",
+    "link": "Tautan",
+    "destination": "Destinasi",
+    "socialMedia": "Media Sosial",
+    "contactUs": "Hubungi Kami",
+    "needHelp": "Butuh bantuan?",
+    "copyright": "© Hak Cipta dilindungi. Hak cipta dilindungi undang-undang.",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat Ketentuan",
+    "legal": "Legal"
   }
 }

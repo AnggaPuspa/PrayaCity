@@ -6,6 +6,7 @@ import {
   AboutSection,
   DiscoverSection,
   MustVisitSection,
+  CtaSection,
 } from "@/features/landing";
 import { routing } from "@/i18n/routing";
 
@@ -51,6 +52,7 @@ export default async function HomePage({
       <AboutSection />
       <DiscoverSection />
       <MustVisitSection />
+      <CtaSection />
     </>
   );
 }

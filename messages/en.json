@@ -103,5 +103,26 @@
         "description": "The only beach in the world with pepper-shaped sand grains. Cryst..."
       }
     ]
+  },
+  "Cta": {
+    "eyebrow": "Start Your Journey",
+    "titleLine1": "Central Lombok is Waiting",
+    "titleLine2": "There's More Than You Think",
+    "description1": "Whether you're chasing perfect waves, ancient traditions — Central Lombok has a story written just for you.",
+    "description2": "Explore at your own pace, or let our AI guide lead you to exactly what you're looking for.",
+    "explore": "Explore PrayaCity",
+    "more": "More About Us"
+  },
+  "Footer": {
+    "tagline": "Your digital gateway to Central Lombok.",
+    "link": "Link",
+    "destination": "Destination",
+    "socialMedia": "Social Media",
+    "contactUs": "Contact Us",
+    "needHelp": "Need help ?",
+    "copyright": "© Copyright by . All right reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of use",
+    "legal": "Legal"
   }
 }
