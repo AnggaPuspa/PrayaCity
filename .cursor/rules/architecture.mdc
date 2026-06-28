@@ -1,0 +1,29 @@
+---
+description: Project architecture, conventions, and dependency rules
+alwaysApply: true
+---
+
+# Project rules (Atomic Design + Feature-Sliced, Next.js 16)
+
+The full guide lives in [AGENTS.md](mdc:AGENTS.md) and
+[ARCHITECTURE.md](mdc:ARCHITECTURE.md). Read them before generating code.
+Critical rules, restated:
+
+- **Routing/UI/logic are separated.** `app/` = routing only (thin pages, no
+  business logic). Shared UI in `components/{atoms,molecules,organisms,templates}`.
+  Business logic in `features/<name>`.
+- **Logic is separated from UI.** Presentational components receive props and
+  render only — never fetch, validate, or mutate. State/handlers live in
+  `controllers/`; validation in `schemas/` (zod); data access in `services/`
+  (`import "server-only"`); orchestration in `actions/` (`"use server"`).
+- **Dependency direction (ESLint-enforced):** atoms → molecules → organisms →
+  templates. `components/` never imports `features/`; `features/` never imports
+  `app/`. Import via barrels (`@/components/atoms`, `@/features/<name>`).
+- **Server Components by default;** add `"use client"` only for interactivity.
+- **Next.js 16:** `params`/`searchParams` are Promises — `await` them. Export
+  `metadata`/`generateMetadata` from every page. Alias `@/*` → `src/*`.
+- Code must pass `npm run lint` and `npm run build`.
+
+To add a feature, copy `features/contact` (full-stack) or `features/counter`
+(client state). To add shared UI, add to the matching atomic layer and export
+from its `index.ts`.
