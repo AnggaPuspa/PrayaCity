@@ -1,18 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Typography } from "@/components/atoms";
+import { LanguageSwitcher } from "@/components/molecules";
 import { siteConfig } from "@/config/site";
 import { useScroll } from "@/hooks";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 
 /**
  * Organism: the global site header.
- * Composes atoms + Next.js primitives. Reads shared config; holds no
- * feature-specific logic.
+ * Composes atoms + molecules + locale-aware links. Nav labels come from the
+ * `Nav` message namespace; structure/styling are unchanged.
  */
 export function SiteHeader() {
   const isScrolled = useScroll(10);
+  const t = useTranslations("Nav");
 
   return (
     <header
@@ -26,7 +29,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-8">
         <Link href="/" className="flex items-center gap-2">
           <Typography as="span" variant="h3" className={cn(
-            "font-bold tracking-tight", 
+            "font-bold tracking-tight",
             !isScrolled ? "text-white" : "text-zinc-950 dark:text-zinc-950"
           )}>
             {siteConfig.name}
@@ -34,10 +37,10 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {siteConfig.nav.map((item) => {
-            const isActive = item.label.toLowerCase() === "home";
+            const isActive = item.key === "home";
             return (
               <Link
-                key={item.href}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:opacity-70 flex items-center gap-1",
@@ -47,21 +50,15 @@ export function SiteHeader() {
                   !isActive && !isScrolled ? "opacity-90" : ""
                 )}
               >
-                {item.label}
-                {item.label === "Destinations" && (
+                {t(item.key)}
+                {item.key === "destinations" && (
                   <span className="text-xs">▼</span>
                 )}
               </Link>
             );
           })}
         </nav>
-        <div className="flex items-center gap-4 text-sm font-medium">
-          <span className={cn(
-            "cursor-pointer pb-1",
-            isScrolled ? "border-b-2 border-blue-600 text-zinc-600" : "border-b-2 border-blue-400 text-blue-400"
-          )}>EN</span>
-          <span className={cn("cursor-pointer pb-1", isScrolled ? "text-zinc-600" : "opacity-70")}>ID</span>
-        </div>
+        <LanguageSwitcher isScrolled={isScrolled} />
       </div>
     </header>
   );

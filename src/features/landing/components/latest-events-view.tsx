@@ -3,16 +3,17 @@ import { Typography } from "@/components/atoms";
 import type { EventItem } from "../types";
 
 interface LatestEventsViewProps {
+  heading: string;
   events: EventItem[];
 }
 
 /** Presentational: renders the events grid from props only. */
-export function LatestEventsView({ events }: LatestEventsViewProps) {
+export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
   return (
     <section className="w-full bg-[#0a0a0a] pt-16 pb-0 text-white">
       <div className="mx-auto w-full max-w-7xl px-8 mb-10">
         <Typography as="h2" variant="h2" className="text-white text-3xl font-medium tracking-tight">
-          Latest from Praya
+          {heading}
         </Typography>
       </div>
 

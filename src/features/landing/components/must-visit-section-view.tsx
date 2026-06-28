@@ -3,6 +3,10 @@ import type { RefObject } from "react";
 import type { Destination } from "../types";
 
 interface MustVisitSectionViewProps {
+  eyebrow: string;
+  heading: string;
+  viewMore: string;
+  seeMore: string;
   destinations: Destination[];
   scrollRef: RefObject<HTMLDivElement | null>;
   scrollLeft: () => void;
@@ -11,6 +15,10 @@ interface MustVisitSectionViewProps {
 
 /** Presentational: renders the destinations carousel from props only. */
 export function MustVisitSectionView({
+  eyebrow,
+  heading,
+  viewMore,
+  seeMore,
   destinations,
   scrollRef,
   scrollLeft,
@@ -23,10 +31,10 @@ export function MustVisitSectionView({
         {/* Header */}
         <div className="text-center flex flex-col items-center mb-16">
           <span className="text-[#333333] text-[18px] md:text-[20px] font-medium mb-2">
-            Must-Visit Places
+            {eyebrow}
           </span>
           <h2 className="text-[#1A1A1A] text-[36px] md:text-[44px] font-bold tracking-tight">
-            Explore popular destinations
+            {heading}
           </h2>
         </div>
 
@@ -82,7 +90,7 @@ export function MustVisitSectionView({
                 {/* Card Button */}
                 <div className="mt-auto">
                   <button className="flex items-center gap-1.5 px-4 py-1.5 border border-[#E5E7EB] rounded-full w-fit text-[#4B5563] text-[12px] font-medium hover:bg-gray-50 transition-colors">
-                    View More
+                    {viewMore}
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="7" y1="17" x2="17" y2="7"></line>
                       <polyline points="7 7 17 7 17 17"></polyline>
@@ -97,7 +105,7 @@ export function MustVisitSectionView({
         {/* Footer Button */}
         <div className="flex justify-center mt-12">
           <button className="px-7 py-3 border border-[#D1D5DB] rounded-full text-[#1A1A1A] text-[15px] font-medium hover:bg-gray-50 transition-colors">
-            See More Destination
+            {seeMore}
           </button>
         </div>
 

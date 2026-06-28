@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { Providers } from "./providers";
+import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
-import "./globals.css";
+import "../globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -23,18 +27,37 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 };
 
-export default function RootLayout({
+/** Pre-render a static page per supported locale. */
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // 404 on unsupported locales.
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Enable static rendering for next-intl in this request.
+  setRequestLocale(locale);
+
   return (
     <html
-      lang={siteConfig.locale}
+      lang={locale}
       className={`${plusJakartaSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background font-sans text-foreground">
-        <Providers>{children}</Providers>
+        <NextIntlClientProvider>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

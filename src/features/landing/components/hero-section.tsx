@@ -1,6 +1,9 @@
+import { getTranslations } from "next-intl/server";
 import { Typography } from "@/components/atoms";
 
-export function HeroSection() {
+export async function HeroSection() {
+  const t = await getTranslations("Hero");
+
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
@@ -16,19 +19,19 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end h-screen pb-24 px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="flex-1 max-w-3xl">
-            <Typography as="h1" variant="h1" className="text-white text-5xl md:text-7xl font-bold leading-tight">
-              The Soul of Central<br />Lombok
+            <Typography as="h1" variant="h1" className="text-white text-5xl md:text-7xl font-bold leading-tight whitespace-pre-line">
+              {t("title")}
             </Typography>
           </div>
 
           <div className="w-full max-w-[22rem] rounded-2xl bg-white/10 p-6 backdrop-blur-md border border-white/20 text-white shadow-xl">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-sm font-medium">Explore Now</span>
+              <span className="text-sm font-medium">{t("exploreNow")}</span>
               <span className="text-sm">↗</span>
-              <span className="ml-auto text-xs font-semibold">20+ Destination place</span>
+              <span className="ml-auto text-xs font-semibold">{t("destinationCount")}</span>
             </div>
             <Typography variant="body" className="text-zinc-200 text-sm leading-relaxed">
-              Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time.
+              {t("description")}
             </Typography>
           </div>
         </div>

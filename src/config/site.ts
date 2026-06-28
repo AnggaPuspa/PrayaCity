@@ -1,20 +1,20 @@
 /**
  * Single source of truth for site-wide, static metadata.
  * Keep environment-dependent values in `@/config/env`, not here.
+ * Nav labels are translated via the `Nav` message namespace (keyed by `key`).
  */
 export const siteConfig = {
   name: "Praya City",
   description:
     "A production-grade Next.js starter using Atomic Design for UI and feature-sliced modules for business logic.",
   url: "https://praya.city",
-  locale: "en",
   nav: [
-    { label: "home", href: "/" },
-    { label: "History", href: "#history" },
-    { label: "Culture", href: "#culture" },
-    { label: "Destinations", href: "#destinations" },
-    { label: "Programs", href: "#programs" },
-    { label: "Events", href: "#events" },
+    { key: "home", href: "/" },
+    { key: "history", href: "/#history" },
+    { key: "culture", href: "/#culture" },
+    { key: "destinations", href: "/#destinations" },
+    { key: "programs", href: "/#programs" },
+    { key: "events", href: "/#events" },
   ],
 } as const;
 

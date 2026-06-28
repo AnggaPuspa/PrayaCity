@@ -1,0 +1,107 @@
+{
+  "Meta": {
+    "homeTitle": "Praya City - The Soul of Central Lombok",
+    "homeDescription": "Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time."
+  },
+  "Nav": {
+    "home": "Home",
+    "history": "History",
+    "culture": "Culture",
+    "destinations": "Destinations",
+    "programs": "Programs",
+    "events": "Events"
+  },
+  "Hero": {
+    "title": "The Soul of Central\nLombok",
+    "exploreNow": "Explore Now",
+    "destinationCount": "20+ Destination place",
+    "description": "Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time."
+  },
+  "LatestEvents": {
+    "heading": "Latest from Praya",
+    "items": [
+      {
+        "title": "Festival PesonaBau Nyale\n2025",
+        "date": "February 2025",
+        "location": "Seger Beach, Kuta Mandalika"
+      },
+      {
+        "title": "MotoGP Pertamina\nGrand Prix of Indonesia",
+        "date": "October 2025",
+        "location": "Pertamina Mandalika\nInternational Circuit"
+      },
+      {
+        "title": "Presean Cultural\nChampionship",
+        "date": "August 2025",
+        "location": "Sade Traditional Village, Pujut"
+      },
+      {
+        "title": "Lombok Tengah Weaving\nFestival",
+        "date": "September 2025",
+        "location": "Sukarara Village"
+      },
+      {
+        "title": "Mandalika Korpri Fun\nNight Run",
+        "date": "December 2025",
+        "location": "Kuta Mandalika Beach Park"
+      }
+    ]
+  },
+  "About": {
+    "eyebrow": "The Story -",
+    "titleStart": "A Land of ",
+    "legend": "Legend",
+    "middle": " and ",
+    "ambition": "Ambition",
+    "paragraphs": [
+      "Centuries ago, a princess named Mandalika chose the sea over a throne. Her sacrifice became a ritual, her name became a legacy — and her spirit still lives in every wave that breaks along Central Lombok's shores.",
+      "For generations, the Sasak people carried that spirit through their weaving, their music, and their dances. A culture built not on conquest, but on devotion. Today, the same shores where Bau Nyale is celebrated every year now echo with the roar of MotoGP engines. Central Lombok hasn't changed — it has simply shown the world who it always was."
+    ]
+  },
+  "Discover": {
+    "title": "Discover Central Lombok - PrayaCity",
+    "intro": "From ancient legends to world-class events — Central Lombok is more than a destination, it's an experience waiting to be lived.",
+    "items": [
+      {
+        "title": "History",
+        "description": "From the mighty Majapahit expeditions to the rise of Sasak kingdoms, Central Lombok carries centuries of history within its soil. Discover how a land shaped by legend became a cornerstone of Indonesian heritage."
+      },
+      {
+        "title": "Culture",
+        "description": "Witness sacred rituals passed down for generations, hear the thunder of Gendang Beleq drums, and taste flavors so bold they redefine your idea of Indonesian cuisine. Central Lombok's culture is lived every single day."
+      },
+      {
+        "title": "Destinations",
+        "description": "From white-sand beaches with pepper-shaped grains found nowhere else on earth, to rolling green hills overlooking the Indian Ocean — Central Lombok holds landscapes that defy expectation. Your perfect destination is already here."
+      },
+      {
+        "title": "Programs & Events",
+        "description": "Home to the first street circuit in the world to host MotoGP, Central Lombok is where tradition and ambition collide. Explore a packed calendar of events that draw visitors from across the globe."
+      }
+    ]
+  },
+  "MustVisit": {
+    "eyebrow": "Must-Visit Places",
+    "heading": "Explore popular destinations",
+    "viewMore": "View More",
+    "seeMore": "See More Destination",
+    "items": [
+      {
+        "title": "Bukit Merese",
+        "description": "Central Lombok's finest sunset spot. Stand above rolling green hills as..."
+      },
+      {
+        "title": "Gerupuk Beach",
+        "description": "A world-class surf break that draws riders from every corner of the glob..."
+      },
+      {
+        "title": "Sade Traditional Village",
+        "description": "Step into a living museum of Sasak culture. 150 homes, 700 residents..."
+      },
+      {
+        "title": "Kuta Mandalika Beach",
+        "description": "The only beach in the world with pepper-shaped sand grains. Cryst..."
+      }
+    ]
+  }
+}

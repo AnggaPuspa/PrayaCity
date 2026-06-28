@@ -1,7 +1,10 @@
 import Image from "next/image";
-import { ABOUT_PARAGRAPHS } from "../data/about";
+import { getTranslations } from "next-intl/server";
 
-export function AboutSection() {
+export async function AboutSection() {
+  const t = await getTranslations("About");
+  const paragraphs = t.raw("paragraphs") as string[];
+
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-8">
@@ -31,15 +34,15 @@ export function AboutSection() {
           {/* Text Section */}
           <div className="flex flex-col max-w-[540px]">
             <span className="text-zinc-800 dark:text-zinc-800 text-[20px] font-medium mb-2 block">
-              The Story -
+              {t("eyebrow")}
             </span>
             <h2 className="text-[40px] md:text-[52px] font-bold text-zinc-950 dark:text-zinc-950 leading-[1.15] tracking-tight mb-6">
-              A Land of <span className="text-[#0055FF]">Legend</span> and <br />
-              <span className="text-[#0055FF]">Ambition</span>
+              {t("titleStart")}<span className="text-[#0055FF]">{t("legend")}</span>{t("middle")}<br />
+              <span className="text-[#0055FF]">{t("ambition")}</span>
             </h2>
 
             <div className="flex flex-col gap-5 text-[#737373] text-[15px] font-normal leading-[1.8]">
-              {ABOUT_PARAGRAPHS.map((paragraph, index) => (
+              {paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
