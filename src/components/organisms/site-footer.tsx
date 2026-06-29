@@ -7,9 +7,9 @@ export function SiteFooter() {
 
   return (
     <footer className="w-full bg-[#0A0A0A] text-white pt-24 pb-12">
-      <div className="mx-auto w-full max-w-7xl px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-12">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16 md:mb-28">
           {/* Col 1 */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <h2 className="text-[28px] font-semibold text-white tracking-tight">PrayaCity</h2>

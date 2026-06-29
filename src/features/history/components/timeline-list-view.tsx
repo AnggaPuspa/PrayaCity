@@ -18,7 +18,7 @@ interface TimelineListViewProps {
 export function TimelineListView({ items }: TimelineListViewProps) {
   return (
     <section className="w-full bg-[#0A1128] py-20 md:py-32">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 md:gap-40 px-8">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 md:gap-40 px-5 md:px-8">
         {items.map((item, index) => {
           const isEven = index % 2 !== 0;
 

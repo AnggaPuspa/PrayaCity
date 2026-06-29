@@ -11,7 +11,7 @@ interface LatestEventsViewProps {
 export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
   return (
     <section className="w-full bg-[#0a0a0a] pt-16 pb-0 text-white">
-      <div className="mx-auto w-full max-w-7xl px-8 mb-10">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8 mb-10">
         <Typography as="h2" variant="h2" className="text-white text-3xl font-medium tracking-tight">
           {heading}
         </Typography>

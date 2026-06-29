@@ -16,10 +16,10 @@ export async function HeroSection() {
         <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end h-screen pb-24 px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end h-screen pb-24 px-5 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="flex-1 max-w-3xl">
-            <Typography as="h1" variant="h1" className="text-white text-5xl md:text-7xl font-bold leading-tight whitespace-pre-line">
+            <Typography as="h1" variant="h1" className="text-white text-4xl sm:text-5xl md:text-7xl font-bold leading-tight whitespace-pre-line">
               {t("title")}
             </Typography>
           </div>

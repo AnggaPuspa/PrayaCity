@@ -14,7 +14,7 @@ interface HistoryGalleryViewProps {
 export function HistoryGalleryView({ header, images }: HistoryGalleryViewProps) {
   return (
     <section className="w-full bg-white py-20 md:py-32">
-      <div className="mx-auto w-full max-w-7xl px-8">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
         <div className="text-center mb-12 md:mb-20">
           <p className="text-gray-900 font-medium text-lg mb-2">
             {header.eyebrow}

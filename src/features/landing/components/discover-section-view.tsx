@@ -10,11 +10,11 @@ interface DiscoverSectionViewProps {
 export function DiscoverSectionView({ header, items }: DiscoverSectionViewProps) {
   return (
     <section className="w-full bg-[#0B132B] py-24 lg:py-32">
-      <div className="mx-auto w-full max-w-7xl px-8">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-          <h2 className="text-white text-[40px] md:text-[48px] font-bold leading-[1.2] max-w-[500px]">
+          <h2 className="text-white text-[30px] sm:text-[40px] md:text-[48px] font-bold leading-[1.2] max-w-[500px]">
             {header.title}
           </h2>
           <p className="text-white/70 text-[15px] leading-[1.6] max-w-[380px] md:text-right pb-2">

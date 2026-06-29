@@ -7,7 +7,7 @@ export async function AboutSection() {
 
   return (
     <section className="w-full bg-white py-16 md:py-24">
-      <div className="mx-auto w-full max-w-7xl px-8">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
         <div className="flex flex-col md:flex-row gap-10 md:gap-28 items-center justify-between">
           {/* Images Section */}
           <div className="relative w-full max-w-[360px] lg:max-w-[480px] mx-auto md:mx-0 shrink-0">
@@ -38,7 +38,7 @@ export async function AboutSection() {
             <span className="text-zinc-800 dark:text-zinc-800 text-[20px] font-medium mb-2 block">
               {t("eyebrow")}
             </span>
-            <h2 className="text-[40px] md:text-[52px] font-bold text-zinc-950 dark:text-zinc-950 leading-[1.15] tracking-tight mb-6">
+            <h2 className="text-[30px] sm:text-[40px] md:text-[52px] font-bold text-zinc-950 dark:text-zinc-950 leading-[1.15] tracking-tight mb-6">
               {t("titleStart")}<span className="text-[#0055FF]">{t("legend")}</span>{t("middle")}<br />
               <span className="text-[#0055FF]">{t("ambition")}</span>
             </h2>
