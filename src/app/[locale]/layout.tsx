@@ -6,6 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Providers } from "./providers";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
+import "lenis/dist/lenis.css";
 import "../globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({

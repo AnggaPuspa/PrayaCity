@@ -1,12 +1,28 @@
 "use client";
 
-import * as React from "react";
+import type { ReactNode } from "react";
+import { ReactLenis } from "lenis/react";
 
 /**
- * Global client-side providers (theme, React Query, analytics, etc.).
- * Kept as a single client boundary so the locale layout stays a Server
- * Component. Add providers here as the app grows.
+ * Global client-side providers.
+ *
+ * Lenis runs in root/native mode so it smooths the real page scroll —
+ * `window.scrollY`, sticky positioning, and anchor links keep working.
+ * Touch scrolling stays native (`syncTouch: false`) since mobile already has
+ * good momentum scrolling.
  */
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export function Providers({ children }: { children: ReactNode }) {
+  return (
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.1,
+        smoothWheel: true,
+        syncTouch: false,
+        anchors: true,
+      }}
+    >
+      {children}
+    </ReactLenis>
+  );
 }
