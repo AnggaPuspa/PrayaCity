@@ -11,10 +11,10 @@ export const siteConfig = {
   nav: [
     { key: "home", href: "/" },
     { key: "history", href: "/history" },
-    { key: "culture", href: "/#culture" },
-    { key: "destinations", href: "/#destinations" },
-    { key: "programs", href: "/#programs" },
-    { key: "events", href: "/#events" },
+    { key: "culture", href: "/coming-soon" },
+    { key: "destinations", href: "/coming-soon" },
+    { key: "programs", href: "/coming-soon" },
+    { key: "events", href: "/coming-soon" },
   ],
 } as const;
 

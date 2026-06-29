@@ -5,6 +5,11 @@
     "historyTitle": "History - Praya City",
     "historyDescription": "Centuries of History, One Remarkable Land. Discover the story of Central Lombok."
   },
+  "ComingSoon": {
+    "title": "Page Under Development",
+    "description": "This page is still being built. We're working on it — please check back soon!",
+    "back": "Back to Home"
+  },
   "Nav": {
     "home": "Home",
     "history": "History",

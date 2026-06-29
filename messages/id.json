@@ -5,6 +5,11 @@
     "historyTitle": "Sejarah - Praya City",
     "historyDescription": "Berabad-abad Sejarah, Satu Negeri yang Luar Biasa. Temukan kisah Lombok Tengah."
   },
+  "ComingSoon": {
+    "title": "Halaman Sedang Dikembangkan",
+    "description": "Halaman ini masih dalam pengembangan. Kami sedang mengerjakannya — nantikan segera, ya!",
+    "back": "Kembali ke Beranda"
+  },
   "Nav": {
     "home": "Beranda",
     "history": "Sejarah",

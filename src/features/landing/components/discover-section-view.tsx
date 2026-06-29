@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import type { DiscoverHeader, DiscoverItem } from "../types";
 
 interface DiscoverSectionViewProps {
@@ -25,8 +26,9 @@ export function DiscoverSectionView({ header, items }: DiscoverSectionViewProps)
         {/* List */}
         <div className="flex flex-col border-t border-white/10">
           {items.map((item) => (
-            <div
+            <Link
               key={item.id}
+              href={item.href}
               className="group flex flex-col lg:flex-row items-start lg:items-center py-8 lg:py-10 border-b border-white/10 gap-6 lg:gap-10 transition-colors cursor-pointer"
             >
               {/* Number */}
@@ -62,7 +64,7 @@ export function DiscoverSectionView({ header, items }: DiscoverSectionViewProps)
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

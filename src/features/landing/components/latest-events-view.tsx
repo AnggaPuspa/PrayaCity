@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Typography } from "@/components/atoms";
+import { Link } from "@/i18n/navigation";
 import type { EventItem } from "../types";
 
 interface LatestEventsViewProps {
@@ -20,7 +21,7 @@ export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:h-[650px] w-full">
           {events.map((event, index) => (
-            <div key={index} className={`relative group overflow-hidden ${event.className}`}>
+            <Link key={index} href="/coming-soon" className={`relative group overflow-hidden block ${event.className}`}>
               <Image
                 src={event.image}
                 alt={event.title}
@@ -37,7 +38,7 @@ export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
                   {event.date} · {event.location}
                 </Typography>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
