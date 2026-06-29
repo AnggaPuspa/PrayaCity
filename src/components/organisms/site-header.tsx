@@ -5,7 +5,7 @@ import { Typography } from "@/components/atoms";
 import { LanguageSwitcher } from "@/components/molecules";
 import { siteConfig } from "@/config/site";
 import { useScroll } from "@/hooks";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils/cn";
 export function SiteHeader() {
   const isScrolled = useScroll(10);
   const t = useTranslations("Nav");
+  const pathname = usePathname();
 
   return (
     <header
@@ -37,7 +38,10 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {siteConfig.nav.map((item) => {
-            const isActive = item.key === "home";
+            const isActive = item.href === "/" 
+              ? pathname === "/" 
+              : !item.href.includes("#") && pathname.startsWith(item.href);
+            
             return (
               <Link
                 key={item.key}

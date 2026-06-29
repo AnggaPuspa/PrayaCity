@@ -1,7 +1,9 @@
 {
   "Meta": {
     "homeTitle": "Praya City - Jiwa Lombok Tengah",
-    "homeDescription": "Informasi wisata terkurasi — mulai dari acara budaya, destinasi alam, hingga kuliner lokal, semua diperbarui secara real-time."
+    "homeDescription": "Informasi wisata terkurasi — mulai dari acara budaya, destinasi alam, hingga kuliner lokal, semua diperbarui secara real-time.",
+    "historyTitle": "Sejarah - Praya City",
+    "historyDescription": "Berabad-abad Sejarah, Satu Negeri yang Luar Biasa. Temukan kisah Lombok Tengah."
   },
   "Nav": {
     "home": "Beranda",
@@ -124,5 +126,41 @@
     "privacy": "Kebijakan Privasi",
     "terms": "Syarat Ketentuan",
     "legal": "Legal"
+  },
+  "HistoryPage": {
+    "heroEyebrow": "Kisah Lombok Tengah -",
+    "heroTitle": "Berabad-abad Sejarah, Satu Negeri yang Luar Biasa",
+    "timelineTitle": "Garis Waktu Sejarah\nLombok Tengah",
+    "timelineDescription": "Sejarah Lombok Tengah terentang lebih dari tujuh abad — dari kedatangan pasukan Majapahit hingga gemuruh mesin MotoGP di Sirkuit Mandalika.",
+    "galleryEyebrow": "Melalui Lensa Sejarah",
+    "galleryTitle1": "Sekilas Tentang ",
+    "galleryTitle2": "Lombok Tengah",
+    "timelineItems": [
+      {
+        "date": "1343 M",
+        "title": "Ekspedisi Majapahit",
+        "description": "Lombok Tengah pertama kali tercatat dalam sejarah ketika Kerajaan Majapahit mengirimkan ekspedisi yang dipimpin oleh Mpu Nala ke Pulau Lombok. Hal ini menandai awal pengaruh budaya Hindu-Jawa yang membentuk peradaban awal di wilayah ini dan meletakkan dasar bagi kerajaan-kerajaan yang muncul kemudian."
+      },
+      {
+        "date": "Abad ke-14",
+        "title": "Kebangkitan Kerajaan Sasak",
+        "description": "Setelah ekspedisi Majapahit, dua kerajaan besar muncul di Lombok Tengah — Kerajaan Pejanggik dan Kerajaan Langko. Kerajaan-kerajaan ini membangun sistem pemerintahan yang canggih dan menjadi pusat politik serta budaya Suku Sasak, yang identitas serta tradisinya masih mengakar kuat di Lombok Tengah hingga hari ini."
+      },
+      {
+        "date": "Abad ke-16",
+        "title": "Kedatangan Islam",
+        "description": "Pada abad ke-16, Islam tiba di Lombok melalui Sunan Prapen, putra Sunan Giri — salah satu dari sembilan wali Islam di Jawa. Masuk melalui Kerajaan Selaparang, ajarannya menyebar secara damai ke seluruh pulau, berpadu dengan tradisi Sasak yang ada untuk membentuk budaya Islam unik yang mendefinisikan identitas spiritual Lombok Tengah hingga saat ini."
+      },
+      {
+        "date": "Era Kolonial",
+        "title": "Pengaruh Asing & Perlawanan",
+        "description": "Seperti sebagian besar wilayah Indonesia, Lombok Tengah tidak luput dari jangkauan kekuasaan kolonial. Wilayah ini mengalami masa-masa kendali asing yang menguji ketangguhan masyarakatnya. Namun melalui setiap tantangan, komunitas Sasak berhasil melestarikan bahasa, adat istiadat, dan identitas mereka — sebuah bukti kekuatan budaya yang mengakar kuat di tanah airnya sendiri."
+      },
+      {
+        "date": "Era Modern",
+        "title": "Dari Warisan ke Panggung Dunia",
+        "description": "Saat ini, Lombok Tengah berdiri di persimpangan antara tradisi dan ambisi. Pembentukan KEK Mandalika, pembangunan Pertamina Mandalika International Circuit, dan kehadiran MotoGP telah mengubah kawasan bersejarah yang kaya ini menjadi destinasi yang diakui secara global — tanpa pernah melupakan legenda dan tradisi yang menjadikannya luar biasa sejak awal."
+      }
+    ]
   }
 }

@@ -10,7 +10,7 @@ export const siteConfig = {
   url: "https://www.parayacity.id",
   nav: [
     { key: "home", href: "/" },
-    { key: "history", href: "/#history" },
+    { key: "history", href: "/history" },
     { key: "culture", href: "/#culture" },
     { key: "destinations", href: "/#destinations" },
     { key: "programs", href: "/#programs" },

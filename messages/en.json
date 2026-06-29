@@ -1,7 +1,9 @@
 {
   "Meta": {
     "homeTitle": "Praya City - The Soul of Central Lombok",
-    "homeDescription": "Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time."
+    "homeDescription": "Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time.",
+    "historyTitle": "History - Praya City",
+    "historyDescription": "Centuries of History, One Remarkable Land. Discover the story of Central Lombok."
   },
   "Nav": {
     "home": "Home",
@@ -124,5 +126,41 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of use",
     "legal": "Legal"
+  },
+  "HistoryPage": {
+    "heroEyebrow": "The Story of Central Lombok -",
+    "heroTitle": "Centuries of History, One Remarkable Land",
+    "timelineTitle": "Historical Timeline of\nCentral Lombok",
+    "timelineDescription": "Central Lombok's history spans more than seven centuries — from the arrival of Majapahit forces to the roar of MotoGP engines on the Mandalika Circuit.",
+    "galleryEyebrow": "Through The Lens of History",
+    "galleryTitle1": "A Glimpse Into ",
+    "galleryTitle2": "Central Lombok's",
+    "timelineItems": [
+      {
+        "date": "1343 AD",
+        "title": "The Majapahit Expedition",
+        "description": "Central Lombok first entered recorded history when the Majapahit Empire sent an expedition led by Mpu Nala to the island of Lombok. This marked the beginning of Hindu-Javanese cultural influence that would shape the region's early civilization and lay the groundwork for the kingdoms that followed."
+      },
+      {
+        "date": "14th Century",
+        "title": "The Rise of Sasak Kingdoms",
+        "description": "Following the Majapahit expedition, two powerful kingdoms emerged in Central Lombok — the Kingdom of Pejanggik and the Kingdom of Langko. These kingdoms established sophisticated governance systems and became the political and cultural centers of the Sasak people, whose identity and traditions remain deeply rooted in Central Lombok to this day."
+      },
+      {
+        "date": "16th Century",
+        "title": "The Arrival of Islam",
+        "description": "In the 16th century, Islam arrived in Lombok through Sunan Prapen, son of Sunan Giri — one of the nine Islamic saints of Java. Entering through the Kingdom of Selaparang, his teachings spread peacefully across the island, blending with existing Sasak traditions to form a unique Islamic culture that defines Central Lombok's spiritual identity to this day."
+      },
+      {
+        "date": "Colonial Era",
+        "title": "Foreign Influence & Resistance",
+        "description": "Like much of Indonesia, Central Lombok did not escape the reach of colonial powers. The region endured periods of foreign control that tested the resilience of its people. Yet through every challenge, the Sasak community preserved their language, their customs, and their sense of identity — a testament to the strength of a culture deeply rooted in its own land."
+      },
+      {
+        "date": "Modern Era",
+        "title": "From Heritage to the World Stage",
+        "description": "Today, Central Lombok stands at the intersection of tradition and ambition. The establishment of KEK Mandalika, the construction of the Pertamina Mandalika International Circuit, and the arrival of MotoGP have transformed this historically rich region into a globally recognized destination — without ever losing sight of the legends and traditions that made it extraordinary in the first place."
+      }
+    ]
   }
 }
