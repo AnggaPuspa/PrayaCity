@@ -10,6 +10,20 @@
     "description": "This page is still being built. We're working on it — please check back soon!",
     "back": "Back to Home"
   },
+  "Article": {
+    "breadcrumbHome": "Home",
+    "breadcrumbEvents": "Events",
+    "share": "Share this article",
+    "related": "<b>Related</b> articles",
+    "seeMore": "See more articles"
+  },
+  "Events": {
+    "metaTitle": "Events",
+    "metaDescription": "Explore the latest events, news, and articles about culture, arts, and lifestyle in Praya City.",
+    "exploreTitle": "<b>Explore</b> Our Blogs",
+    "seeAllCategories": "See all categories",
+    "readMore": "Read more"
+  },
   "Nav": {
     "home": "Home",
     "history": "History",

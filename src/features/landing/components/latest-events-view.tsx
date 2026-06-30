@@ -21,7 +21,7 @@ export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:h-[650px] w-full">
           {events.map((event, index) => (
-            <Link key={index} href="/coming-soon" className={`relative group overflow-hidden block ${event.className}`}>
+            <Link key={index} href={`/events/bau-nyale-festival-2025`} className={`relative group overflow-hidden block ${event.className}`}>
               <Image
                 src={event.image}
                 alt={event.title}

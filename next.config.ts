@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     // Serve modern formats; next/image converts on the fly and picks the
     // smallest the browser supports.
     formats: ["image/avif", "image/webp"],
+    // Allow optimizing remote placeholder images (events use Unsplash).
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
 };
 

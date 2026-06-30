@@ -10,6 +10,20 @@
     "description": "Halaman ini masih dalam pengembangan. Kami sedang mengerjakannya — nantikan segera, ya!",
     "back": "Kembali ke Beranda"
   },
+  "Article": {
+    "breadcrumbHome": "Beranda",
+    "breadcrumbEvents": "Acara",
+    "share": "Bagikan artikel ini",
+    "related": "<b>Artikel</b> terkait",
+    "seeMore": "Lihat artikel lainnya"
+  },
+  "Events": {
+    "metaTitle": "Acara",
+    "metaDescription": "Jelajahi acara, berita, dan artikel terbaru seputar budaya, seni, dan gaya hidup di Praya City.",
+    "exploreTitle": "<b>Jelajahi</b> Blog Kami",
+    "seeAllCategories": "Lihat semua kategori",
+    "readMore": "Selengkapnya"
+  },
   "Nav": {
     "home": "Beranda",
     "history": "Sejarah",

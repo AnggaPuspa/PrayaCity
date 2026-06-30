@@ -14,7 +14,7 @@ export const siteConfig = {
     { key: "culture", href: "/coming-soon" },
     { key: "destinations", href: "/coming-soon" },
     { key: "programs", href: "/coming-soon" },
-    { key: "events", href: "/coming-soon" },
+    { key: "events", href: "/events" },
   ],
 } as const;
 
