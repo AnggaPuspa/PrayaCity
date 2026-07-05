@@ -36,7 +36,9 @@ export const CultureTraditionsView = ({
           {traditions.map((tradition, index) => (
             <div
               key={index}
-              className="sticky flex flex-col md:flex-row items-center gap-8 lg:gap-16 bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] w-full mb-24"
+              className={`sticky flex flex-col md:flex-row items-center gap-8 lg:gap-16 bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] w-full ${
+                index !== traditions.length - 1 ? 'mb-24' : ''
+              }`}
               style={{
                 top: `calc(120px + ${index * 20}px)`,
                 zIndex: index,

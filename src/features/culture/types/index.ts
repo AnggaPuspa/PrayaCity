@@ -10,3 +10,10 @@ export interface Tradition {
   description: string;
   imageSrc: string;
 }
+
+export interface CulinaryItem {
+  id: string;
+  title: string;
+  imageSrc: string;
+  aspectClass: string;
+}

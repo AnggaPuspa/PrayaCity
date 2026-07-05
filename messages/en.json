@@ -186,6 +186,17 @@
       "description": "Waktu Telu represents a unique ancestral belief system that blends Islamic teachings with indigenous animist and Hindu-Buddhist traditions. Though practiced by fewer today, its philosophy of harmony between humans, nature, and the divine remains deeply woven into the spiritual fabric of Central Lombok."
     }
   },
+  "CultureCulinary": {
+    "subtitle": "Traditions & Rituals",
+    "titleHighlight": "Taste",
+    "titleRest": " the Soul of Central Lombok",
+    "moreHighlight": "20+",
+    "moreRest": " more culinary food",
+    "item1": "Nasi Balap Puyung",
+    "item2": "Sate Bulayak",
+    "item3": "Ayam Taliwang",
+    "item4": "Sup Iga Bebalung"
+  },
   "HistoryPage": {
     "heroEyebrow": "The Story of Central Lombok -",
     "heroTitle": "Centuries of History, One Remarkable Land",
