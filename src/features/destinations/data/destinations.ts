@@ -4,6 +4,7 @@ export const DESTINATIONS_DATA: DestinationItem[] = [
   {
     id: "kutaMandalika",
     imageSrc: "/destination/kuta-mandalika-beach.webp",
+    detailImageSrc: "/destination/detaildestination/Tegalalang-detail-img.webp",
     tags: ["Nature", "Beach"],
   },
   {

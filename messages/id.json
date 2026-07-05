@@ -244,18 +244,36 @@
       "hills": "Bukit",
       "heritage": "Warisan"
     },
+    "detail": {
+      "currentStatus": "Status saat ini",
+      "location": "Lokasi",
+      "entranceFee": "Harga Tiket",
+      "feeLabel": "biaya: "
+    },
     "items": {
       "kutaMandalika": {
-        "title": "Kuta Mandalika Beach",
-        "description": "Satu-satunya pantai di dunia dengan butiran pasir berbentuk merica, perairan sebening kristal, dan ombak selancar kelas dunia."
+        "title": "Pantai Kuta Mandalika",
+        "description": "Satu-satunya pantai di dunia dengan butiran pasir berbentuk merica, perairan sebening kristal, dan ombak selancar kelas dunia.",
+        "longDescription": "Membentang sejauh 7,2 kilometer di sepanjang pesisir selatan Lombok Tengah, Pantai Kuta Mandalika berbeda dari pantai mana pun di dunia — pasir putihnya yang lembut memiliki tekstur unik berbentuk butiran merica yang tidak ditemukan di tempat lain di bumi. Dengan air biru jernih, terumbu karang yang semarak di lepas pantai, dan Bukit Mandalika yang legendaris berdiri di titik paling baratnya, pantai ini kaya akan keindahan alam sekaligus sejarah budaya. Baik Anda ke sini untuk berenang, bermain papan seluncur, bersepeda di sepanjang pesisir, atau sekadar menyaksikan matahari terbenam mewarnai langit — Kuta Mandalika tidak pernah mengecewakan.",
+        "location": "Desa Kuta, Kecamatan Pujut, Kabupaten Lombok Tengah, NTB",
+        "status": "Buka Hari Ini",
+        "entranceFee": "Gratis (Parkir: Rp 5.000 - Rp 10.000)"
       },
       "bukitMerese": {
         "title": "Bukit Merese",
-        "description": "Lokasi matahari terbenam terbaik di Lombok Tengah yang menawarkan pemandangan perbukitan hijau nan luas yang menghadap ke laut."
+        "description": "Lokasi matahari terbenam terbaik di Lombok Tengah yang menawarkan pemandangan perbukitan hijau nan luas yang menghadap ke laut.",
+        "longDescription": "Bukit Merese menawarkan beberapa pemandangan panorama paling spektakuler di Lombok Tengah. Dikenal sebagai tempat terbaik untuk melihat matahari terbenam, perbukitan hijau yang bergelombang memberikan titik pandang yang sempurna menghadap Samudra Hindia yang tak berujung. Pengunjung dapat menikmati pendakian santai ke puncak, di mana angin laut yang sejuk dan pemandangan pesisir yang menakjubkan menciptakan pengalaman yang benar-benar tak terlupakan. Ini adalah surga bagi pecinta alam dan fotografer.",
+        "location": "Jalan Pariwisata Pantai Kuta, Pujut, Kabupaten Lombok Tengah, NTB",
+        "status": "Buka Hari Ini",
+        "entranceFee": "Gratis (Parkir: Rp 5.000 - Rp 10.000)"
       },
       "bukitLancing": {
         "title": "Bukit Lancing",
-        "description": "Situs paralayang resmi Lombok Tengah yang menawarkan panorama garis pantai yang menakjubkan."
+        "description": "Situs paralayang resmi Lombok Tengah yang menawarkan panorama garis pantai yang menakjubkan.",
+        "longDescription": "Sebagai situs paralayang resmi Lombok Tengah, Bukit Lancing menawarkan cara yang menggembirakan untuk mengalami keindahan pulau dari atas. Pemandangan panorama garis pantai yang menakjubkan, dipadukan dengan sensasi terbang, menjadikannya tujuan utama bagi para pencari petualangan. Sekalipun Anda lebih suka berada di darat, lingkungan hijau subur dan udara puncak bukit yang segar memberikan pelarian yang menenangkan dari pantai yang ramai.",
+        "location": "Mekar Sari, Praya Barat, Kabupaten Lombok Tengah, NTB",
+        "status": "Buka Hari Ini",
+        "entranceFee": "Gratis (Parkir: Rp 5.000 - Rp 10.000)"
       }
     }
   }

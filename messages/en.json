@@ -244,18 +244,36 @@
       "hills": "Hills",
       "heritage": "Heritage"
     },
+    "detail": {
+      "currentStatus": "Current status",
+      "location": "Location",
+      "entranceFee": "Entrance Fee",
+      "feeLabel": "fee: "
+    },
     "items": {
       "kutaMandalika": {
         "title": "Kuta Mandalika Beach",
-        "description": "The only beach in the world with pepper-shaped sand grains, crystal clear waters, and world-class surfing."
+        "description": "The only beach in the world with pepper-shaped sand grains, crystal clear waters, and world-class surfing.",
+        "longDescription": "Stretching 7.2 kilometers along Central Lombok's southern coast, Kuta Mandalika Beach is unlike any other beach in the world — its powdery white sand carries a unique pepper-grain texture found nowhere else on earth. With crystal clear turquoise waters, vibrant coral reefs just offshore, and the legendary Mandalika Hill standing at its westernmost point, this beach is as rich in natural beauty as it is in cultural history. Whether you're here to swim, paddleboard, cycle along the coastline, or simply watch the sunset paint the sky — Kuta Mandalika never disappoints.",
+        "location": "Desa Kuta, Kecamatan Pujut, Kabupaten Lombok Tengah, NTB",
+        "status": "Open Today",
+        "entranceFee": "Free (Parking: Rp 5.000 - Rp 10.000)"
       },
       "bukitMerese": {
         "title": "Bukit Merese",
-        "description": "Central Lombok's finest sunset spot offering sweeping views of rolling green hills overlooking the ocean."
+        "description": "Central Lombok's finest sunset spot offering sweeping views of rolling green hills overlooking the ocean.",
+        "longDescription": "Bukit Merese offers some of the most spectacular panoramic views in Central Lombok. Known as the best spot for sunset viewing, the rolling green hills provide a perfect vantage point overlooking the endless Indian Ocean. Visitors can enjoy a gentle hike to the top, where the cooling sea breeze and the stunning coastal scenery create a truly unforgettable experience. It's a paradise for nature lovers and photographers alike.",
+        "location": "Jalan Pariwisata Pantai Kuta, Pujut, Kabupaten Lombok Tengah, NTB",
+        "status": "Open Today",
+        "entranceFee": "Free (Parking: Rp 5.000 - Rp 10.000)"
       },
       "bukitLancing": {
         "title": "Bukit Lancing",
-        "description": "Central Lombok's official paragliding site offering breathtaking panoramic views of the entire coastline."
+        "description": "Central Lombok's official paragliding site offering breathtaking panoramic views of the entire coastline.",
+        "longDescription": "As the official paragliding site of Central Lombok, Bukit Lancing offers an exhilarating way to experience the island's beauty from above. The breathtaking panoramic views of the coastline, combined with the thrill of flight, make it a top destination for adventure seekers. Even if you prefer to stay on the ground, the lush green surroundings and fresh hilltop air provide a relaxing escape from the bustling beaches.",
+        "location": "Mekar Sari, Praya Barat, Kabupaten Lombok Tengah, NTB",
+        "status": "Open Today",
+        "entranceFee": "Free (Parking: Rp 5.000 - Rp 10.000)"
       }
     }
   }

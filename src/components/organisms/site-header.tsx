@@ -23,7 +23,8 @@ export function SiteHeader() {
   // Force solid across the events area (list + detail) — those pages have a
   // light background, so a transparent header would be invisible.
   const isEventsArea = pathname === "/events" || pathname.startsWith("/events/");
-  const solid = isScrolled || menuOpen || isEventsArea;
+  const isDestinationsDetail = pathname.startsWith("/destinations/");
+  const solid = isScrolled || menuOpen || isEventsArea || isDestinationsDetail;
 
   return (
     <header

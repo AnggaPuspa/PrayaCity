@@ -3,5 +3,6 @@ export type DestinationCategory = "All" | "Nature" | "Beach" | "Hills" | "Herita
 export interface DestinationItem {
   id: string; // matches translation key, e.g., 'kutaMandalika'
   imageSrc: string;
+  detailImageSrc?: string;
   tags: DestinationCategory[]; // e.g., ['Nature', 'Beach']
 }

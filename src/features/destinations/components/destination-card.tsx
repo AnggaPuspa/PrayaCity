@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import { DestinationItem } from "../types";
 
 interface DestinationCardProps {
@@ -9,7 +10,7 @@ interface DestinationCardProps {
 
 export function DestinationCard({ item, title, description }: DestinationCardProps) {
   return (
-    <div className="flex flex-col w-full group cursor-pointer">
+    <Link href={`/destinations/${item.id}`} className="flex flex-col w-full group cursor-pointer">
       <div className="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden mb-6">
         <Image
           src={item.imageSrc}
@@ -35,6 +36,6 @@ export function DestinationCard({ item, title, description }: DestinationCardPro
       <p className="text-white/60 text-[14px] leading-relaxed line-clamp-2">
         {description}
       </p>
-    </div>
+    </Link>
   );
 }
