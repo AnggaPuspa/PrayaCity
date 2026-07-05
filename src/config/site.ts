@@ -12,7 +12,7 @@ export const siteConfig = {
     { key: "home", href: "/" },
     { key: "history", href: "/history" },
     { key: "culture", href: "/culture" },
-    { key: "destinations", href: "/coming-soon" },
+    { key: "destinations", href: "/destinations" },
     { key: "programs", href: "/coming-soon" },
     { key: "events", href: "/events" },
   ],

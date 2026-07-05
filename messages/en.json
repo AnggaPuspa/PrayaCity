@@ -232,5 +232,31 @@
         "description": "Today, Central Lombok stands at the intersection of tradition and ambition. The establishment of KEK Mandalika, the construction of the Pertamina Mandalika International Circuit, and the arrival of MotoGP have transformed this historically rich region into a globally recognized destination — without ever losing sight of the legends and traditions that made it extraordinary in the first place."
       }
     ]
+  },
+  "DestinationsPage": {
+    "heroEyebrow": "-Explore Central Lombok-",
+    "heroTitle": "Every Corner of Central Lombok Has a\nDestination Worth Discovering",
+    "searchPlaceholder": "Search destination......",
+    "categories": {
+      "all": "All",
+      "nature": "Nature",
+      "beach": "Beach",
+      "hills": "Hills",
+      "heritage": "Heritage"
+    },
+    "items": {
+      "kutaMandalika": {
+        "title": "Kuta Mandalika Beach",
+        "description": "The only beach in the world with pepper-shaped sand grains, crystal clear waters, and world-class surfing."
+      },
+      "bukitMerese": {
+        "title": "Bukit Merese",
+        "description": "Central Lombok's finest sunset spot offering sweeping views of rolling green hills overlooking the ocean."
+      },
+      "bukitLancing": {
+        "title": "Bukit Lancing",
+        "description": "Central Lombok's official paragliding site offering breathtaking panoramic views of the entire coastline."
+      }
+    }
   }
 }

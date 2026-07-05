@@ -66,9 +66,6 @@ export function SiteHeader() {
                 )}
               >
                 {t(item.key)}
-                {item.key === "destinations" && (
-                  <span className="text-xs">▼</span>
-                )}
               </Link>
             );
           })}

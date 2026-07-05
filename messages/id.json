@@ -229,8 +229,34 @@
       {
         "date": "Era Modern",
         "title": "Dari Warisan ke Panggung Dunia",
-        "description": "Saat ini, Lombok Tengah berdiri di persimpangan antara tradisi dan ambisi. Pembentukan KEK Mandalika, pembangunan Pertamina Mandalika International Circuit, dan kehadiran MotoGP telah mengubah kawasan bersejarah yang kaya ini menjadi destinasi yang diakui secara global — tanpa pernah melupakan legenda dan tradisi yang menjadikannya luar biasa sejak awal."
+        "description": "Saat ini, Lombok Tengah berdiri di persimpangan antara tradisi dan ambisi. Berdirinya KEK Mandalika, pembangunan Pertamina Mandalika International Circuit, dan kehadiran MotoGP telah mengubah wilayah yang kaya sejarah ini menjadi destinasi yang diakui secara global — tanpa pernah melupakan legenda dan tradisi yang membuatnya luar biasa sejak awal."
       }
     ]
+  },
+  "DestinationsPage": {
+    "heroEyebrow": "-Jelajahi Lombok Tengah-",
+    "heroTitle": "Setiap Sudut Lombok Tengah Memiliki\nDestinasi yang Layak Ditemukan",
+    "searchPlaceholder": "Cari destinasi......",
+    "categories": {
+      "all": "Semua",
+      "nature": "Alam",
+      "beach": "Pantai",
+      "hills": "Bukit",
+      "heritage": "Warisan"
+    },
+    "items": {
+      "kutaMandalika": {
+        "title": "Kuta Mandalika Beach",
+        "description": "Satu-satunya pantai di dunia dengan butiran pasir berbentuk merica, perairan sebening kristal, dan ombak selancar kelas dunia."
+      },
+      "bukitMerese": {
+        "title": "Bukit Merese",
+        "description": "Lokasi matahari terbenam terbaik di Lombok Tengah yang menawarkan pemandangan perbukitan hijau nan luas yang menghadap ke laut."
+      },
+      "bukitLancing": {
+        "title": "Bukit Lancing",
+        "description": "Situs paralayang resmi Lombok Tengah yang menawarkan panorama garis pantai yang menakjubkan."
+      }
+    }
   }
 }
