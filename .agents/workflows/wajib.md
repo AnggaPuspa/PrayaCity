@@ -1,3 +1,7 @@
+---
+description: asetiktur
+---
+
 # Architecture
 
 This project uses a **hybrid Atomic Design + Feature-Sliced** architecture on
