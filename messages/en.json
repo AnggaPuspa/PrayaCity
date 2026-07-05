@@ -150,6 +150,42 @@
     "title": "Ancient Traditions and Bold Flavors",
     "description": "Central Lombok's culture is not something you observe from a distance — it is something you feel, taste, and carry with you long after you leave. From the sacred Bau Nyale ritual that honors a princess who gave her life for peace, to the thundering rhythm of Gendang Beleq drums echoing through village ceremonies, every tradition here has survived centuries not by coincidence, but by devotion."
   },
+  "CultureTraditions": {
+    "subtitle": "Traditions & Rituals",
+    "titleHighlight": "Six Traditions",
+    "titleRest": " That Have Stood the Test of Time",
+    "viewMore": "View More",
+    "tradition1": {
+      "tag": "Annual Ritual",
+      "title": "Bau Nyale — When the Sea Comes Alive",
+      "description": "Every year at Seger Beach, thousands gather to catch nyale sea worms — believed to be the reincarnation of Princess Mandalika, who sacrificed herself to bring peace among her suitors. As dawn breaks, the people of Central Lombok wade into the waters in a moment of spiritual connection that has been repeated for centuries."
+    },
+    "tradition2": {
+      "tag": "Traditional Martial Art",
+      "title": "Peresean — Where Courage is Tested",
+      "description": "Two men, rattan sticks, and buffalo hide shields — Peresean is a traditional Sasak duel that symbolizes bravery and sportsmanship. Once held to invoke rain during dry seasons, it is today celebrated at cultural festivals across Central Lombok, drawing crowds who come to witness a living expression of Sasak identity."
+    },
+    "tradition3": {
+      "tag": "Rhythmic Heritage",
+      "title": "Gendang Beleq — The Pulse of the Island",
+      "description": "Translating to \"Big Drum,\" Gendang Beleq is an ancient musical tradition originally used to encourage warriors marching to battle. Today, these massive, thunderous drums form the heartbeat of traditional Sasak wedding processions and cultural ceremonies, echoing the island's fierce and vibrant history."
+    },
+    "tradition4": {
+      "tag": "Ancestral Craft",
+      "title": "Sade Village Weaving — Threads of Time",
+      "description": "In the traditional Sasak village of Sade, the meticulous art of hand-weaving has been passed down through generations of women. Using natural dyes and intricate backstrap looms, they create stunning Songket fabrics that tell stories of their ancestors, where every pattern holds a profound cultural significance."
+    },
+    "tradition5": {
+      "tag": "Harvest Festival",
+      "title": "Alang-Alang — The Sacred Granary",
+      "description": "Across Central Lombok, you'll spot the iconic lumbung (rice barns) with their distinctive curved thatched roofs. More than just agricultural storage, these structures represent the community's profound gratitude for the harvest and are central to communal gatherings and thanksgiving rituals."
+    },
+    "tradition6": {
+      "tag": "Spiritual Harmony",
+      "title": "Waktu Telu — The Ancient Syncretism",
+      "description": "Waktu Telu represents a unique ancestral belief system that blends Islamic teachings with indigenous animist and Hindu-Buddhist traditions. Though practiced by fewer today, its philosophy of harmony between humans, nature, and the divine remains deeply woven into the spiritual fabric of Central Lombok."
+    }
+  },
   "HistoryPage": {
     "heroEyebrow": "The Story of Central Lombok -",
     "heroTitle": "Centuries of History, One Remarkable Land",

@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { CultureHero } from "@/features/culture";
+import { CultureHero, CultureTraditions } from "@/features/culture";
 
 export default async function CulturePage({
   params,
@@ -12,6 +12,7 @@ export default async function CulturePage({
   return (
     <div className="w-full min-h-screen">
       <CultureHero />
+      <CultureTraditions />
     </div>
   );
 }

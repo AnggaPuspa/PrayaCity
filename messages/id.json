@@ -148,7 +148,43 @@
   },
   "CultureHero": {
     "title": "Tradisi Kuno dan Cita Rasa Berani",
-    "description": "Budaya Lombok Tengah bukan sekadar sesuatu yang diamati dari jauh — melainkan sesuatu yang Anda rasakan, cicipi, dan bawa pulang lama setelah Anda pergi. Dari ritual suci Bau Nyale yang menghormati pengorbanan seorang putri demi kedamaian, hingga gemuruh tabuhan Gendang Beleq yang menggema di setiap upacara desa, setiap tradisi di sini bertahan berabad-abad bukan karena kebetulan, melainkan karena pengabdian."
+    "description": "Budaya Lombok Tengah bukan sekadar sesuatu yang diamati dari jauh — melainkan sesuatu yang Anda rasakan, cicipi, dan bawa pulang lama setelah Anda pergi. Dari ritual sakral Bau Nyale yang menghormati seorang putri yang mengorbankan nyawanya demi kedamaian, hingga irama gemuruh gendang Beleq yang bergema di upacara desa, setiap tradisi di sini telah bertahan berabad-abad bukan karena kebetulan, melainkan karena pengabdian."
+  },
+  "CultureTraditions": {
+    "subtitle": "Tradisi & Ritual",
+    "titleHighlight": "Enam Tradisi",
+    "titleRest": " yang Tak Lekang oleh Waktu",
+    "viewMore": "Lihat Selengkapnya",
+    "tradition1": {
+      "tag": "Ritual Tahunan",
+      "title": "Bau Nyale — Saat Laut Menjadi Hidup",
+      "description": "Setiap tahun di Pantai Seger, ribuan orang berkumpul untuk menangkap cacing laut nyale — yang diyakini sebagai reinkarnasi Putri Mandalika, yang mengorbankan dirinya untuk membawa kedamaian di antara para pelamarnya. Saat fajar menyingsing, masyarakat Lombok Tengah mengarungi air dalam momen hubungan spiritual yang telah diulang selama berabad-abad."
+    },
+    "tradition2": {
+      "tag": "Seni Bela Diri Tradisional",
+      "title": "Peresean — Tempat Keberanian Diuji",
+      "description": "Dua pria, tongkat rotan, dan perisai kulit kerbau — Peresean adalah duel tradisional Sasak yang melambangkan keberanian dan sportivitas. Dulunya diadakan untuk memanggil hujan selama musim kemarau, saat ini Peresean dirayakan di festival budaya di seluruh Lombok Tengah, menarik banyak orang yang datang untuk menyaksikan ekspresi hidup identitas Sasak."
+    },
+    "tradition3": {
+      "tag": "Warisan Irama",
+      "title": "Gendang Beleq — Denyut Nadi Pulau",
+      "description": "Diterjemahkan sebagai \"Gendang Besar,\" Gendang Beleq adalah tradisi musik kuno yang awalnya digunakan untuk menyemangati prajurit yang berangkat ke medan perang. Saat ini, gendang-gendang besar yang menggelegar ini membentuk detak jantung prosesi pernikahan tradisional Sasak dan upacara budaya, menggemakan sejarah pulau yang sengit dan semarak."
+    },
+    "tradition4": {
+      "tag": "Kerajinan Leluhur",
+      "title": "Tenun Desa Sade — Untaian Waktu",
+      "description": "Di desa tradisional Sasak, Sade, seni menenun dengan tangan telah diwariskan dari generasi ke generasi. Menggunakan pewarna alami dan alat tenun punggung yang rumit, mereka menciptakan kain Songket menakjubkan yang menceritakan kisah leluhur mereka, di mana setiap pola memiliki makna budaya yang mendalam."
+    },
+    "tradition5": {
+      "tag": "Festival Panen",
+      "title": "Alang-Alang — Lumbung Suci",
+      "description": "Di seluruh Lombok Tengah, Anda akan melihat lumbung (lumbung padi) ikonik dengan atap melengkung berjerami yang khas. Lebih dari sekadar penyimpanan pertanian, struktur ini mewakili rasa syukur mendalam masyarakat atas panen dan menjadi pusat pertemuan komunal serta ritual ucapan syukur."
+    },
+    "tradition6": {
+      "tag": "Keharmonisan Spiritual",
+      "title": "Waktu Telu — Sinkretisme Kuno",
+      "description": "Waktu Telu mewakili sistem kepercayaan leluhur yang unik yang memadukan ajaran Islam dengan tradisi animisme asli dan Hindu-Buddha. Meskipun dipraktikkan oleh lebih sedikit orang saat ini, filosofi harmoni antara manusia, alam, dan yang ilahi tetap terjalin erat dalam tatanan spiritual Lombok Tengah."
+    }
   },
   "HistoryPage": {
     "heroEyebrow": "Kisah Lombok Tengah -",

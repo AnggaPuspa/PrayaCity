@@ -3,3 +3,10 @@ export interface CultureHeroData {
   highlightImage: string;
   highlightImageAlt: string;
 }
+
+export interface Tradition {
+  tag: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+}
