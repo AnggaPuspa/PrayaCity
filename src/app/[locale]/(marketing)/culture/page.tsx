@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { CultureHero, CultureTraditions, CultureCulinary } from "@/features/culture";
+import { CtaSection } from "@/features/landing";
 
 export default async function CulturePage({
   params,
@@ -14,6 +15,7 @@ export default async function CulturePage({
       <CultureHero />
       <CultureTraditions />
       <CultureCulinary />
+      <CtaSection />
     </div>
   );
 }
