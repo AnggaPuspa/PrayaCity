@@ -237,6 +237,7 @@
     "heroEyebrow": "-Jelajahi Lombok Tengah-",
     "heroTitle": "Setiap Sudut Lombok Tengah Memiliki\nDestinasi yang Layak Ditemukan",
     "searchPlaceholder": "Cari destinasi......",
+    "emptyDestinationsMessage": "Destinasi tidak ditemukan.",
     "categories": {
       "all": "Semua",
       "nature": "Alam",

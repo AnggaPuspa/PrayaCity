@@ -1,24 +1,26 @@
 import { DestinationCard } from "./destination-card";
-import type { DestinationCategory } from "../types";
+import type { DestinationCategory, DestinationCategoryOption, DestinationGridItem } from "../types";
 
 interface GridSectionViewProps {
-  t: any;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   activeCategory: DestinationCategory;
   setActiveCategory: (category: DestinationCategory) => void;
-  categories: { key: string; value: DestinationCategory; label: string }[];
-  filteredItems: any[];
+  categories: DestinationCategoryOption[];
+  filteredItems: DestinationGridItem[];
+  searchPlaceholder: string;
+  emptyStateMessage: string;
 }
 
 export function GridSectionView({
-  t,
   searchQuery,
   setSearchQuery,
   activeCategory,
   setActiveCategory,
   categories,
   filteredItems,
+  searchPlaceholder,
+  emptyStateMessage,
 }: GridSectionViewProps) {
   return (
     <section className="relative w-full pb-24 md:pb-32 px-6">
@@ -40,7 +42,7 @@ export function GridSectionView({
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t("searchPlaceholder")}
+                  placeholder={searchPlaceholder}
                   className="w-full bg-[#18181B] text-white placeholder-gray-400 pl-12 md:pl-14 pr-4 md:pr-6 py-3.5 md:py-4 rounded-xl text-[14px] md:text-[16px] focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
                 />
               </div>
@@ -70,15 +72,15 @@ export function GridSectionView({
             <DestinationCard
               key={item.id}
               item={item}
-              title={t(`items.${item.id}.title`)}
-              description={t(`items.${item.id}.description`)}
+              title={item.title}
+              description={item.description}
             />
           ))}
         </div>
 
         {filteredItems.length === 0 && (
           <div className="w-full py-20 flex justify-center items-center text-white/50">
-            No destinations found.
+            {emptyStateMessage}
           </div>
         )}
 

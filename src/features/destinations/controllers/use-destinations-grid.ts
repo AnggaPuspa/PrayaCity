@@ -1,39 +1,30 @@
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-import { DestinationCategory } from "../types";
-import { DESTINATIONS_DATA } from "../data/destinations";
+import { useMemo, useState } from "react";
+import type { DestinationCategory, DestinationGridItem } from "../types";
 
-export function useDestinationsGrid() {
-  const t = useTranslations("DestinationsPage");
+interface UseDestinationsGridParams {
+  items: DestinationGridItem[];
+}
+
+export function useDestinationsGrid({ items }: UseDestinationsGridParams) {
   const [activeCategory, setActiveCategory] = useState<DestinationCategory>("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const categories: { key: string; value: DestinationCategory; label: string }[] = [
-    { key: "all", value: "All", label: t("categories.all") },
-    { key: "nature", value: "Nature", label: t("categories.nature") },
-    { key: "beach", value: "Beach", label: t("categories.beach") },
-    { key: "hills", value: "Hills", label: t("categories.hills") },
-    { key: "heritage", value: "Heritage", label: t("categories.heritage") },
-  ];
+  const filteredItems = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
 
-  const filteredItems = DESTINATIONS_DATA.filter((item) => {
-    // Check Category
-    const matchesCategory = activeCategory === "All" || item.tags.includes(activeCategory);
-    
-    // Check Search Query
-    const title = t(`items.${item.id}.title`).toLowerCase();
-    const matchesSearch = title.includes(searchQuery.toLowerCase());
+    return items.filter((item) => {
+      const matchesCategory = activeCategory === "All" || item.tags.includes(activeCategory);
+      const matchesSearch = normalizedQuery.length === 0 || item.title.toLowerCase().includes(normalizedQuery);
 
-    return matchesCategory && matchesSearch;
-  });
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, items, searchQuery]);
 
   return {
-    t,
     searchQuery,
     setSearchQuery,
     activeCategory,
     setActiveCategory,
-    categories,
     filteredItems,
   };
 }

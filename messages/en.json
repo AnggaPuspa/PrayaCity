@@ -237,6 +237,7 @@
     "heroEyebrow": "-Explore Central Lombok-",
     "heroTitle": "Every Corner of Central Lombok Has a\nDestination Worth Discovering",
     "searchPlaceholder": "Search destination......",
+    "emptyDestinationsMessage": "No destinations found.",
     "categories": {
       "all": "All",
       "nature": "Nature",
