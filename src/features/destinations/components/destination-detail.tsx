@@ -1,10 +1,11 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { DESTINATIONS_DATA } from "../data/destinations";
 import { DestinationDetailView } from "./destination-detail-view";
-import { notFound } from "next/navigation";
+import type { DestinationDetailContent } from "../types";
 
-export function DestinationDetail({ id }: { id: string }) {
-  const t = useTranslations("DestinationsPage");
+export async function DestinationDetail({ id }: { id: string }) {
+  const t = await getTranslations("DestinationsPage");
   
   const item = DESTINATIONS_DATA.find((d) => d.id === id);
   
@@ -12,32 +13,25 @@ export function DestinationDetail({ id }: { id: string }) {
     notFound();
   }
 
-  // Get translated content
-  const title = t(`items.${id}.title`);
-  const longDescription = t(`items.${id}.longDescription`);
-  const location = t(`items.${id}.location`);
-  const status = t(`items.${id}.status`);
-  const entranceFee = t(`items.${id}.entranceFee`);
-
-  const labels = {
-    currentStatus: t("detail.currentStatus"),
-    location: t("detail.location"),
-    entranceFee: t("detail.entranceFee"),
-    feeLabel: t("detail.feeLabel"),
+  const content: DestinationDetailContent = {
+    ...item,
+    title: t(`items.${id}.title`),
+    longDescription: t(`items.${id}.longDescription`),
+    location: t(`items.${id}.location`),
+    status: t(`items.${id}.status`),
+    entranceFee: t(`items.${id}.entranceFee`),
+    translatedTags: item.tags.map((tag) => t(`categories.${tag.toLowerCase()}`)),
   };
-
-  const translatedTags = item.tags.map(tag => t(`categories.${tag.toLowerCase()}`));
 
   return (
     <DestinationDetailView
-      item={item}
-      title={title}
-      longDescription={longDescription}
-      location={location}
-      status={status}
-      entranceFee={entranceFee}
-      labels={labels}
-      translatedTags={translatedTags}
+      content={content}
+      labels={{
+        currentStatus: t("detail.currentStatus"),
+        location: t("detail.location"),
+        entranceFee: t("detail.entranceFee"),
+        feeLabel: t("detail.feeLabel"),
+      }}
     />
   );
 }
