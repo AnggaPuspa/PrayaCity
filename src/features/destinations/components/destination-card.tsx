@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { DestinationItem } from "../types";
+import type { DestinationItem } from "../types";
 
 interface DestinationCardProps {
   item: DestinationItem;

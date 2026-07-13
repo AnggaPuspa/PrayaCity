@@ -1,4 +1,4 @@
-import { DestinationItem } from "../types";
+import type { DestinationItem } from "../types";
 
 export const DESTINATIONS_DATA: DestinationItem[] = [
   {
