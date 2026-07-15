@@ -7,7 +7,10 @@ const nextConfig: NextConfig = {
     // smallest the browser supports.
     formats: ["image/avif", "image/webp"],
     // Allow optimizing remote placeholder images (events use Unsplash).
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "hdgxgifctnuwybqbasak.supabase.co" }
+    ],
   },
 };
 
