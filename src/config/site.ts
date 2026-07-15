@@ -6,7 +6,7 @@
 export const siteConfig = {
   name: "Praya City",
   description:
-    "A production-grade Next.js starter using Atomic Design for UI and feature-sliced modules for business logic.",
+    "Discover Central Lombok — explore cultural events, natural destinations, local culinary, and rich history from Putri Mandalika to Mandalika Circuit. Your bilingual tourism gateway.",
   url: "https://www.parayacity.id",
   nav: [
     { key: "home", href: "/" },
