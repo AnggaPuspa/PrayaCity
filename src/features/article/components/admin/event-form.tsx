@@ -5,6 +5,9 @@ import { Button, Input, Textarea } from "@/components/atoms";
 import { FormField } from "@/components/molecules";
 import type { EventFormState } from "../../types";
 
+import { useState } from "react";
+import { MediaPickerModal } from "@/components/molecules";
+
 export interface EventFormProps {
   initialData?: any;
   availableCategories: string[];
@@ -14,8 +17,11 @@ export interface EventFormProps {
 
 export function EventForm({ initialData, availableCategories, action, submitLabel = "Save Event" }: EventFormProps) {
   const [state, formAction, isPending] = useActionState(action, { status: "idle", message: "" });
+  const [isMediaPickerOpen, setIsMediaPickerOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(initialData?.image || "");
 
   return (
+    <>
     <form action={formAction} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 space-y-8">
       {state.status === "error" && (
         <div className="p-4 bg-red-50 text-red-700 rounded-lg border border-red-100">
@@ -35,7 +41,19 @@ export function EventForm({ initialData, availableCategories, action, submitLabe
         </FormField>
         
         <FormField label="Image URL" htmlFor="image" error={state.errors?.image}>
-          <Input id="image" name="image" defaultValue={initialData?.image} placeholder="/uploads/image.jpg" />
+          <div className="flex gap-2">
+            <Input 
+              id="image" 
+              name="image" 
+              value={imageUrl} 
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="/uploads/image.jpg" 
+              className="flex-1"
+            />
+            <Button type="button" variant="secondary" onClick={() => setIsMediaPickerOpen(true)}>
+              Select Media
+            </Button>
+          </div>
         </FormField>
 
         <FormField label="Title (EN)" htmlFor="titleEn" error={state.errors?.titleEn}>
@@ -118,5 +136,11 @@ export function EventForm({ initialData, availableCategories, action, submitLabe
         </Button>
       </div>
     </form>
+    <MediaPickerModal 
+      isOpen={isMediaPickerOpen} 
+      onClose={() => setIsMediaPickerOpen(false)} 
+      onSelect={(url) => setImageUrl(url)} 
+    />
+    </>
   );
 }
