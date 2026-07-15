@@ -4,9 +4,8 @@ import { cookies } from "next/headers";
 import { loginSchema } from "../schemas/auth.schema";
 import { redirect } from "next/navigation";
 import type { AuthFormState } from "../types";
-import { prisma } from "@/lib/prisma";
-import bcrypt from "bcryptjs";
-import { generateToken } from "../services/auth.service";
+import { generateToken } from "@/lib/auth/session";
+import { findAdminUserByEmail, verifyAdminUserPassword } from "../services/admin-user.service";
 
 export async function loginAction(
   _prevState: AuthFormState,
@@ -29,16 +28,14 @@ export async function loginAction(
   const { email, password } = parsed.data;
 
   // 1. Find user in the database
-  const user = await prisma.adminUser.findUnique({
-    where: { email },
-  });
+  const user = await findAdminUserByEmail(email);
 
   if (!user) {
     return { status: "error", message: "Invalid email or password" };
   }
 
   // 2. Verify password
-  const isValidPassword = await bcrypt.compare(password, user.password);
+  const isValidPassword = await verifyAdminUserPassword(password, user.password);
 
   if (!isValidPassword) {
     return { status: "error", message: "Invalid email or password" };
