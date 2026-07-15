@@ -81,13 +81,13 @@ export function EventsExploreListView({
             return (
               <div key={index} className="flex flex-col md:flex-row gap-8 lg:gap-12 group">
                 <Link href={`/events/${blog.slug}`} className="block w-full md:w-5/12 shrink-0">
-                  <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden">
+                  <div className="bg-black relative w-full aspect-[4/3] rounded-[24px] overflow-hidden">
                     <Image
                       src={blog.image}
                       alt={blog.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition duration-300 group-hover:scale-105 opacity-40 group-hover:opacity-100"
                     />
                   </div>
                 </Link>

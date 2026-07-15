@@ -22,13 +22,13 @@ export function EventsHeroFeaturedView({ events }: EventsHeroFeaturedViewProps) 
           {/* Main Featured Event */}
           <div className="lg:col-span-8 flex flex-col group">
             <Link href={`/events/${mainEvent.slug}`} className="block">
-              <div className="relative w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[24px] mb-5">
+              <div className="bg-black relative w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[24px] mb-5">
                 <Image
                   src={mainEvent.image}
                   alt={mainEvent.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 66vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition duration-300 group-hover:scale-105 opacity-40 group-hover:opacity-100"
                   priority
                 />
               </div>
@@ -46,13 +46,13 @@ export function EventsHeroFeaturedView({ events }: EventsHeroFeaturedViewProps) 
             {sideEvents.map((event, index) => (
               <div key={index} className="flex flex-col group">
                 <Link href={`/events/${event.slug}`} className="block">
-                  <div className="relative w-full aspect-[16/9] lg:aspect-[4/3] overflow-hidden rounded-[24px] mb-4">
+                  <div className="bg-black relative w-full aspect-[16/9] lg:aspect-[4/3] overflow-hidden rounded-[24px] mb-4">
                     <Image
                       src={event.image}
                       alt={event.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition duration-300 group-hover:scale-105 opacity-40 group-hover:opacity-100"
                     />
                   </div>
                   <Typography variant="muted" className="text-zinc-500 dark:text-zinc-500 text-sm mb-2">
