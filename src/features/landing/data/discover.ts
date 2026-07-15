@@ -4,8 +4,8 @@
  * `href` points to the real page when it exists, otherwise to /coming-soon.
  */
 export const DISCOVER_MEDIA = [
-  { id: "01", image: "/discoversection/histroyyfoto.webp", href: "/history" },
+  { id: "01", image: "/discoversection/category-information-1.webp", href: "/history" },
   { id: "02", image: "/discoversection/category-information-2.webp", href: "/coming-soon" },
   { id: "03", image: "/discoversection/category-information-3.webp", href: "/coming-soon" },
-  { id: "04", image: "/discoversection/category-information-3.webp", href: "/coming-soon" },
+  { id: "04", image: "/discoversection/category-information-4.webp", href: "/coming-soon" },
 ] as const;

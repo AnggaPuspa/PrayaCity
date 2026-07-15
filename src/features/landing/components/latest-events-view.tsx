@@ -27,9 +27,9 @@ export function LatestEventsView({ heading, events }: LatestEventsViewProps) {
                 alt={event.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition duration-300 group-hover:scale-105 opacity-40 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80" />
               <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
                 <Typography as="h3" variant="h3" className="text-white text-xl md:text-[22px] font-medium leading-snug mb-2 whitespace-pre-line">
                   {event.title}
