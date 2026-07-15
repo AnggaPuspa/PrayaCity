@@ -122,6 +122,26 @@ export function DestinationForm({ initialData, action, submitLabel = "Save Desti
         </FormField>
       </div>
 
+      {/* Status Label & Entrance Fee */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+        <FormField label="Status Label (EN)" htmlFor="statusLabelEn" error={state.errors?.statusLabelEn}>
+          <Input id="statusLabelEn" name="statusLabelEn" defaultValue={initialData?.statusLabelEn} placeholder="e.g. Open Daily" />
+        </FormField>
+
+        <FormField label="Status Label (ID)" htmlFor="statusLabelId" error={state.errors?.statusLabelId}>
+          <Input id="statusLabelId" name="statusLabelId" defaultValue={initialData?.statusLabelId} placeholder="e.g. Buka Setiap Hari" />
+        </FormField>
+
+        <FormField label="Entrance Fee (EN)" htmlFor="entranceFeeEn" error={state.errors?.entranceFeeEn}>
+          <Input id="entranceFeeEn" name="entranceFeeEn" defaultValue={initialData?.entranceFeeEn} placeholder="e.g. Free (Parking: Rp 5.000 – Rp 10.000)" />
+        </FormField>
+
+        <FormField label="Entrance Fee (ID)" htmlFor="entranceFeeId" error={state.errors?.entranceFeeId}>
+          <Input id="entranceFeeId" name="entranceFeeId" defaultValue={initialData?.entranceFeeId} placeholder="e.g. Gratis (Parkir: Rp 5.000 – Rp 10.000)" />
+        </FormField>
+      </div>
+
+      {/* Metadata */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
         <FormField label="Status" htmlFor="status" error={state.errors?.status}>
           <select 
