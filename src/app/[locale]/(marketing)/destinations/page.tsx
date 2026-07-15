@@ -34,7 +34,7 @@ export default async function DestinationsPage({
       }}
     >
       <HeroSection />
-      <GridSection />
+      <GridSection locale={locale} />
       <HistoryGallery />
       <CtaSection />
     </div>

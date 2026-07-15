@@ -52,3 +52,9 @@ export interface LocalizedEvent {
   excerpt: LocalizedText;
   body: { en: string[]; id: string[] };
 }
+
+export type EventFormState = {
+  status: "idle" | "success" | "error";
+  message: string;
+  errors?: Record<string, string>;
+};

@@ -10,7 +10,7 @@ Next.js (App Router). The core rule: **routing, UI, and logic are separated.**
 
 ## Folder map
 
-```
+```Shell
 src/
 ├── app/                      # ROUTING ONLY — pages, layouts, route handlers
 │   ├── (marketing)/          # route group (no URL segment)
@@ -51,14 +51,14 @@ src/
 
 Within a feature, each responsibility lives in its own layer:
 
-| Layer         | Responsibility                                  | Runtime |
-| ------------- | ----------------------------------------------- | ------- |
-| `schemas/`    | Input validation (zod). Reused everywhere.      | shared  |
-| `services/`   | Talk to DB / APIs / providers. `server-only`.   | server  |
-| `actions/`    | Orchestrate: validate → call service → return.  | server  |
-| `controllers/`| State + handlers (hooks). The UI's only logic.  | client  |
-| `components/` | Presentational. Receive props, render. No logic.| either  |
-| `types/`      | Feature-local domain types.                     | shared  |
+| Layer            | Responsibility                                   | Runtime |
+| ---------------- | ------------------------------------------------ | ------- |
+| `schemas/`     | Input validation (zod). Reused everywhere.       | shared  |
+| `services/`    | Talk to DB / APIs / providers.`server-only`.   | server  |
+| `actions/`     | Orchestrate: validate → call service → return. | server  |
+| `controllers/` | State + handlers (hooks). The UI's only logic.   | client  |
+| `components/`  | Presentational. Receive props, render. No logic. | either  |
+| `types/`       | Feature-local domain types.                      | shared  |
 
 A presentational component should never call a service, run validation, or hold
 fetching logic — it receives everything via props from a controller.
