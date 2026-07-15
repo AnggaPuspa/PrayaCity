@@ -1,4 +1,4 @@
-import { LoginView } from "@/features/auth/components/login-view";
+import { LoginView } from "@/features/auth";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 

@@ -1,5 +1,4 @@
-import { EventEditView } from "@/features/article/components/admin/event-edit-view";
-import { getCategories, getAdminEventById } from "@/features/article/services/events.service";
+import { EventEditView, getCategories, getAdminEventById } from "@/features/article";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 

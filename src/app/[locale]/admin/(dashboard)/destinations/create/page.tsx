@@ -1,4 +1,4 @@
-import { DestinationCreateView } from "@/features/destinations/components/admin/destination-create-view";
+import { DestinationCreateView } from "@/features/destinations";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function AdminDestinationCreatePage({

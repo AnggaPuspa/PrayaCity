@@ -1,5 +1,4 @@
-import { DestinationEditView } from "@/features/destinations/components/admin/destination-edit-view";
-import { getAdminDestinationById } from "@/features/destinations/services/destinations.service";
+import { DestinationEditView, getAdminDestinationById } from "@/features/destinations";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 

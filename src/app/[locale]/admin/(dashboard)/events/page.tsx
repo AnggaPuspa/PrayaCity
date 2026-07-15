@@ -1,5 +1,4 @@
-import { EventListView } from "@/features/article/components/admin/event-list-view";
-import { getAdminEvents } from "@/features/article/services/events.service";
+import { EventListView, getAdminEvents } from "@/features/article";
 
 export default async function AdminEventsPage() {
   const events = await getAdminEvents();

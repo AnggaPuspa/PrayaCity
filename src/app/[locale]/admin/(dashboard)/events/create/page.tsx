@@ -1,5 +1,4 @@
-import { EventCreateView } from "@/features/article/components/admin/event-create-view";
-import { getCategories } from "@/features/article/services/events.service";
+import { EventCreateView, getCategories } from "@/features/article";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function AdminEventCreatePage({

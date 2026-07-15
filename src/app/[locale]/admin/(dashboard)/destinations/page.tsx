@@ -1,5 +1,4 @@
-import { DestinationListView } from "@/features/destinations/components/admin/destination-list-view";
-import { getAdminDestinations } from "@/features/destinations/services/destinations.service";
+import { DestinationListView, getAdminDestinations } from "@/features/destinations";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function AdminDestinationsPage({

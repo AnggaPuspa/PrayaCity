@@ -1,5 +1,4 @@
-import { DashboardView } from "@/features/dashboard/components/dashboard-view";
-import { getDashboardStats } from "@/features/dashboard/services/dashboard.service";
+import { DashboardView, getDashboardStats } from "@/features/dashboard";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function AdminDashboardPage({
