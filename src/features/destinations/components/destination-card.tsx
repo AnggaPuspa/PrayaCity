@@ -22,7 +22,7 @@ export function DestinationCard({ item, title, description }: DestinationCardPro
       </div>
       <div className="flex flex-wrap gap-2 mb-4">
         {item.tags.map((tag, idx) => (
-          <span 
+          <span
             key={idx}
             className="px-4 py-1.5 rounded-full border border-white/20 text-white/70 text-[13px] font-medium"
           >

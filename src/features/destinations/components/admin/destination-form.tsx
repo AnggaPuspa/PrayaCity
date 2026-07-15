@@ -5,6 +5,9 @@ import { Button, Input, Textarea } from "@/components/atoms";
 import { FormField } from "@/components/molecules";
 import type { DestinationFormState } from "../../types";
 
+import { useState } from "react";
+import { MediaPickerModal } from "@/components/molecules";
+
 export interface DestinationFormProps {
   initialData?: any;
   action: (state: DestinationFormState, formData: FormData) => Promise<DestinationFormState>;
@@ -15,8 +18,25 @@ const AVAILABLE_TAGS = ["Nature", "Beach", "Hills", "Heritage"];
 
 export function DestinationForm({ initialData, action, submitLabel = "Save Destination" }: DestinationFormProps) {
   const [state, formAction, isPending] = useActionState(action, { status: "idle", message: "" });
+  
+  const [isMediaPickerOpen, setIsMediaPickerOpen] = useState(false);
+  const [activeMediaTarget, setActiveMediaTarget] = useState<"imageSrc" | "detailImageSrc" | null>(null);
+  
+  const [imageSrc, setImageSrc] = useState(initialData?.imageSrc || "");
+  const [detailImageSrc, setDetailImageSrc] = useState(initialData?.detailImageSrc || "");
+
+  const handleOpenMediaPicker = (target: "imageSrc" | "detailImageSrc") => {
+    setActiveMediaTarget(target);
+    setIsMediaPickerOpen(true);
+  };
+
+  const handleMediaSelect = (url: string) => {
+    if (activeMediaTarget === "imageSrc") setImageSrc(url);
+    if (activeMediaTarget === "detailImageSrc") setDetailImageSrc(url);
+  };
 
   return (
+    <>
     <form action={formAction} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 space-y-8">
       {state.status === "error" && (
         <div className="p-4 bg-red-50 text-red-700 rounded-lg border border-red-100">
@@ -35,8 +55,36 @@ export function DestinationForm({ initialData, action, submitLabel = "Save Desti
           <Input id="slug" name="slug" defaultValue={initialData?.slug} placeholder="my-destination-slug" />
         </FormField>
         
-        <FormField label="Image URL" htmlFor="imageSrc" error={state.errors?.imageSrc}>
-          <Input id="imageSrc" name="imageSrc" defaultValue={initialData?.imageSrc} placeholder="/uploads/image.jpg" />
+        <FormField label="Primary Image URL" htmlFor="imageSrc" error={state.errors?.imageSrc}>
+          <div className="flex gap-2">
+            <Input 
+              id="imageSrc" 
+              name="imageSrc" 
+              value={imageSrc} 
+              onChange={(e) => setImageSrc(e.target.value)}
+              placeholder="/uploads/image.jpg" 
+              className="flex-1"
+            />
+            <Button type="button" variant="secondary" onClick={() => handleOpenMediaPicker("imageSrc")}>
+              Select Media
+            </Button>
+          </div>
+        </FormField>
+        
+        <FormField label="Detail Image URL (Optional)" htmlFor="detailImageSrc" error={state.errors?.detailImageSrc}>
+          <div className="flex gap-2">
+            <Input 
+              id="detailImageSrc" 
+              name="detailImageSrc" 
+              value={detailImageSrc} 
+              onChange={(e) => setDetailImageSrc(e.target.value)}
+              placeholder="/uploads/detail.jpg" 
+              className="flex-1"
+            />
+            <Button type="button" variant="secondary" onClick={() => handleOpenMediaPicker("detailImageSrc")}>
+              Select Media
+            </Button>
+          </div>
         </FormField>
 
         <FormField label="Title (EN)" htmlFor="titleEn" error={state.errors?.titleEn}>
@@ -119,5 +167,11 @@ export function DestinationForm({ initialData, action, submitLabel = "Save Desti
         </Button>
       </div>
     </form>
+    <MediaPickerModal 
+      isOpen={isMediaPickerOpen} 
+      onClose={() => setIsMediaPickerOpen(false)} 
+      onSelect={handleMediaSelect} 
+    />
+    </>
   );
 }

@@ -71,11 +71,11 @@ export async function createDestination(data: DestinationInput) {
 
 export async function updateDestination(id: string, data: Partial<DestinationInput>) {
   return await prisma.destination.update({
-    where: { slug: id }, // We are using slug as the primary ID currently (as per seed)
+    where: { id },
     data,
   });
 }
 
 export async function deleteDestination(id: string) {
-  return await prisma.destination.delete({ where: { slug: id } });
+  return await prisma.destination.delete({ where: { id } });
 }
