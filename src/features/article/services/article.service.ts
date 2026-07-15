@@ -1,48 +1,57 @@
 import "server-only";
 
-import { EVENTS } from "../data/events.data";
+import { prisma } from "@/lib/prisma";
 import type { Article, RelatedArticle } from "../types";
 
 type Lang = "en" | "id";
 const lang = (locale: string): Lang => (locale === "id" ? "id" : "en");
 
-/**
- * Data-access layer for article detail. Resolves bilingual content from the
- * `EVENTS` source by slug + locale. Falls back to the first event for unknown
- * slugs (mock behaviour).
- */
 export async function getArticleBySlug(
   slug: string,
   locale: string,
 ): Promise<Article> {
   const l = lang(locale);
-  const event = EVENTS.find((e) => e.slug === slug) ?? EVENTS[0];
+  const event = await prisma.event.findUnique({
+    where: { slug },
+    include: { categories: { include: { category: true } } },
+  });
+
+  if (!event) {
+    throw new Error(`Article not found: ${slug}`);
+  }
 
   return {
     id: event.slug,
     slug: event.slug,
-    category: event.categories.join(" | "),
-    title: event.title[l],
-    publishedAt: event.date[l],
+    category: event.categories.map(c => c.category.name).join(" | "),
+    title: l === "id" ? event.titleId : event.titleEn,
+    publishedAt: l === "id" ? event.dateId : event.dateEn,
     heroImage: event.image,
-    paragraphs: event.body[l],
+    paragraphs: l === "id" ? event.bodyId : event.bodyEn,
   };
 }
 
-/** Up to 3 other articles, excluding the current one, localized. */
 export async function getRelatedArticles(
   locale: string,
   excludeSlug?: string,
 ): Promise<RelatedArticle[]> {
   const l = lang(locale);
 
-  return EVENTS.filter((e) => e.slug !== excludeSlug)
-    .slice(0, 3)
-    .map((e) => ({
-      slug: e.slug,
-      category: e.categories[0] ?? "",
-      title: e.title[l],
-      publishedAt: e.date[l],
-      image: e.image,
-    }));
+  const events = await prisma.event.findMany({
+    where: {
+      status: "PUBLISHED",
+      ...(excludeSlug ? { slug: { not: excludeSlug } } : {}),
+    },
+    orderBy: { createdAt: "desc" },
+    take: 3,
+    include: { categories: { include: { category: true } } },
+  });
+
+  return events.map((e) => ({
+    slug: e.slug,
+    category: e.categories[0]?.category.name ?? "",
+    title: l === "id" ? e.titleId : e.titleEn,
+    publishedAt: l === "id" ? e.dateId : e.dateEn,
+    image: e.image,
+  }));
 }

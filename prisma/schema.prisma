@@ -1,0 +1,157 @@
+// prisma/schema.prisma
+
+generator client {
+  provider   = "prisma-client-js"
+  output     = "../src/generated/prisma"
+  engineType = "library"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+// ──────────────────────────────────────────
+// AUTH & ADMIN
+// ──────────────────────────────────────────
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  password     String   // Hashed password
+  fullName     String
+  role         AdminRole @default(EDITOR)
+  avatarUrl    String?
+  lastLoginAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  auditLogs    AuditLog[]
+
+  @@map("admin_users")
+}
+
+enum AdminRole {
+  SUPER_ADMIN   // full access, can manage other admins
+  ADMIN         // full CRUD, can publish
+  EDITOR        // can create/edit, cannot delete or publish
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  userId       String
+  user         AdminUser @relation(fields: [userId], references: [id])
+  action       String   // "create" | "update" | "delete" | "publish" | "login"
+  entityType   String   // "event" | "destination" | "category" | "admin_user"
+  entityId     String?
+  metadata     Json?    // { field: "titleEn", old: "X", new: "Y" }
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+  @@index([entityType])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// ──────────────────────────────────────────
+// EVENTS
+// ──────────────────────────────────────────
+
+model Event {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  image       String   // URL from Supabase Storage or external
+
+  // Bilingual content
+  titleEn     String
+  titleId     String
+  excerptEn   String   @db.Text
+  excerptId   String   @db.Text
+  bodyEn      String[] // array of paragraphs
+  bodyId      String[] // array of paragraphs
+  dateEn      String   // "February 2025"
+  dateId      String   // "Februari 2025"
+
+  // Metadata
+  isFeatured  Boolean  @default(false)
+  status      Status   @default(DRAFT)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  categories  EventCategory[]
+
+  @@index([status])
+  @@index([isFeatured])
+  @@index([status, isFeatured])
+  @@map("events")
+}
+
+model Category {
+  id     String          @id @default(cuid())
+  name   String          @unique
+  events EventCategory[]
+
+  @@map("categories")
+}
+
+model EventCategory {
+  eventId    String
+  categoryId String
+  event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([eventId, categoryId])
+  @@map("event_categories")
+}
+
+// ──────────────────────────────────────────
+// DESTINATIONS
+// ──────────────────────────────────────────
+
+model Destination {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  imageSrc         String
+  detailImageSrc   String?
+
+  // Bilingual content
+  titleEn          String
+  titleId          String
+  descriptionEn    String   @db.Text
+  descriptionId    String   @db.Text
+  longDescriptionEn String?  @db.Text
+  longDescriptionId String?  @db.Text
+  locationEn       String?
+  locationId       String?
+  statusLabelEn    String?
+  statusLabelId    String?
+  entranceFeeEn    String?
+  entranceFeeId    String?
+
+  // Metadata
+  tags             String[]
+  isFeatured       Boolean  @default(false)
+  status           Status   @default(DRAFT)
+  sortOrder        Int      @default(0)
+  latitude         Float?
+  longitude        Float?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([status])
+  @@index([isFeatured])
+  @@map("destinations")
+}
+
+// ──────────────────────────────────────────
+// SHARED
+// ──────────────────────────────────────────
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}

@@ -26,3 +26,9 @@ export interface DestinationDetailContent extends DestinationItem {
   entranceFee: string;
   translatedTags: string[];
 }
+
+export type DestinationFormState = {
+  status: "idle" | "success" | "error";
+  message: string;
+  errors?: Record<string, string>;
+};

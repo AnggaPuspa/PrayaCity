@@ -1,4 +1,4 @@
-import type { LocalizedEvent } from "../types";
+import type { LocalizedEvent } from "../../../src/features/article/types";
 
 /**
  * Single bilingual source of truth for Central Lombok events/articles.

@@ -9,7 +9,7 @@ interface EventsHeroFeaturedViewProps {
 
 /** Presentational: featured events hero (1 main + 2 stacked) from props only. */
 export function EventsHeroFeaturedView({ events }: EventsHeroFeaturedViewProps) {
-  if (!events || events.length < 3) return null;
+  if (!events || events.length === 0) return null;
 
   const mainEvent = events[0];
   const sideEvents = events.slice(1, 3);

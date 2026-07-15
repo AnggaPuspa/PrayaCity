@@ -1,5 +1,5 @@
-import { DestinationDetail } from "@/features/destinations";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { DestinationDetail, getDestinationBySlug } from "@/features/destinations";
+import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 
 type Props = {
@@ -8,20 +8,22 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, id } = await params;
-  const t = await getTranslations({ locale, namespace: "DestinationsPage.items" });
-
+  
   try {
-    const title = t(`${id}.title`);
-    const description = t(`${id}.description`);
-    return {
-      title: `${title} | Praya City`,
-      description,
-    };
+    const destination = await getDestinationBySlug(id, locale);
+    if (destination) {
+      return {
+        title: `${destination.title} | Praya City`,
+        description: destination.longDescription.substring(0, 160),
+      };
+    }
   } catch (error) {
-    return {
-      title: "Destination | Praya City",
-    };
+    // ignore
   }
+
+  return {
+    title: "Destination | Praya City",
+  };
 }
 
 export default async function DestinationDetailPage({ params }: Props) {
@@ -30,7 +32,7 @@ export default async function DestinationDetailPage({ params }: Props) {
 
   return (
     <main className="flex-1 bg-white">
-      <DestinationDetail id={id} />
+      <DestinationDetail id={id} locale={locale} />
     </main>
   );
 }

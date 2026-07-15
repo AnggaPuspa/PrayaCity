@@ -1,4 +1,4 @@
-import type { DestinationItem } from "../types";
+import type { DestinationItem } from "../../../src/features/destinations/types";
 
 export const DESTINATIONS_DATA: DestinationItem[] = [
   {

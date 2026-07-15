@@ -1,13 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { DESTINATIONS_DATA } from "../data/destinations";
+import { getDestinationBySlug } from "../services/destinations.service";
 import { DestinationDetailView } from "./destination-detail-view";
 import type { DestinationDetailContent } from "../types";
 
-export async function DestinationDetail({ id }: { id: string }) {
+export async function DestinationDetail({ id, locale }: { id: string, locale: string }) {
   const t = await getTranslations("DestinationsPage");
   
-  const item = DESTINATIONS_DATA.find((d) => d.id === id);
+  const item = await getDestinationBySlug(id, locale);
   
   if (!item) {
     notFound();
@@ -15,11 +15,6 @@ export async function DestinationDetail({ id }: { id: string }) {
 
   const content: DestinationDetailContent = {
     ...item,
-    title: t(`items.${id}.title`),
-    longDescription: t(`items.${id}.longDescription`),
-    location: t(`items.${id}.location`),
-    status: t(`items.${id}.status`),
-    entranceFee: t(`items.${id}.entranceFee`),
     translatedTags: item.tags.map((tag) => t(`categories.${tag.toLowerCase()}`)),
   };
 
