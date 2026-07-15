@@ -1,2 +1,3 @@
 // Public API for the `audit` feature.
-// No client-safe exports needed yet.
+export { AuditLogTable } from "./components/audit-log-table";
+export { getAuditLogs } from "./services/audit.service";

@@ -1,25 +1,21 @@
 import "server-only";
 import { prisma } from "@/lib/prisma";
-import { headers } from "next/headers";
 
-export async function writeAuditLog(params: {
-  userId: string;
-  action: string;
-  entityType: string;
-  entityId?: string;
-  metadata?: any;
-}) {
-  const h = await headers();
+// Re-export cross-cutting audit logger from its canonical location.
+export { writeAuditLog } from "@/lib/audit/write-audit-log";
 
-  prisma.auditLog.create({
-    data: {
-      userId: params.userId,
-      action: params.action,
-      entityType: params.entityType,
-      entityId: params.entityId,
-      metadata: params.metadata ?? undefined,
-      ipAddress: h.get("x-forwarded-for") ?? h.get("x-real-ip"),
-      userAgent: h.get("user-agent"),
+export async function getAuditLogs(limit: number = 50) {
+  return await prisma.auditLog.findMany({
+    take: limit,
+    orderBy: { createdAt: "desc" },
+    include: {
+      user: {
+        select: {
+          fullName: true,
+          email: true,
+          role: true,
+        },
+      },
     },
-  }).catch(console.error);
+  });
 }
