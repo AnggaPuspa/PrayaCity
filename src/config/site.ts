@@ -13,7 +13,7 @@ export const siteConfig = {
     { key: "history", href: "/history" },
     { key: "culture", href: "/culture" },
     { key: "destinations", href: "/destinations" },
-    { key: "programs", href: "/coming-soon" },
+    { key: "programs", href: "/programs" },
     { key: "events", href: "/events" },
   ],
 } as const;

@@ -277,5 +277,80 @@
         "entranceFee": "Free (Parking: Rp 5.000 - Rp 10.000)"
       }
     }
+  },
+  "ProgramsPage": {
+    "heroEyebrow": "Sustainability program -",
+    "heroTitle": "Powering Praya's Next Chapter",
+    "Tabs": {
+      "infrastructure": "Infrastructure",
+      "digitalEconomy": "Digital Economy",
+      "cultureHeritage": "Culture & Heritage",
+      "agriculture": "Agriculture & Food Security"
+    },
+    "Infrastructure": {
+      "title": "Program for Infrastructure",
+      "description": "Praya's infrastructure is expanding to carry the weight of a global stage, from a world-class racing circuit to a growing special economic zone. New roads, coastal access, and connectivity projects are linking every corner of Lombok Tengah to the destinations putting it on the map.",
+      "stats": {
+        "stat1Value": "Rp 40T",
+        "stat1Label": "Projected KEK Mandalika investment",
+        "stat2Value": "58,7K",
+        "stat2Label": "Jobs projected within the zone",
+        "stat3Value": "20K ha",
+        "stat3Label": "Special economic zone area",
+        "stat4Value": "1",
+        "stat4Label": "World-class international circuit"
+      }
+    },
+    "DigitalEconomy": {
+      "title": "Program for Digital Economy",
+      "description": "Empowering local businesses and youth with digital skills and infrastructure. From smart city initiatives in Praya to e-commerce enablement for traditional weavers in Sade.",
+      "stats": {
+        "stat1Value": "100+",
+        "stat1Label": "Startups incubated locally",
+        "stat2Value": "95%",
+        "stat2Label": "Internet coverage across villages",
+        "stat3Value": "50K",
+        "stat3Label": "SMEs digitized",
+        "stat4Value": "10",
+        "stat4Label": "Tech hubs established"
+      }
+    },
+    "CultureHeritage": {
+      "title": "Program for Culture & Heritage",
+      "description": "Preserving the soul of Sasak culture while sharing it with the world. Investment in cultural centers, traditional arts funding, and heritage site restoration across the region.",
+      "stats": {
+        "stat1Value": "50+",
+        "stat1Label": "Cultural sites preserved",
+        "stat2Value": "Rp 15B",
+        "stat2Label": "Annual arts funding",
+        "stat3Value": "12",
+        "stat3Label": "Annual cultural festivals",
+        "stat4Value": "200+",
+        "stat4Label": "Artisan communities supported"
+      }
+    },
+    "Agriculture": {
+      "title": "Agriculture & Food Security",
+      "description": "Modernizing farming techniques while maintaining sustainable practices. Supporting local farmers with modern irrigation, better seeds, and direct market access.",
+      "stats": {
+        "stat1Value": "15K",
+        "stat1Label": "Farmers supported",
+        "stat2Value": "30%",
+        "stat2Label": "Increase in crop yield",
+        "stat3Value": "5",
+        "stat3Label": "New modern irrigation dams",
+        "stat4Value": "100%",
+        "stat4Label": "Food security index growth"
+      }
+    },
+    "Contact": {
+      "title": "Help Shape What's Next",
+      "description": "These programs are still growing, and the people living them know best. Share your thoughts, questions, or ideas to help guide the next chapter of Praya's development.",
+      "namePlaceholder": "input your name",
+      "emailPlaceholder": "input your email",
+      "messagePlaceholder": "input message here",
+      "submitButton": "Submit Message",
+      "sending": "Sending..."
+    }
   }
 }

@@ -277,5 +277,80 @@
         "entranceFee": "Gratis (Parkir: Rp 5.000 - Rp 10.000)"
       }
     }
+  },
+  "ProgramsPage": {
+    "heroEyebrow": "Program Keberlanjutan -",
+    "heroTitle": "Mendukung Babak Baru Praya",
+    "Tabs": {
+      "infrastructure": "Infrastruktur",
+      "digitalEconomy": "Ekonomi Digital",
+      "cultureHeritage": "Budaya & Warisan",
+      "agriculture": "Pertanian & Ketahanan Pangan"
+    },
+    "Infrastructure": {
+      "title": "Program untuk Infrastruktur",
+      "description": "Infrastruktur Praya terus berkembang untuk menopang panggung global, mulai dari sirkuit balap kelas dunia hingga kawasan ekonomi khusus yang berkembang pesat. Jalan baru, akses pesisir, dan proyek konektivitas menghubungkan setiap sudut Lombok Tengah ke destinasi yang menjadikannya terkenal.",
+      "stats": {
+        "stat1Value": "Rp 40T",
+        "stat1Label": "Proyeksi investasi KEK Mandalika",
+        "stat2Value": "58,7K",
+        "stat2Label": "Proyeksi lapangan kerja di kawasan",
+        "stat3Value": "20K ha",
+        "stat3Label": "Luas kawasan ekonomi khusus",
+        "stat4Value": "1",
+        "stat4Label": "Sirkuit internasional kelas dunia"
+      }
+    },
+    "DigitalEconomy": {
+      "title": "Program untuk Ekonomi Digital",
+      "description": "Memberdayakan bisnis lokal dan pemuda dengan keterampilan dan infrastruktur digital. Mulai dari inisiatif kota pintar di Praya hingga pemberdayaan e-commerce untuk penenun tradisional di Sade.",
+      "stats": {
+        "stat1Value": "100+",
+        "stat1Label": "Startup diinkubasi secara lokal",
+        "stat2Value": "95%",
+        "stat2Label": "Cakupan internet di seluruh desa",
+        "stat3Value": "50K",
+        "stat3Label": "UKM didigitalkan",
+        "stat4Value": "10",
+        "stat4Label": "Pusat teknologi didirikan"
+      }
+    },
+    "CultureHeritage": {
+      "title": "Program untuk Budaya & Warisan",
+      "description": "Melestarikan jiwa budaya Sasak sembari membagikannya kepada dunia. Investasi di pusat kebudayaan, pendanaan seni tradisional, dan restorasi situs warisan di seluruh wilayah.",
+      "stats": {
+        "stat1Value": "50+",
+        "stat1Label": "Situs budaya dilestarikan",
+        "stat2Value": "Rp 15M",
+        "stat2Label": "Pendanaan seni tahunan",
+        "stat3Value": "12",
+        "stat3Label": "Festival budaya tahunan",
+        "stat4Value": "200+",
+        "stat4Label": "Komunitas pengrajin didukung"
+      }
+    },
+    "Agriculture": {
+      "title": "Pertanian & Ketahanan Pangan",
+      "description": "Memodernisasi teknik bertani sembari mempertahankan praktik berkelanjutan. Mendukung petani lokal dengan irigasi modern, bibit unggul, dan akses pasar langsung.",
+      "stats": {
+        "stat1Value": "15K",
+        "stat1Label": "Petani didukung",
+        "stat2Value": "30%",
+        "stat2Label": "Peningkatan hasil panen",
+        "stat3Value": "5",
+        "stat3Label": "Bendungan irigasi modern baru",
+        "stat4Value": "100%",
+        "stat4Label": "Pertumbuhan indeks ketahanan pangan"
+      }
+    },
+    "Contact": {
+      "title": "Bantu Bentuk Masa Depan",
+      "description": "Program-program ini masih terus berkembang, dan orang-orang yang menjalaninya paling tahu. Bagikan pemikiran, pertanyaan, atau ide Anda untuk membantu memandu babak selanjutnya dari pengembangan Praya.",
+      "namePlaceholder": "masukkan nama anda",
+      "emailPlaceholder": "masukkan email anda",
+      "messagePlaceholder": "masukkan pesan disini",
+      "submitButton": "Kirim Pesan",
+      "sending": "Mengirim..."
+    }
   }
 }
