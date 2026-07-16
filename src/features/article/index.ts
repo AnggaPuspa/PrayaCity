@@ -4,7 +4,14 @@ export { RelatedArticles } from "./components/related-articles";
 export { EventsFeatured } from "./components/events-featured";
 export { EventsExplore } from "./components/events-explore";
 export { getArticleBySlug } from "./services/article.service";
-export type { Article, RelatedArticle, FeaturedEvent, BlogEvent } from "./types";
+export { getLatestEvents } from "./services/events.service";
+export type {
+  Article,
+  RelatedArticle,
+  FeaturedEvent,
+  BlogEvent,
+  LatestEvent,
+} from "./types";
 
 // Admin components
 export { EventListView } from "./components/admin/event-list-view";

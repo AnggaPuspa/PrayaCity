@@ -39,34 +39,7 @@
     "description": "Curated travel information — from cultural events, natural destinations, local cuisine, all updated in real-time."
   },
   "LatestEvents": {
-    "heading": "Latest from Praya",
-    "items": [
-      {
-        "title": "Festival PesonaBau Nyale\n2025",
-        "date": "February 2025",
-        "location": "Seger Beach, Kuta Mandalika"
-      },
-      {
-        "title": "MotoGP Pertamina\nGrand Prix of Indonesia",
-        "date": "October 2025",
-        "location": "Pertamina Mandalika\nInternational Circuit"
-      },
-      {
-        "title": "Presean Cultural\nChampionship",
-        "date": "August 2025",
-        "location": "Sade Traditional Village, Pujut"
-      },
-      {
-        "title": "Lombok Tengah Weaving\nFestival",
-        "date": "September 2025",
-        "location": "Sukarara Village"
-      },
-      {
-        "title": "Mandalika Korpri Fun\nNight Run",
-        "date": "December 2025",
-        "location": "Kuta Mandalika Beach Park"
-      }
-    ]
+    "heading": "Latest from Praya"
   },
   "About": {
     "eyebrow": "The Story -",

@@ -1,9 +1,10 @@
 // Domain types for the landing page content.
 
 export interface EventItem {
+  slug: string;
   title: string;
   date: string;
-  location: string;
+  category: string;
   image: string;
   /** Grid placement classes for the masonry layout. */
   className: string;

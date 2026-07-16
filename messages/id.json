@@ -39,34 +39,7 @@
     "description": "Informasi wisata terkurasi — mulai dari acara budaya, destinasi alam, hingga kuliner lokal, semua diperbarui secara real-time."
   },
   "LatestEvents": {
-    "heading": "Terbaru dari Praya",
-    "items": [
-      {
-        "title": "Festival Pesona Bau Nyale\n2025",
-        "date": "Februari 2025",
-        "location": "Pantai Seger, Kuta Mandalika"
-      },
-      {
-        "title": "MotoGP Pertamina\nGrand Prix of Indonesia",
-        "date": "Oktober 2025",
-        "location": "Sirkuit Internasional\nPertamina Mandalika"
-      },
-      {
-        "title": "Kejuaraan Budaya\nPresean",
-        "date": "Agustus 2025",
-        "location": "Desa Adat Sade, Pujut"
-      },
-      {
-        "title": "Festival Tenun\nLombok Tengah",
-        "date": "September 2025",
-        "location": "Desa Sukarara"
-      },
-      {
-        "title": "Mandalika Korpri Fun\nNight Run",
-        "date": "Desember 2025",
-        "location": "Taman Pantai Kuta Mandalika"
-      }
-    ]
+    "heading": "Terbaru dari Praya"
   },
   "About": {
     "eyebrow": "Kisahnya -",

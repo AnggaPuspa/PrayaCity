@@ -1,10 +1,37 @@
 import "server-only";
 
 import { prisma } from "@/lib/prisma";
-import type { BlogEvent, FeaturedEvent } from "../types";
+import type { BlogEvent, FeaturedEvent, LatestEvent } from "../types";
 
 type Lang = "en" | "id";
 const lang = (locale: string): Lang => (locale === "id" ? "id" : "en");
+
+/**
+ * Latest published events for the home page's "Latest from Praya" section.
+ * Real data straight from the same `Event` table that backs the Events page —
+ * never static/translation-only content.
+ */
+export async function getLatestEvents(
+  locale: string,
+  limit = 5,
+): Promise<LatestEvent[]> {
+  const l = lang(locale);
+
+  const events = await prisma.event.findMany({
+    where: { status: "PUBLISHED" },
+    orderBy: { createdAt: "desc" },
+    take: limit,
+    include: { categories: { include: { category: true } } },
+  });
+
+  return events.map((e) => ({
+    slug: e.slug,
+    image: e.image,
+    title: l === "id" ? e.titleId : e.titleEn,
+    date: l === "id" ? e.dateId : e.dateEn,
+    category: e.categories[0]?.category.name ?? "",
+  }));
+}
 
 export async function getFeaturedEvents(
   locale: string,
@@ -109,8 +136,10 @@ export async function createEvent(data: EventInput) {
 export async function updateEvent(id: string, data: Partial<EventInput>) {
   return await prisma.$transaction(async (tx) => {
     const updateData: any = { ...data };
-    if (data.bodyEn) updateData.bodyEn = data.bodyEn.split("\n\n").filter(Boolean);
-    if (data.bodyId) updateData.bodyId = data.bodyId.split("\n\n").filter(Boolean);
+    if (data.bodyEn)
+      updateData.bodyEn = data.bodyEn.split("\n\n").filter(Boolean);
+    if (data.bodyId)
+      updateData.bodyId = data.bodyId.split("\n\n").filter(Boolean);
     delete updateData.categories;
 
     const event = await tx.event.update({
@@ -121,7 +150,9 @@ export async function updateEvent(id: string, data: Partial<EventInput>) {
     if (data.categories) {
       await tx.eventCategory.deleteMany({ where: { eventId: id } });
       for (const catName of data.categories) {
-        const dbCat = await tx.category.findUnique({ where: { name: catName } });
+        const dbCat = await tx.category.findUnique({
+          where: { name: catName },
+        });
         if (dbCat) {
           await tx.eventCategory.create({
             data: { eventId: id, categoryId: dbCat.id },

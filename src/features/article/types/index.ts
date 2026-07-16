@@ -23,6 +23,15 @@ export interface FeaturedEvent {
   image: string;
 }
 
+/** One item in the home page's "Latest from Praya" section. Real DB data. */
+export interface LatestEvent {
+  slug: string;
+  image: string;
+  title: string;
+  date: string;
+  category: string;
+}
+
 export interface BlogEvent {
   title: string;
   publishedAt: string;

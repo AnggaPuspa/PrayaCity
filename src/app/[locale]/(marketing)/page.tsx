@@ -48,7 +48,7 @@ export default async function HomePage({
   return (
     <>
       <HeroSection />
-      <LatestEvents />
+      <LatestEvents locale={locale} />
       <AboutSection />
       <DiscoverSection />
       <MustVisitSection />
