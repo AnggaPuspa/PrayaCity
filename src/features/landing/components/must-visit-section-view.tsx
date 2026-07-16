@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { RefObject } from "react";
 import type { Destination } from "../types";
@@ -68,7 +68,7 @@ export function MustVisitSectionView({
             {destinations.map((item, index) => (
               <Link
                 key={index}
-                href="/coming-soon"
+                href={item.href}
                 className="flex flex-col group cursor-pointer shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] snap-start"
               >
                 {/* Image */}
@@ -107,7 +107,7 @@ export function MustVisitSectionView({
 
         {/* Footer Button */}
         <div className="flex justify-center mt-12">
-          <Link href="/coming-soon" className="px-7 py-3 border border-[#D1D5DB] rounded-full text-[#1A1A1A] text-[15px] font-medium hover:bg-gray-50 transition-colors inline-block">
+          <Link href="/destinations" className="px-7 py-3 border border-[#D1D5DB] rounded-full text-[#1A1A1A] text-[15px] font-medium hover:bg-gray-50 transition-colors inline-block">
             {seeMore}
           </Link>
         </div>

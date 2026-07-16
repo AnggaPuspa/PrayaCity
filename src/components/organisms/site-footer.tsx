@@ -1,5 +1,13 @@
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+﻿import { useTranslations } from "next-intl";
+import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
+
+const POPULAR_DESTINATIONS = [
+  { label: "Bukit Merese", href: "/destinations/bukitMerese" },
+  { label: "Gerupuk Beach", href: "/destinations" },
+  { label: "Sade Traditional Village", href: "/destinations" },
+  { label: "Kuta Mandalika Beach", href: "/destinations/kutaMandalika" },
+] as const;
 
 export function SiteFooter() {
   const t = useTranslations("Footer");
@@ -22,23 +30,27 @@ export function SiteFooter() {
           <div className="flex flex-col gap-6">
             <h3 className="font-semibold text-white text-[16px]">{t("link")}</h3>
             <ul className="flex flex-col gap-4 text-[#A3A3A3] text-[14px]">
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("home")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("history")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("culture")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("destinations")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("programs")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{nav("events")}</Link></li>
+              {siteConfig.nav.map((item) => (
+                <li key={item.key}>
+                  <Link href={item.href} className="hover:text-white transition-colors">
+                    {nav(item.key)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 3 */}
-          <div className="flex flex-col gap-6 lg:col-span-1">
+          <div className="flex flex-col gap-6">
             <h3 className="font-semibold text-white text-[16px]">{t("destination")}</h3>
             <ul className="flex flex-col gap-4 text-[#A3A3A3] text-[14px]">
-              <li><Link href="#" className="hover:text-white transition-colors">Bukit Merese</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Gerupuk Beach</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Sade Traditional Village</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Kuta Mandalika Beach</Link></li>
+              {POPULAR_DESTINATIONS.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="hover:text-white transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -46,11 +58,11 @@ export function SiteFooter() {
           <div className="flex flex-col gap-6">
             <h3 className="font-semibold text-white text-[16px]">{t("socialMedia")}</h3>
             <ul className="flex flex-col gap-4 text-[#A3A3A3] text-[14px]">
-              <li><Link href="#" className="hover:text-white transition-colors">Instagram</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Facebook</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Tiktok</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Twitter</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Youtube</Link></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
+              <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a></li>
+              <li><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Tiktok</a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter</a></li>
+              <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Youtube</a></li>
             </ul>
           </div>
 
@@ -58,9 +70,9 @@ export function SiteFooter() {
           <div className="flex flex-col gap-6">
             <h3 className="font-semibold text-white text-[16px]">{t("contactUs")}</h3>
             <ul className="flex flex-col gap-4 text-[#A3A3A3] text-[14px]">
-              <li><a href="#" className="hover:text-white transition-colors">+123-456-789</a></li>
+              <li><a href="tel:+123456789" className="hover:text-white transition-colors">+123-456-789</a></li>
               <li><a href="mailto:Praya@gmail.com" className="hover:text-white transition-colors">Praya@gmail.com</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t("needHelp")}</a></li>
+              <li><Link href="/programs" className="hover:text-white transition-colors">{t("needHelp")}</Link></li>
             </ul>
           </div>
         </div>
@@ -69,9 +81,9 @@ export function SiteFooter() {
         <div className="flex flex-col md:flex-row justify-between items-center text-[#737373] text-[14px] gap-6">
           <div>{t("copyright")}</div>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-white transition-colors">{t("privacy")}</Link>
-            <Link href="#" className="hover:text-white transition-colors">{t("terms")}</Link>
-            <Link href="#" className="hover:text-white transition-colors">{t("legal")}</Link>
+            <Link href="/coming-soon" className="hover:text-white transition-colors">{t("privacy")}</Link>
+            <Link href="/coming-soon" className="hover:text-white transition-colors">{t("terms")}</Link>
+            <Link href="/coming-soon" className="hover:text-white transition-colors">{t("legal")}</Link>
           </div>
         </div>
       </div>

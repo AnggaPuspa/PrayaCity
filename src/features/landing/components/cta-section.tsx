@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export function CtaSection() {
@@ -27,7 +27,7 @@ export function CtaSection() {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           <Link 
-            href="#" 
+            href="/destinations" 
             className="flex items-center gap-2 bg-white text-black px-8 py-3.5 rounded-full text-[15px] font-medium hover:bg-gray-100 transition-colors"
           >
             {t("explore")}
@@ -38,7 +38,7 @@ export function CtaSection() {
           </Link>
 
           <Link 
-            href="#" 
+            href="/events" 
             className="flex items-center gap-2 text-white px-8 py-3.5 rounded-full text-[15px] font-medium hover:text-white/80 transition-colors"
           >
             {t("more")}

@@ -1,4 +1,4 @@
-// Domain types for the landing page content.
+﻿// Domain types for the landing page content.
 
 export interface EventItem {
   slug: string;
@@ -14,6 +14,7 @@ export interface Destination {
   title: string;
   description: string;
   image: string;
+  href: string;
 }
 
 export interface DiscoverItem {
