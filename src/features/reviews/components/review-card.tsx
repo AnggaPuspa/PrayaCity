@@ -22,29 +22,33 @@ export function ReviewCard({ review, dateLocale }: ReviewCardProps) {
           <div className="flex size-11 items-center justify-center rounded-full bg-zinc-100 text-zinc-600 text-[15px] font-semibold uppercase">
             {review.authorName.charAt(0)}
           </div>
-          
+
           {/* Name and Date */}
           <div className="flex flex-col">
-            <p className="text-[15px] font-semibold text-zinc-900">{review.authorName}</p>
+            <p className="text-[15px] font-semibold text-zinc-900">
+              {review.authorName}
+            </p>
             <p className="text-[13px] text-zinc-500 mt-0.5">{formattedDate}</p>
           </div>
         </div>
-        
+
         {/* Rating */}
         <div className="pt-1">
           <StarRating value={review.rating} size="sm" />
         </div>
       </div>
 
-      <p className="text-[15px] leading-relaxed text-zinc-700">{review.comment}</p>
+      <p className="text-[15px] leading-relaxed text-zinc-700">
+        {review.comment}
+      </p>
 
       {review.imageUrl ? (
-        <div className="relative mt-5 h-48 w-full sm:w-64 overflow-hidden rounded-xl border border-zinc-100">
+        <div className="relative mt-5 h-48 w-full sm:w-64 overflow-hidden rounded-xl border border-zinc-100 bg-zinc-50">
           <Image
             src={review.imageUrl}
             alt={`Photo from ${review.authorName}'s review`}
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(max-width: 640px) 100vw, 256px"
           />
         </div>
