@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Controller for the Programs Tabs section.
  * Manages active tab state so the view stays presentational.
