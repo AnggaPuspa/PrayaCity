@@ -224,6 +224,23 @@
       "entranceFee": "Harga Tiket",
       "feeLabel": "biaya: "
     },
+    "reviews": {
+      "heading": "Ulasan",
+      "noReviews": "Belum ada ulasan. Jadilah yang pertama berbagi pengalaman!",
+      "basedOn": "Berdasarkan {count} ulasan",
+      "basedOnOne": "Berdasarkan 1 ulasan",
+      "writeReview": "Tulis ulasan",
+      "nameLabel": "Nama Anda",
+      "namePlaceholder": "cth. Ayu Lestari",
+      "ratingLabel": "Penilaian Anda",
+      "commentLabel": "Ulasan Anda",
+      "commentPlaceholder": "Ceritakan yang Anda suka (atau tidak) tentang tempat ini...",
+      "photoLabel": "Tambahkan foto (opsional)",
+      "submit": "Kirim ulasan",
+      "submitting": "Mengirim...",
+      "successMessage": "Terima kasih atas ulasan Anda!",
+      "rateLimitedTitle": "Tunggu sebentar"
+    },
     "items": {
       "kutaMandalika": {
         "title": "Pantai Kuta Mandalika",

@@ -141,9 +141,36 @@ model Destination {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
+  reviews          Review[]
+
   @@index([status])
   @@index([isFeatured])
   @@map("destinations")
+}
+
+// ──────────────────────────────────────────
+// REVIEWS (anonymous, auto-published, rate-limited)
+// ──────────────────────────────────────────
+
+model Review {
+  id              String   @id @default(cuid())
+  destinationSlug String
+  destination     Destination @relation(fields: [destinationSlug], references: [slug], onDelete: Cascade)
+
+  authorName      String
+  rating          Int      // 1-5
+  comment         String   @db.Text
+  imageUrl        String?
+
+  // Rate-limiting metadata (no accounts — anonymous reviews).
+  ipAddress       String?
+
+  createdAt       DateTime @default(now())
+
+  @@index([destinationSlug])
+  @@index([ipAddress])
+  @@index([createdAt])
+  @@map("reviews")
 }
 
 // ──────────────────────────────────────────

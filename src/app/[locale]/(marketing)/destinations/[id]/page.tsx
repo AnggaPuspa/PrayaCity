@@ -1,4 +1,8 @@
-import { DestinationDetail, getDestinationBySlug } from "@/features/destinations";
+import {
+  DestinationDetail,
+  getDestinationBySlug,
+} from "@/features/destinations";
+import { ReviewsSection } from "@/features/reviews";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 
@@ -8,7 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, id } = await params;
-  
+
   try {
     const destination = await getDestinationBySlug(id, locale);
     if (destination) {
@@ -33,6 +37,7 @@ export default async function DestinationDetailPage({ params }: Props) {
   return (
     <main className="flex-1 bg-white">
       <DestinationDetail id={id} locale={locale} />
+      <ReviewsSection destinationSlug={id} locale={locale} />
     </main>
   );
 }

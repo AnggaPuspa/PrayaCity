@@ -224,6 +224,23 @@
       "entranceFee": "Entrance Fee",
       "feeLabel": "fee: "
     },
+    "reviews": {
+      "heading": "Reviews",
+      "noReviews": "No reviews yet. Be the first to share your experience!",
+      "basedOn": "Based on {count} reviews",
+      "basedOnOne": "Based on 1 review",
+      "writeReview": "Write a review",
+      "nameLabel": "Your name",
+      "namePlaceholder": "e.g. Ayu Lestari",
+      "ratingLabel": "Your rating",
+      "commentLabel": "Your review",
+      "commentPlaceholder": "Share what you loved (or didn't) about this place...",
+      "photoLabel": "Add a photo (optional)",
+      "submit": "Submit review",
+      "submitting": "Submitting...",
+      "successMessage": "Thanks for your review!",
+      "rateLimitedTitle": "Slow down a little"
+    },
     "items": {
       "kutaMandalika": {
         "title": "Kuta Mandalika Beach",

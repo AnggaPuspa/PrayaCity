@@ -9,3 +9,4 @@ export {
   typographyVariants,
   type TypographyProps,
 } from "./typography";
+export { StarRating, type StarRatingProps } from "./star-rating";
