@@ -32,7 +32,7 @@ export function ReviewForm({ destinationSlug, labels }: ReviewFormProps) {
   return (
     <form
       action={formAction}
-      className="flex w-full flex-col gap-5 rounded-2xl border border-zinc-200 bg-zinc-50 p-6"
+      className="flex w-full flex-col gap-6 rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100"
       noValidate
     >
       <input type="hidden" name="destinationSlug" value={destinationSlug} />
@@ -56,6 +56,7 @@ export function ReviewForm({ destinationSlug, labels }: ReviewFormProps) {
           name="authorName"
           placeholder={labels.namePlaceholder}
           maxLength={60}
+          className="rounded-xl border-zinc-200 focus-visible:ring-zinc-900/10 focus-visible:border-zinc-900/20"
         />
       </FormField>
 
@@ -70,6 +71,7 @@ export function ReviewForm({ destinationSlug, labels }: ReviewFormProps) {
           placeholder={labels.commentPlaceholder}
           maxLength={1000}
           rows={4}
+          className="rounded-xl border-zinc-200 focus-visible:ring-zinc-900/10 focus-visible:border-zinc-900/20"
         />
       </FormField>
 
@@ -78,10 +80,20 @@ export function ReviewForm({ destinationSlug, labels }: ReviewFormProps) {
         htmlFor="photo"
         error={state.errors?.imageUrl}
       >
-        <Input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
+        <Input 
+          id="photo" 
+          name="photo" 
+          type="file" 
+          accept="image/jpeg,image/png,image/webp,image/avif" 
+          className="rounded-xl border-zinc-200 focus-visible:ring-zinc-900/10 focus-visible:border-zinc-900/20 file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-zinc-100 file:text-zinc-700 hover:file:bg-zinc-200"
+        />
       </FormField>
 
-      <Button type="submit" disabled={isPending} className="self-start px-8">
+      <Button 
+        type="submit" 
+        disabled={isPending} 
+        className="mt-2 w-full sm:w-auto self-start rounded-full px-8 bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm transition-all"
+      >
         {isPending ? labels.submitting : labels.submit}
       </Button>
 

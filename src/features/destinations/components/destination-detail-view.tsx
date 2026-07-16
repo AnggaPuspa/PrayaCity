@@ -16,7 +16,7 @@ export function DestinationDetailView({
   labels,
 }: DestinationDetailViewProps) {
   return (
-    <div className="w-full bg-white text-[#18181B] pb-24 pt-24">
+    <div className="w-full bg-white text-[#18181B] pb-8 pt-24">
       {/* Hero Image */}
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
         <div className="relative w-full aspect-[16/9] md:aspect-[3/1] rounded-[24px] overflow-hidden">

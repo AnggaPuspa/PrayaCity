@@ -37,12 +37,19 @@ export function ReviewsSectionView({
   return (
     <section className="w-full bg-white pb-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-10 md:flex-row md:gap-16 border-t border-zinc-100 pt-16">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-16 pt-10">
           {/* Left: heading + summary + list */}
           <div className="w-full md:w-[60%] flex flex-col gap-6">
-            <Typography as="h2" variant="h2" className="text-zinc-900 text-2xl md:text-3xl font-medium">
-              {labels.heading}
-            </Typography>
+            <div className="flex items-center gap-3">
+              <h2 className="text-zinc-900 text-2xl md:text-3xl font-semibold tracking-tight">
+                {labels.heading}
+              </h2>
+              {summary.count > 0 && (
+                <span className="flex items-center justify-center bg-blue-100 text-blue-800 text-sm font-semibold rounded-md px-2.5 py-0.5">
+                  {summary.count}
+                </span>
+              )}
+            </div>
 
             {summary.count > 0 ? (
               <ReviewSummary summary={summary} basedOnLabel={labels.basedOnLabel} />
@@ -59,9 +66,9 @@ export function ReviewsSectionView({
 
           {/* Right: write a review */}
           <div className="w-full md:w-[40%]">
-            <Typography as="h3" variant="h3" className="text-zinc-900 text-lg font-medium mb-4">
+            <h3 className="text-zinc-900 text-xl font-semibold mb-6">
               {labels.writeReview}
-            </Typography>
+            </h3>
             <ReviewForm
               destinationSlug={destinationSlug}
               labels={{

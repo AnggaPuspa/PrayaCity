@@ -15,30 +15,37 @@ export function ReviewCard({ review, dateLocale }: ReviewCardProps) {
   );
 
   return (
-    <div className="flex flex-col gap-3 py-6 border-b border-zinc-200 last:border-b-0">
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex size-9 items-center justify-center rounded-full bg-zinc-900 text-white text-sm font-medium uppercase">
+    <div className="flex flex-col p-6 bg-white rounded-2xl mb-5 shadow-[0_2px_20px_rgb(0,0,0,0.03)] border border-zinc-100 relative group transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <div className="flex items-center gap-4">
+          {/* Avatar */}
+          <div className="flex size-11 items-center justify-center rounded-full bg-zinc-100 text-zinc-600 text-[15px] font-semibold uppercase">
             {review.authorName.charAt(0)}
           </div>
-          <div>
-            <p className="text-sm font-medium text-zinc-900">{review.authorName}</p>
-            <p className="text-xs text-zinc-500">{formattedDate}</p>
+          
+          {/* Name and Date */}
+          <div className="flex flex-col">
+            <p className="text-[15px] font-semibold text-zinc-900">{review.authorName}</p>
+            <p className="text-[13px] text-zinc-500 mt-0.5">{formattedDate}</p>
           </div>
         </div>
-        <StarRating value={review.rating} size="sm" />
+        
+        {/* Rating */}
+        <div className="pt-1">
+          <StarRating value={review.rating} size="sm" />
+        </div>
       </div>
 
       <p className="text-[15px] leading-relaxed text-zinc-700">{review.comment}</p>
 
       {review.imageUrl ? (
-        <div className="relative mt-1 h-40 w-56 overflow-hidden rounded-lg">
+        <div className="relative mt-5 h-48 w-full sm:w-64 overflow-hidden rounded-xl border border-zinc-100">
           <Image
             src={review.imageUrl}
             alt={`Photo from ${review.authorName}'s review`}
             fill
             className="object-cover"
-            sizes="224px"
+            sizes="(max-width: 640px) 100vw, 256px"
           />
         </div>
       ) : null}
