@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Non-translatable id/media/link for the "Discover Central Lombok" section.
  * Order matches the `Discover.items` array in the message files.
  * `href` points to the real page when it exists, otherwise to /coming-soon.

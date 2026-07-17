@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { RefObject } from "react";
 import type { Destination } from "../types";

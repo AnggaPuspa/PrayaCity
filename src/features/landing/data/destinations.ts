@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Non-translatable media for the "Must-Visit Places" carousel.
  * Order matches the `MustVisit.items` array in the message files.
  * `href` points to a destination detail page when a matching slug exists.

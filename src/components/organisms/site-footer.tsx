@@ -1,4 +1,4 @@
-﻿import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 
