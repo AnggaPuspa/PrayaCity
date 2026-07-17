@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "hdgxgifctnuwybqbasak.supabase.co" },
+      { protocol: "https", hostname: "openweathermap.org" },
     ],
   },
 };
