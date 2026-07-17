@@ -41,12 +41,14 @@ export async function getDestinationBySlug(slug: string, locale: string) {
     location: (l === "id" ? item.locationId : item.locationEn) ?? "",
     status: (l === "id" ? item.statusLabelId : item.statusLabelEn) ?? "",
     entranceFee: (l === "id" ? item.entranceFeeId : item.entranceFeeEn) ?? "",
+    latitude: item.latitude,
+    longitude: item.longitude,
   };
 }
 
-// ──────────────────────────────────────────
+// ──────────────────────────────────────────────────────────
 // ADMIN CRUD OPERATIONS
-// ──────────────────────────────────────────
+// ──────────────────────────────────────────────────────────
 
 import type { DestinationInput } from "../schemas/destination.schema";
 

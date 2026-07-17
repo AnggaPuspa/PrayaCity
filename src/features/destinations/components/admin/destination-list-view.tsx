@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { deleteDestinationAction } from "../../actions/destination.actions";
 import { useTransition } from "react";
 
@@ -22,12 +22,14 @@ interface DestinationListViewProps {
 }
 
 export function DestinationListView({ destinations }: DestinationListViewProps) {
+  const t = useTranslations("Admin.destinations");
+  const tCommon = useTranslations("Admin.common");
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
-    if (confirm("Are you sure you want to delete this destination?")) {
+    if (confirm(locale === "id" ? "Yakin ingin menghapus destinasi ini?" : "Are you sure you want to delete this destination?")) {
       startTransition(() => {
         deleteDestinationAction(id);
       });
@@ -45,16 +47,16 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span>/</span>
-            <span>Destinations</span>
+            <span>{t("title")}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">Destinations</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">{t("title")}</h1>
         </div>
         <div className="flex items-center gap-3">
           <Link 
             href={`/admin/destinations/create`}
             className="bg-[#244199] hover:bg-[#1a3072] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
           >
-            <span>+</span> Add New
+            <span>+</span> {tCommon("addNew")}
           </Link>
         </div>
       </div>
@@ -79,7 +81,7 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
               {/* Top Right: Category Badge */}
               <div className="absolute top-6 right-6 z-10 pointer-events-none">
                 <span className="bg-[#244199] text-white text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wide shadow-sm">
-                  {destination.tags[0] || "General"}
+                  {destination.tags[0] || tCommon("general")}
                 </span>
               </div>
 
@@ -95,12 +97,11 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
                   <div className="flex items-center gap-4">
                     <Link href={`/admin/destinations/${destination.id}/edit`} className="flex items-center gap-1.5 hover:text-white text-white/80 transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-                      Edit
+                      {tCommon("edit")}
                     </Link>
-                    {/* The API for destination deletion expects the slug because of earlier implementation choices */}
                     <button onClick={(e) => handleDelete(destination.id, e)} disabled={isPending} className="flex items-center gap-1.5 hover:text-red-300 text-white/80 transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-                      Delete
+                      {tCommon("delete")}
                     </button>
                   </div>
                   {/* Intentionally omitted date text per user instruction (Destinations do not have a display date field) */}
@@ -127,7 +128,7 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
             <div className="p-6 flex flex-col flex-1 pt-5">
               <div className="mb-3">
                 <span className="bg-gray-50 text-gray-600 text-[11px] font-semibold px-2.5 py-1 rounded-md border border-gray-100 pointer-events-none">
-                  {destination.tags[0] || "General"}
+                  {destination.tags[0] || tCommon("general")}
                 </span>
               </div>
 
@@ -141,11 +142,11 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
                 <div className="flex items-center gap-4">
                   <Link href={`/admin/destinations/${destination.id}/edit`} className="flex items-center gap-1.5 hover:text-gray-900 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-                    Edit
+                    {tCommon("edit")}
                   </Link>
                   <button onClick={(e) => handleDelete(destination.id, e)} disabled={isPending} className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-                    Delete
+                    {tCommon("delete")}
                   </button>
                 </div>
                 {/* Intentionally omitted date text per user instruction (Destinations do not have a display date field) */}
@@ -157,7 +158,7 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
       
       {destinations.length === 0 && (
         <div className="w-full py-20 flex justify-center items-center text-gray-500">
-          No destinations found.
+          {locale === "id" ? "Destinasi tidak ditemukan." : "No destinations found."}
         </div>
       )}
     </div>
