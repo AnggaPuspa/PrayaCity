@@ -268,8 +268,8 @@
       }
     },
     "weather": {
-      "title": "Live Weather Here",
-      "live": "Live",
+      "title": "Weather",
+      "live": "Now",
       "updated": "Updated",
       "feelsLike": "Feels like",
       "humidity": "Humidity",
@@ -279,9 +279,14 @@
       "sunrise": "Sunrise",
       "sunset": "Sunset",
       "hourlyTitle": "Next 24 hours",
-      "visitScore": "Visit score",
-      "tipsTitle": "Smart tips",
+      "visitScore": "For visiting",
+      "tipsTitle": "Tips",
       "unavailable": "Weather data is unavailable. Add OPENWEATHER_API_KEY in .env to enable the live widget.",
+      "tabs": {
+        "now": "Details",
+        "forecast": "Hours",
+        "tips": "Tips"
+      },
       "conditions": {
         "clear": "Clear",
         "clouds": "Cloudy",
@@ -293,10 +298,10 @@
         "unknown": "Unknown"
       },
       "verdicts": {
-        "great": "Great to visit",
-        "good": "Good to visit",
-        "caution": "Visit with caution",
-        "poor": "Not ideal right now"
+        "great": "Good day to visit",
+        "good": "Fine for a visit",
+        "caution": "A bit tricky today",
+        "poor": "Better wait a bit"
       },
       "tips": {
         "clear": "Clear skies — perfect window for photos and sunset views.",

@@ -74,15 +74,8 @@ export async function WeatherWidget({
   });
 
   if (!weather) {
-    return (
-      <section className="w-full bg-white pb-8">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[24px] border border-zinc-200 bg-zinc-50 px-6 py-5 text-sm text-zinc-600">
-            {t("unavailable")}
-          </div>
-        </div>
-      </section>
-    );
+    // Keep destination layout clean when weather is offline.
+    return null;
   }
 
   const conditions = Object.fromEntries(
@@ -119,6 +112,11 @@ export async function WeatherWidget({
         conditions,
         verdicts,
         tips,
+        tabs: {
+          now: t("tabs.now"),
+          forecast: t("tabs.forecast"),
+          tips: t("tabs.tips"),
+        },
       }}
     />
   );

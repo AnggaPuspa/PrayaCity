@@ -59,11 +59,20 @@ export interface WeatherLabels {
   conditions: Record<WeatherCondition, string>;
   verdicts: Record<VisitVerdict, string>;
   tips: Record<string, string>;
+  tabs: {
+    now: string;
+    forecast: string;
+    tips: string;
+  };
 }
 
 export interface WeatherWidgetController {
   activeHour: number;
   selectHour: (index: number) => void;
+  activeTab: "now" | "forecast" | "tips";
+  selectTab: (tab: "now" | "forecast" | "tips") => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export interface WeatherCoordinates {

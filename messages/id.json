@@ -268,8 +268,8 @@
       }
     },
     "weather": {
-      "title": "Cuaca Live di Sini",
-      "live": "Live",
+      "title": "Cuaca",
+      "live": "Sekarang",
       "updated": "Diperbarui",
       "feelsLike": "Terasa",
       "humidity": "Kelembapan",
@@ -279,9 +279,14 @@
       "sunrise": "Matahari terbit",
       "sunset": "Matahari terbenam",
       "hourlyTitle": "Prakiraan 24 jam",
-      "visitScore": "Skor kunjungan",
-      "tipsTitle": "Saran pintar",
+      "visitScore": "Untuk berkunjung",
+      "tipsTitle": "Tips",
       "unavailable": "Data cuaca belum tersedia. Tambahkan OPENWEATHER_API_KEY di .env untuk mengaktifkan widget live.",
+      "tabs": {
+        "now": "Detail",
+        "forecast": "Jam",
+        "tips": "Tips"
+      },
       "conditions": {
         "clear": "Cerah",
         "clouds": "Berawan",
@@ -293,10 +298,10 @@
         "unknown": "Tidak diketahui"
       },
       "verdicts": {
-        "great": "Sangat bagus dikunjungi",
-        "good": "Cocok dikunjungi",
-        "caution": "Perlu berhati-hati",
-        "poor": "Kurang ideal"
+        "great": "Cocok dikunjungi hari ini",
+        "good": "Masih oke dikunjungi",
+        "caution": "Sedikit kurang ideal",
+        "poor": "Lebih baik ditunda"
       },
       "tips": {
         "clear": "Langit cerah — momen terbaik untuk foto dan sunset.",
