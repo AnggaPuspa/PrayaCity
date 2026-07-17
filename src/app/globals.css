@@ -40,3 +40,207 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─────────────────────────────────────────────
+   Page transition (client-only curtain)
+   SEO-safe: fixed overlay, never swaps SSR HTML
+   ───────────────────────────────────────────── */
+
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.page-transition--cover,
+.page-transition--hold {
+  pointer-events: auto;
+}
+
+.page-transition__panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: #18181b;
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+
+.page-transition--cover .page-transition__panel {
+  animation: pageTransitionCover 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.page-transition--hold .page-transition__panel {
+  clip-path: inset(0 0 0 0);
+}
+
+.page-transition--reveal .page-transition__panel {
+  animation: pageTransitionReveal 0.64s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.page-transition__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #0066ff;
+}
+
+.page-transition--cover .page-transition__progress,
+.page-transition--hold .page-transition__progress {
+  animation: pageTransitionProgress 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-transition--reveal .page-transition__progress {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.page-transition__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition--cover .page-transition__mark,
+.page-transition--hold .page-transition__mark {
+  animation: pageTransitionMarkIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.18s
+    forwards;
+}
+
+.page-transition--reveal .page-transition__mark {
+  animation: pageTransitionMarkOut 0.28s ease forwards;
+}
+
+.page-transition__eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.page-transition__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #18181b;
+}
+
+.page-transition__title::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin: 0.85rem auto 0;
+  background: #0066ff;
+  border-radius: 999px;
+}
+
+@keyframes pageTransitionCover {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes pageTransitionReveal {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes pageTransitionProgress {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  80% {
+    width: 86%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes pageTransitionMarkIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageTransitionMarkOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Soft content enter after route remount (marketing template) */
+.page-enter {
+  animation: pageEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    display: none !important;
+  }
+
+  .page-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { ReactLenis } from "lenis/react";
+import { PageTransition } from "@/components/organisms";
 
 /**
  * Global client-side providers.
@@ -10,6 +11,9 @@ import { ReactLenis } from "lenis/react";
  * `window.scrollY`, sticky positioning, and anchor links keep working.
  * Touch scrolling stays native (`syncTouch: false`) since mobile already has
  * good momentum scrolling.
+ *
+ * PageTransition is a client-only overlay during route changes — it never
+ * replaces server-rendered HTML, so SEO stays intact.
  */
 export function Providers({ children }: { children: ReactNode }) {
   return (
@@ -22,6 +26,7 @@ export function Providers({ children }: { children: ReactNode }) {
         anchors: true,
       }}
     >
+      <PageTransition />
       {children}
     </ReactLenis>
   );
