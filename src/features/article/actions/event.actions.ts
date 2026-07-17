@@ -49,9 +49,19 @@ export async function createEventAction(
   } catch (error: any) {
     return {
       status: "error",
-      message: error.message || "Something went wrong. Please try again.",
+      message: mapEventError(error),
     };
   }
+}
+
+function mapEventError(error: any): string {
+  if (error?.code === "P2025") {
+    return "Event not found. It may have been deleted.";
+  }
+  if (error?.code === "P2002") {
+    return "An event with this slug already exists. Please use a different slug.";
+  }
+  return error?.message || "Something went wrong. Please try again.";
 }
 
 export async function updateEventAction(
@@ -99,7 +109,7 @@ export async function updateEventAction(
   } catch (error: any) {
     return {
       status: "error",
-      message: error.message || "Something went wrong. Please try again.",
+      message: mapEventError(error),
     };
   }
 }
@@ -113,7 +123,7 @@ export async function deleteEventAction(id: string): Promise<EventFormState> {
   } catch (error: any) {
     return {
       status: "error",
-      message: error.message || "Failed to delete event.",
+      message: mapEventError(error),
     };
   }
 }

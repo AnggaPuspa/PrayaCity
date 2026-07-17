@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import Image from "next/image";
 import { Typography, Button } from "@/components/atoms";
 import { Link } from "@/i18n/navigation";
@@ -18,6 +20,9 @@ export interface DashboardViewProps {
 }
 
 export function DashboardView({ locale, stats }: DashboardViewProps) {
+  const t = useTranslations("Admin.dashboard");
+  const tHeader = useTranslations("Admin.header");
+  const tCommon = useTranslations("Admin.common");
   const currentMonthYear = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(new Date());
 
   const handleDownload = async () => {
@@ -43,9 +48,9 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
         <div>
           <div className="text-[14px] text-gray-500 mb-1">
-            Welcome Admin
+            {tHeader("hi")} {tHeader("admin")}
           </div>
-          <h1 className="text-[28px] font-semibold text-[#111827] tracking-tight">Analytical Dashboard</h1>
+          <h1 className="text-[28px] font-semibold text-[#111827] tracking-tight">{t("title")}</h1>
         </div>
         <div className="flex items-center gap-3 relative z-30">
           <button className="bg-white border border-gray-200 text-gray-600 px-3.5 py-2 rounded-md text-[13px] font-medium flex items-center gap-2 shadow-sm cursor-default">
@@ -54,11 +59,11 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
           
           <div className="relative group">
             <button className="bg-[#2143a5] hover:bg-[#1a3584] text-white px-4 py-2 rounded-md text-[13px] font-medium transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer">
-              <span>+</span> Add New
+              <span>+</span> {tCommon("addNew")}
             </button>
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link href="/admin/events" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">New Event</Link>
-              <Link href="/admin/destinations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">New Destination</Link>
+              <Link href="/admin/events" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t("events")}</Link>
+              <Link href="/admin/destinations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t("destinations")}</Link>
             </div>
           </div>
         </div>
@@ -97,10 +102,10 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
 
           {/* 2 Small Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Published Events (Earnings style) */}
+            {/* Published Events card */}
             <div className="bg-[#2143a5] rounded-2xl p-6 text-white relative overflow-hidden flex flex-col justify-between h-[160px]">
               <div className="flex justify-between items-start">
-                <span className="text-blue-100 font-medium text-[15px]">Published Events</span>
+                <span className="text-blue-100 font-medium text-[15px]">{t("publishedEvents")}</span>
                 <div className="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center">
                   <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -113,11 +118,11 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
               </div>
             </div>
 
-            {/* Published Destinations (Monthly Sales style) */}
+            {/* Published Destinations card */}
             <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] h-[160px] flex flex-col justify-between relative overflow-hidden">
               <div className="flex justify-between items-start">
                 <div>
-                  <span className="text-gray-500 font-medium text-[13px]">Published Destinations</span>
+                  <span className="text-gray-500 font-medium text-[13px]">{t("publishedDestinations")}</span>
                   <div className="text-[28px] font-bold text-gray-900 mt-1">{stats.destinations.published}</div>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
@@ -140,10 +145,10 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
           <div className="flex justify-between items-start mb-2">
             <div>
               <h3 className="text-[17px] font-semibold text-gray-900 mb-1">Content Overview</h3>
-              <p className="text-gray-500 text-[13px]">Events vs Destinations (7 Days)</p>
+              <p className="text-gray-500 text-[13px]">{t("eventsVsDestinations")}</p>
             </div>
             <div className="flex items-center gap-3 text-[12px] font-medium">
-              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#2143a5]"></span>Events</div>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#2143a5]"></span>{t("events")}</div>
               <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#3abff8]"></span>Dest</div>
             </div>
           </div>
@@ -220,11 +225,11 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
                        <span className="text-gray-700 font-medium capitalize">{log.entityType || "System"}</span>
                     </td>
                     <td className="py-3 px-2">
-                      {log.action === "create" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-blue-100 text-blue-700">Created</span>}
-                      {log.action === "update" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-yellow-100 text-yellow-700">Updated</span>}
-                      {log.action === "delete" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-red-100 text-red-700">Deleted</span>}
+                      {log.action === "create" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-blue-100 text-blue-700">{t("created")}</span>}
+                      {log.action === "update" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-yellow-100 text-yellow-700">{t("updated")}</span>}
+                      {log.action === "delete" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-red-100 text-red-700">{t("deleted")}</span>}
                       {log.action === "publish" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-green-100 text-green-700">Published</span>}
-                      {log.action === "login" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-purple-100 text-purple-700">Login</span>}
+                      {log.action === "login" && <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-purple-100 text-purple-700">{t("loginAction")}</span>}
                       {!["create", "update", "delete", "publish", "login"].includes(log.action) && 
                         <span className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-gray-100 text-gray-700">{log.action}</span>
                       }
@@ -236,7 +241,7 @@ export function DashboardView({ locale, stats }: DashboardViewProps) {
                 ))}
                 {(!stats.recentLogs || stats.recentLogs.length === 0) && (
                   <tr>
-                    <td colSpan={4} className="py-8 text-center text-gray-500">No recent activity</td>
+                    <td colSpan={4} className="py-8 text-center text-gray-500">{t("noRecentActivity")}</td>
                   </tr>
                 )}
               </tbody>

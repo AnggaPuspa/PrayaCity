@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { uploadMedia, listMedia, deleteMedia } from "../actions/media.actions";
@@ -17,6 +19,8 @@ interface MediaFile {
 }
 
 export function MediaGallery() {
+  const t = useTranslations("Admin.media");
+  const tCommon = useTranslations("Admin.common");
   const [files, setFiles] = useState<MediaFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -66,7 +70,7 @@ export function MediaGallery() {
   };
 
   const handleDelete = async (path: string) => {
-    if (!confirm("Are you sure you want to delete this image?")) return;
+    if (!confirm(t("deleteConfirm"))) return;
     
     setLoading(true);
     const res = await deleteMedia(path);
@@ -80,7 +84,7 @@ export function MediaGallery() {
 
   const copyToClipboard = (url: string) => {
     navigator.clipboard.writeText(url);
-    alert("URL copied to clipboard!");
+    alert(t("copied"));
   };
 
   return (
@@ -89,15 +93,15 @@ export function MediaGallery() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="p-6 border-b border-gray-100 bg-gray-50/50">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-lg font-semibold text-gray-900 m-0">Upload New Media</h2>
+            <h2 className="text-lg font-semibold text-gray-900 m-0">{t("uploadTitle")}</h2>
             <select 
               className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
               value={folder}
               onChange={(e) => setFolder(e.target.value)}
             >
-              <option value="events">Events</option>
-              <option value="destinations">Destinations</option>
-              <option value="avatars">Avatars</option>
+              <option value="events">{t("folderEvents")}</option>
+              <option value="destinations">{t("folderDestinations")}</option>
+              <option value="avatars">{t("folderAvatars")}</option>
             </select>
           </div>
           
@@ -112,15 +116,15 @@ export function MediaGallery() {
             {uploading ? (
               <div className="flex flex-col items-center">
                 <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
-                <span className="text-gray-500 text-sm font-medium">Uploading image...</span>
+                <span className="text-gray-500 text-sm font-medium">{t("uploading")}</span>
               </div>
             ) : (
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="text-gray-400 mx-auto mb-4" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0"/>
                 </svg>
-                <h3 className="text-base font-medium text-gray-900 mb-1">Click or drag image to upload</h3>
-                <p className="text-sm text-gray-500">Max size: 5MB. Formats: JPG, PNG, WEBP, AVIF</p>
+                <h3 className="text-base font-medium text-gray-900 mb-1">{t("clickOrDrag")}</h3>
+                <p className="text-sm text-gray-500">{t("maxSize")}</p>
               </div>
             )}
           </div>
@@ -131,9 +135,9 @@ export function MediaGallery() {
       {/* Gallery */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="px-6 pt-6 pb-4 flex justify-between items-center border-b border-gray-100 bg-gray-50/50">
-          <h2 className="text-lg font-semibold text-gray-900 m-0">Media Gallery</h2>
+          <h2 className="text-lg font-semibold text-gray-900 m-0">{t("galleryTitle")}</h2>
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white text-gray-800 border border-gray-200 shadow-sm">
-            {files.length} items
+            {t("items", { count: files.length })}
           </span>
         </div>
         <div className="p-6">
@@ -147,7 +151,7 @@ export function MediaGallery() {
                 <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
                 <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10"/>
               </svg>
-              No images found in this folder.
+              {t("empty")}
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">

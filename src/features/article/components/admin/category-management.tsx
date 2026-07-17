@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { 
   createCategoryAction, 
@@ -16,6 +17,8 @@ type CategoryWithCount = {
 };
 
 export function CategoryManagement({ initialCategories }: { initialCategories: CategoryWithCount[] }) {
+  const t = useTranslations("Admin.categories");
+  const tCommon = useTranslations("Admin.common");
   const [categories, setCategories] = useState<CategoryWithCount[]>(initialCategories);
   const [isAdding, setIsAdding] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -59,7 +62,7 @@ export function CategoryManagement({ initialCategories }: { initialCategories: C
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete the category "${name}"?`)) return;
+    if (!confirm(t("deleteConfirm", { name }))) return;
     
     setLoading(true);
     setError(null);
@@ -121,7 +124,7 @@ export function CategoryManagement({ initialCategories }: { initialCategories: C
                       className="p-1.5 text-[#244199] hover:bg-blue-50 rounded-md transition-colors flex items-center justify-center disabled:opacity-50"
                       onClick={() => setEditingId(category.id)}
                       disabled={loading}
-                      title="Edit"
+                      title={t("edit")}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
                     </button>
@@ -129,7 +132,7 @@ export function CategoryManagement({ initialCategories }: { initialCategories: C
                       className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors flex items-center justify-center disabled:opacity-30 disabled:hover:bg-transparent"
                       onClick={() => handleDelete(category.id, category.name)}
                       disabled={loading || category._count.events > 0}
-                      title={category._count.events > 0 ? "Cannot delete category in use" : "Delete"}
+                      title={t("delete")}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
                     </button>

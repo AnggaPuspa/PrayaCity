@@ -1,17 +1,21 @@
 import { LoginView } from "@/features/auth";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Admin Login | Praya City",
-  description: "Login to Praya City Admin Portal",
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default async function AdminLoginPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Admin.login" });
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
+
+export default async function AdminLoginPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 

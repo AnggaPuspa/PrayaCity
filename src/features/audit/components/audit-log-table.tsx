@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { useState } from "react";
 
 type AuditLogWithUser = {
@@ -19,6 +21,7 @@ type AuditLogWithUser = {
 };
 
 export function AuditLogTable({ initialLogs }: { initialLogs: any[] }) {
+  const t = useTranslations("Admin.audit");
   const [logs] = useState<AuditLogWithUser[]>(initialLogs);
   const [filter, setFilter] = useState("all");
 
@@ -91,7 +94,7 @@ export function AuditLogTable({ initialLogs }: { initialLogs: any[] }) {
             <tr className="bg-white border-b border-gray-200 text-sm text-gray-500">
               <th className="px-6 py-3 font-medium whitespace-nowrap">Timestamp</th>
               <th className="px-6 py-3 font-medium">User</th>
-              <th className="px-6 py-3 font-medium">Action</th>
+              <th className="px-6 py-3 font-medium">{t("action")}</th>
               <th className="px-6 py-3 font-medium">Target</th>
               <th className="px-6 py-3 font-medium">Details</th>
             </tr>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { deleteEventAction } from "../../actions/event.actions";
 import { useTransition } from "react";
 
@@ -22,12 +22,14 @@ interface EventListViewProps {
 }
 
 export function EventListView({ events }: EventListViewProps) {
+  const t = useTranslations("Admin.events");
+  const tCommon = useTranslations("Admin.common");
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
-    if (confirm("Are you sure you want to delete this event?")) {
+    if (confirm(locale === "id" ? "Yakin ingin menghapus acara ini?" : "Are you sure you want to delete this event?")) {
       startTransition(() => {
         deleteEventAction(id);
       });
@@ -45,16 +47,16 @@ export function EventListView({ events }: EventListViewProps) {
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span>/</span>
-            <span>Events</span>
+            <span>{t("title")}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">Events</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">{t("title")}</h1>
         </div>
         <div className="flex items-center gap-3">
           <Link 
             href={`/admin/events/create`}
             className="bg-[#244199] hover:bg-[#1a3072] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
           >
-            <span>+</span> Add New
+            <span>+</span> {tCommon("addNew")}
           </Link>
         </div>
       </div>
