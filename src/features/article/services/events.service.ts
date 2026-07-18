@@ -85,18 +85,32 @@ export async function getCategories(): Promise<string[]> {
 
 import type { EventInput } from "../schemas/event.schema";
 
+/** Plain JSON-safe shape for admin client components (no Date instances). */
+function serializeAdminEvent<T extends { createdAt: Date; updatedAt: Date }>(
+  item: T,
+) {
+  return {
+    ...item,
+    createdAt: item.createdAt.toISOString(),
+    updatedAt: item.updatedAt.toISOString(),
+  };
+}
+
 export async function getAdminEvents() {
-  return await prisma.event.findMany({
+  const items = await prisma.event.findMany({
     orderBy: { createdAt: "desc" },
     include: { categories: { include: { category: true } } },
   });
+  return items.map(serializeAdminEvent);
 }
 
 export async function getAdminEventById(id: string) {
-  return await prisma.event.findUnique({
+  const item = await prisma.event.findUnique({
     where: { id },
     include: { categories: { include: { category: true } } },
   });
+  if (!item) return null;
+  return serializeAdminEvent(item);
 }
 export async function createEvent(data: EventInput) {
   return await prisma.$transaction(async (tx) => {

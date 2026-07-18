@@ -14,7 +14,7 @@ interface AdminDestination {
   isFeatured: boolean;
   imageSrc: string;
   tags: string[];
-  createdAt: Date;
+  createdAt: string;
 }
 
 interface DestinationListViewProps {

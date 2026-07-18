@@ -10,6 +10,16 @@ export const env = {
   nodeEnv: process.env.NODE_ENV ?? "development",
   isProduction: process.env.NODE_ENV === "production",
   openWeatherApiKey: process.env.OPENWEATHER_API_KEY ?? "",
+  /**
+   * Alibaba Cloud DashScope (Qwen) — OpenAI-compatible endpoint.
+   * International: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+   * China:         https://dashscope.aliyuncs.com/compatible-mode/v1
+   */
+  dashscopeApiKey: process.env.DASHSCOPE_API_KEY ?? "",
+  dashscopeBaseUrl:
+    process.env.DASHSCOPE_BASE_URL ??
+    "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+  qwenModel: process.env.QWEN_MODEL ?? "qwen-plus",
 } as const;
 
 export type Env = typeof env;

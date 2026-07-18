@@ -640,5 +640,21 @@
       "time": "Waktu",
       "empty": "Belum ada log audit."
     }
+  },
+  "Chatbot": {
+    "title": "Panduan Praya",
+    "subtitle": "Tanya destinasi, sejarah & event",
+    "placeholder": "Tanya tentang Praya City...",
+    "send": "Kirim",
+    "thinking": "Sedang berpikir...",
+    "emptyHint": "Saya hanya menjawab seputar Praya City dan Lombok Tengah — destinasi, sejarah, budaya, dan event yang terbit di situs ini.",
+    "errorGeneric": "Terjadi kesalahan. Coba lagi ya.",
+    "openAria": "Buka chat panduan Praya",
+    "closeAria": "Tutup chat",
+    "suggestions": [
+      "Destinasi wajib dikunjungi apa saja?",
+      "Ceritakan sejarah Praya",
+      "Ada event terbaru?"
+    ]
   }
 }

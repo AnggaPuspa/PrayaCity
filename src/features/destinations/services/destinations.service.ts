@@ -74,16 +74,36 @@ export async function getDestinationBySlug(slug: string, locale: string) {
 
 import type { DestinationInput } from "../schemas/destination.schema";
 
+/** Plain JSON-safe shape for admin client components (no Date instances). */
+function serializeAdminDestination<T extends {
+  createdAt: Date;
+  updatedAt: Date;
+  latitude: number | null;
+  longitude: number | null;
+}>(item: T) {
+  return {
+    ...item,
+    createdAt: item.createdAt.toISOString(),
+    updatedAt: item.updatedAt.toISOString(),
+    // Keep numbers; null stays null — never pass Decimal/Date to the client.
+    latitude: item.latitude,
+    longitude: item.longitude,
+  };
+}
+
 export async function getAdminDestinations() {
-  return await prisma.destination.findMany({
+  const items = await prisma.destination.findMany({
     orderBy: { createdAt: "desc" },
   });
+  return items.map(serializeAdminDestination);
 }
 
 export async function getAdminDestinationById(id: string) {
-  return await prisma.destination.findUnique({
+  const item = await prisma.destination.findUnique({
     where: { id },
   });
+  if (!item) return null;
+  return serializeAdminDestination(item);
 }
 export async function createDestination(data: DestinationInput) {
   return await prisma.destination.create({

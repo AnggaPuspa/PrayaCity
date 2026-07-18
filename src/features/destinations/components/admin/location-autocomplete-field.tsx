@@ -71,7 +71,7 @@ export function LocationAutocompleteField({
     }, 350);
 
     return () => window.clearTimeout(timer);
-  }, [value]);
+  }, [value, t]);
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {

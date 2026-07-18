@@ -640,5 +640,21 @@
       "time": "Time",
       "empty": "No audit logs yet."
     }
+  },
+  "Chatbot": {
+    "title": "Praya Guide",
+    "subtitle": "Ask about destinations, history & events",
+    "placeholder": "Ask about Praya City...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "emptyHint": "I only answer questions about Praya City and Central Lombok — destinations, history, culture, and published events from this site.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "openAria": "Open Praya guide chat",
+    "closeAria": "Close chat",
+    "suggestions": [
+      "What are the must-visit destinations?",
+      "Tell me about Praya history",
+      "Any latest events?"
+    ]
   }
 }
