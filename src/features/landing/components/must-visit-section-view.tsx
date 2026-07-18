@@ -65,9 +65,9 @@ export function MustVisitSectionView({
             ref={scrollRef}
             className="flex overflow-x-auto gap-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
           >
-            {destinations.map((item, index) => (
+            {destinations.map((item) => (
               <Link
-                key={index}
+                key={item.href}
                 href={item.href}
                 className="flex flex-col group cursor-pointer shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] snap-start"
               >

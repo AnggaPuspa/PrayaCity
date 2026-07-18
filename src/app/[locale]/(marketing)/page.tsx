@@ -51,7 +51,7 @@ export default async function HomePage({
       <LatestEvents locale={locale} />
       <AboutSection />
       <DiscoverSection />
-      <MustVisitSection />
+      <MustVisitSection locale={locale} />
       <CtaSection />
     </>
   );

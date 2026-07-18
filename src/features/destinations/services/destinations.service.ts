@@ -23,6 +23,28 @@ export async function getDestinations(locale: string) {
   }));
 }
 
+/**
+ * Featured / popular destinations for the home "Must-Visit" carousel.
+ * Prefers `isFeatured`, then falls back by sortOrder so the section
+ * never goes empty when nothing is marked featured yet.
+ */
+export async function getMustVisitDestinations(locale: string, limit = 8) {
+  const l = lang(locale);
+  const items = await prisma.destination.findMany({
+    where: { status: "PUBLISHED" },
+    orderBy: [{ isFeatured: "desc" }, { sortOrder: "desc" }, { createdAt: "desc" }],
+    take: limit,
+  });
+
+  return items.map((item) => ({
+    id: item.slug,
+    title: l === "id" ? item.titleId : item.titleEn,
+    description: l === "id" ? item.descriptionId : item.descriptionEn,
+    image: item.imageSrc,
+    href: `/destinations/${item.slug}`,
+  }));
+}
+
 export async function getDestinationBySlug(slug: string, locale: string) {
   const l = lang(locale);
   const item = await prisma.destination.findUnique({
