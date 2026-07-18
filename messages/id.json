@@ -98,6 +98,60 @@
       }
     ]
   },
+  "MapExplorer": {
+    "eyebrow": "Jelajahi peta",
+    "heading": "Temukan <blue>Lombok Tengah</blue><br></br>dalam realitas yang berbeda",
+    "intro": "Temukan warisan Sasak Praya, desa tersembunyi,<br></br>dan cerita yang belum terungkap melalui realitas yang<br></br>dilapisi dengan pengalaman augmented.",
+    "explore": "Lihat semua destinasi",
+    "openSpot": "Buka tempat ini",
+    "prev": "Tempat sebelumnya",
+    "next": "Tempat berikutnya",
+    "pinHint": "Arahkan atau ketuk pin",
+    "spots": [
+      {
+        "id": "praya",
+        "title": "Praya",
+        "subtitle": "Jantung kota Lombok Tengah",
+        "description": "Pusat administrasi dan budaya — titik tenang sebelum menyebar ke pesisir, bukit, dan desa.",
+        "tag": "Kota"
+      },
+      {
+        "id": "kutaMandalika",
+        "title": "Kuta Mandalika",
+        "subtitle": "Garis pantai dan udara laut",
+        "description": "Pantai lebar, cahaya lembut, dan energi Mandalika. Cocok untuk jalan pagi dan golden hour panjang.",
+        "tag": "Pantai"
+      },
+      {
+        "id": "bukitMerese",
+        "title": "Bukit Merese",
+        "subtitle": "Perbukitan menghadap laut",
+        "description": "Salah satu panggung sunset paling tenang di Lombok Tengah — punggungan hijau, angin laut, langit terbuka.",
+        "tag": "Bukit"
+      },
+      {
+        "id": "bukitLancing",
+        "title": "Bukit Lancing",
+        "subtitle": "Dataran tinggi dan panorama",
+        "description": "Kabur sejenak ke bukit dengan horizon terbuka. Datang untuk angin sepoi, tinggal untuk pemandangannya.",
+        "tag": "Bukit"
+      },
+      {
+        "id": "gerupuk",
+        "title": "Gerupuk",
+        "subtitle": "Teluk selancar dengan irama lokal",
+        "description": "Teluk selatan yang dikenal ombaknya dan tempo desa yang landai — laut dulu, sisanya kemudian.",
+        "tag": "Selancar"
+      },
+      {
+        "id": "sade",
+        "title": "Desa Sade",
+        "subtitle": "Warisan Sasak yang hidup",
+        "description": "Desa adat di mana tenun, arsitektur, dan keseharian masih berbicara tentang akar Sasak.",
+        "tag": "Budaya"
+      }
+    ]
+  },
   "Cta": {
     "eyebrow": "Mulai Perjalanan Anda",
     "titleLine1": "Lombok Tengah Menanti",

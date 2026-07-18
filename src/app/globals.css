@@ -244,3 +244,13 @@ body {
     transform: none !important;
   }
 }
+
+/* Leaflet pin chrome — keep default marker chrome out of the way */
+.praya-map-pin {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.leaflet-container {
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+}

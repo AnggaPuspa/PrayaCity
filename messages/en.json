@@ -98,6 +98,60 @@
       }
     ]
   },
+  "MapExplorer": {
+    "eyebrow": "Explore the map",
+    "heading": "Discover <blue>Central Lombok</blue><br></br>in different reality",
+    "intro": "Discover Praya's Sasak heritage, hidden villages,<br></br>and untold stories through a reality layered with<br></br>augmented experience.",
+    "explore": "See all destinations",
+    "openSpot": "Open this place",
+    "prev": "Previous place",
+    "next": "Next place",
+    "pinHint": "Hover or tap a pin",
+    "spots": [
+      {
+        "id": "praya",
+        "title": "Praya",
+        "subtitle": "City heart of Central Lombok",
+        "description": "The administrative and cultural center — a calm base before you branch out to coast, hills, and villages.",
+        "tag": "City"
+      },
+      {
+        "id": "kutaMandalika",
+        "title": "Kuta Mandalika",
+        "subtitle": "Coastline & open sea air",
+        "description": "Wide beach, soft light, and the energy of Mandalika. Perfect for sunrise walks and long golden hours.",
+        "tag": "Beach"
+      },
+      {
+        "id": "bukitMerese",
+        "title": "Bukit Merese",
+        "subtitle": "Rolling hills over the sea",
+        "description": "One of Central Lombok’s quietest sunset stages — green ridges, ocean wind, and open sky.",
+        "tag": "Hills"
+      },
+      {
+        "id": "bukitLancing",
+        "title": "Bukit Lancing",
+        "subtitle": "High ground & wide views",
+        "description": "A hill escape with open horizon. Come for the breeze, stay for the view over the island.",
+        "tag": "Hills"
+      },
+      {
+        "id": "gerupuk",
+        "title": "Gerupuk",
+        "subtitle": "Surf bay with local rhythm",
+        "description": "A southern bay known for reliable waves and a grounded village pace — sea first, everything else second.",
+        "tag": "Surf"
+      },
+      {
+        "id": "sade",
+        "title": "Sade Village",
+        "subtitle": "Living Sasak heritage",
+        "description": "A traditional village where woven crafts, architecture, and daily life still speak of Sasak roots.",
+        "tag": "Culture"
+      }
+    ]
+  },
   "Cta": {
     "eyebrow": "Start Your Journey",
     "titleLine1": "Central Lombok is Waiting",

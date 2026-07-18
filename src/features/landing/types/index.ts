@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 // Domain types for the landing page content.
 
 export interface EventItem {
@@ -28,4 +30,45 @@ export interface DiscoverItem {
 export interface DiscoverHeader {
   title: string;
   intro: string;
+}
+
+export type MapSpotId =
+  | "praya"
+  | "kutaMandalika"
+  | "bukitMerese"
+  | "bukitLancing"
+  | "gerupuk"
+  | "sade";
+
+export type MapSpotIconType = "city" | "sea" | "hill" | "culture";
+
+export interface MapSpot {
+  id: MapSpotId;
+  title: string;
+  subtitle: string;
+  description: string;
+  tag: string;
+  image: string;
+  href: string;
+  latitude: number;
+  longitude: number;
+  region: string;
+  iconType: MapSpotIconType;
+}
+
+export interface MapExplorerController {
+  activeId: MapSpotId;
+  selectSpot: (id: MapSpotId) => void;
+  selectNext: () => void;
+  selectPrev: () => void;
+}
+export interface MapExplorerLabels {
+  eyebrow: string;
+  heading: ReactNode;
+  intro: ReactNode;
+  explore: string;
+  openSpot: string;
+  prev: string;
+  next: string;
+  pinHint: string;
 }

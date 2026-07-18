@@ -26,7 +26,7 @@ export function MustVisitSectionView({
   scrollRight,
 }: MustVisitSectionViewProps) {
   return (
-    <section className="w-full bg-white py-24 lg:py-32 overflow-hidden">
+    <section className="w-full bg-white pt-24 pb-10 lg:pt-32 lg:pb-12 overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative">
 
         {/* Header */}
