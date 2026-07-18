@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type {
   DestinationWeather,
   WeatherLabels,
@@ -17,7 +21,8 @@ function iconUrl(code: string) {
 
 /**
  * Presentational weather dock.
- * Kept deliberately quiet — editorial, not dashboard-y.
+ * Portaled to document.body so `position: fixed` always tracks the viewport
+ * while the user scrolls destination detail (Lenis-safe, no parent transform traps).
  */
 export function WeatherWidgetView({
   weather,
@@ -30,6 +35,12 @@ export function WeatherWidgetView({
   isOpen,
   setIsOpen,
 }: WeatherWidgetViewProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const activeForecast = weather.hourly[activeHour] ?? weather.hourly[0];
 
   const facts = [
@@ -41,8 +52,10 @@ export function WeatherWidgetView({
     { label: labels.sunset, value: weather.current.sunset },
   ];
 
-  return (
-    <div className="pointer-events-none fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2.5 sm:bottom-6 sm:right-6">
+  if (!mounted) return null;
+
+  return createPortal(
+    <div className="pointer-events-none fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-2.5 sm:bottom-6 sm:right-6">
       {isOpen ? (
         <div className="pointer-events-auto animate-fadeIn w-[min(100vw-2.5rem,21rem)] rounded-2xl border border-[#E8E8E8] bg-white text-[#18181B] shadow-[0_8px_28px_rgba(24,24,27,0.1)]">
           {/* Header */}
@@ -238,6 +251,7 @@ export function WeatherWidgetView({
           {labels.conditions[weather.current.condition]}
         </span>
       </button>
-    </div>
+    </div>,
+    document.body,
   );
 }

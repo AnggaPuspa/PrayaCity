@@ -21,7 +21,13 @@ export function GridSectionClient({ initialItems }: { initialItems: DestinationG
     setSearchQuery,
     activeCategory,
     setActiveCategory,
-    filteredItems,
+    paginatedItems,
+    totalItems,
+    currentPage,
+    totalPages,
+    canGoPrev,
+    canGoNext,
+    goToPage,
   } = useDestinationsGrid({ items: initialItems });
 
   return (
@@ -31,7 +37,13 @@ export function GridSectionClient({ initialItems }: { initialItems: DestinationG
       activeCategory={activeCategory}
       setActiveCategory={setActiveCategory}
       categories={categories}
-      filteredItems={filteredItems}
+      paginatedItems={paginatedItems}
+      totalItems={totalItems}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      canGoPrev={canGoPrev}
+      canGoNext={canGoNext}
+      goToPage={goToPage}
       searchPlaceholder={t("searchPlaceholder")}
       emptyStateMessage={t("emptyDestinationsMessage")}
     />

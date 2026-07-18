@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "hdgxgifctnuwybqbasak.supabase.co" },
       { protocol: "https", hostname: "openweathermap.org" },
+      // Real destination photography from Wikimedia Commons
+      { protocol: "https", hostname: "upload.wikimedia.org" },
     ],
   },
 };

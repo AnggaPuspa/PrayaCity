@@ -48,7 +48,7 @@ export function MapExplorerView({
   if (!active) return null;
 
   return (
-    <section className="w-full bg-white pt-6 pb-16 md:pt-8 md:pb-20">
+    <section className="w-full bg-white pt-20 pb-16 md:pt-28 md:pb-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header — split: title left, intro right */}
         <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">

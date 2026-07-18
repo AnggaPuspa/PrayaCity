@@ -6,7 +6,7 @@ import {
   TimelineList,
   HistoryGallery,
 } from "@/features/history";
-import { CtaSection } from "@/features/landing";
+import { CtaSection, MapExplorerSection } from "@/features/landing";
 
 export async function generateMetadata({
   params,
@@ -40,6 +40,7 @@ export default async function HistoryPage({
       <HistoryHero />
       <TimelineSection />
       <TimelineList />
+      <MapExplorerSection />
       <HistoryGallery />
       <CtaSection />
     </div>

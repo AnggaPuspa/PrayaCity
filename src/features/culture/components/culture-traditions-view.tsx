@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 import type { Tradition } from '../types';
 
 interface CultureTraditionsViewProps {
@@ -35,7 +36,7 @@ export const CultureTraditionsView = ({
         <div className="relative w-full max-w-7xl mx-auto">
           {traditions.map((tradition, index) => (
             <div
-              key={index}
+              key={tradition.href}
               className={`sticky flex flex-col md:flex-row items-center gap-8 lg:gap-16 bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] w-full ${
                 index !== traditions.length - 1 ? 'mb-24' : ''
               }`}
@@ -45,30 +46,38 @@ export const CultureTraditionsView = ({
               }}
             >
               {/* Left: Image */}
-              <div className="w-full md:w-1/2 relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden">
+              <Link
+                href={tradition.href}
+                className="w-full md:w-1/2 relative aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden block"
+              >
                 <Image
                   src={tradition.imageSrc}
                   alt={tradition.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              </div>
+              </Link>
 
               {/* Right: Content */}
               <div className="w-full md:w-1/2 flex flex-col items-start text-left">
                 <span className="inline-block px-4 py-1.5 bg-[#1A1A1A] text-white text-[13px] md:text-[14px] font-medium rounded-full mb-5">
                   {tradition.tag}
                 </span>
-                <h3 className="text-[#1A1A1A] text-[24px] md:text-[28px] font-bold mb-4 leading-[1.3]">
-                  {tradition.title}
-                </h3>
+                <Link href={tradition.href}>
+                  <h3 className="text-[#1A1A1A] text-[24px] md:text-[28px] font-bold mb-4 leading-[1.3] hover:text-[#0066FF] transition-colors">
+                    {tradition.title}
+                  </h3>
+                </Link>
                 <p className="text-[#737373] text-[15px] md:text-[16px] leading-[1.6] mb-8">
                   {tradition.description}
                 </p>
-                <button className="flex items-center gap-2 px-6 py-2 rounded-full border border-[#E5E7EB] text-[14px] font-medium text-[#4B5563] hover:bg-gray-50 transition-colors">
+                <Link
+                  href={tradition.href}
+                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#E5E7EB] text-[14px] font-medium text-[#4B5563] hover:bg-gray-50 transition-colors"
+                >
                   {viewMore} ↗
-                </button>
+                </Link>
               </div>
             </div>
           ))}

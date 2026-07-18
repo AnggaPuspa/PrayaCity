@@ -9,6 +9,8 @@ export interface Tradition {
   title: string;
   description: string;
   imageSrc: string;
+  /** Blog article slug → /events/[slug] */
+  href: string;
 }
 
 export interface CulinaryItem {
@@ -16,4 +18,6 @@ export interface CulinaryItem {
   title: string;
   imageSrc: string;
   aspectClass: string;
+  /** Blog article slug → /events/[slug] */
+  href: string;
 }
