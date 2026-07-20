@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { deleteEventAction } from "../../actions/event.actions";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 
 interface AdminEvent {
   id: string;
@@ -25,19 +25,42 @@ export function EventListView({ events }: EventListViewProps) {
   const t = useTranslations("Admin.events");
   const tCommon = useTranslations("Admin.common");
   const locale = useLocale();
+  const router = useRouter();
+  const [items, setItems] = useState(events);
+  const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
-    if (confirm(locale === "id" ? "Yakin ingin menghapus acara ini?" : "Are you sure you want to delete this event?")) {
-      startTransition(() => {
-        deleteEventAction(id);
-      });
+    e.stopPropagation();
+    if (
+      !confirm(
+        locale === "id"
+          ? "Yakin ingin menghapus acara ini?"
+          : "Are you sure you want to delete this event?",
+      )
+    ) {
+      return;
     }
+
+    setError(null);
+    startTransition(async () => {
+      const result = await deleteEventAction(id);
+      if (result.status === "error") {
+        setError(
+          result.message ||
+            (locale === "id" ? "Gagal menghapus acara." : "Failed to delete event."),
+        );
+        return;
+      }
+
+      setItems((prev) => prev.filter((item) => item.id !== id));
+      router.refresh();
+    });
   };
 
-  const featuredEvents = events.filter((e) => e.isFeatured).slice(0, 2);
-  const standardEvents = events.filter((e) => !featuredEvents.find(f => f.id === e.id));
+  const featuredEvents = items.filter((e) => e.isFeatured).slice(0, 2);
+  const standardEvents = items.filter((e) => !featuredEvents.find(f => f.id === e.id));
 
   return (
     <div className="w-full max-w-[1200px] mx-auto p-4 sm:p-6 lg:p-8 font-sans">
@@ -60,6 +83,12 @@ export function EventListView({ events }: EventListViewProps) {
           </Link>
         </div>
       </div>
+
+      {error && (
+        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
       {/* Featured Blogs (Top 2) */}
       {featuredEvents.length > 0 && (
@@ -162,7 +191,7 @@ export function EventListView({ events }: EventListViewProps) {
         ))}
       </div>
       
-      {events.length === 0 && (
+      {items.length === 0 && (
         <div className="w-full py-20 flex justify-center items-center text-gray-500">
           No events found.
         </div>

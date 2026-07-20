@@ -239,8 +239,14 @@ export async function deleteDestinationAction(
 ): Promise<DestinationFormState> {
   try {
     await deleteDestination(id);
-    revalidatePath("/(marketing)/destinations", "page");
-    revalidatePath("/(marketing)/", "page");
+    // Admin list pages (locale-prefixed)
+    revalidatePath("/en/admin/destinations");
+    revalidatePath("/id/admin/destinations");
+    // Public pages
+    revalidatePath("/en/destinations");
+    revalidatePath("/id/destinations");
+    revalidatePath("/en");
+    revalidatePath("/id");
     return { status: "success", message: "Destination deleted successfully." };
   } catch (error: any) {
     return {

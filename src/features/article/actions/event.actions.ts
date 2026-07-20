@@ -117,8 +117,14 @@ export async function updateEventAction(
 export async function deleteEventAction(id: string): Promise<EventFormState> {
   try {
     await deleteEvent(id);
-    revalidatePath("/(marketing)/events", "page");
-    revalidatePath("/(marketing)/", "page");
+    // Admin list pages (locale-prefixed)
+    revalidatePath("/en/admin/events");
+    revalidatePath("/id/admin/events");
+    // Public pages
+    revalidatePath("/en/events");
+    revalidatePath("/id/events");
+    revalidatePath("/en");
+    revalidatePath("/id");
     return { status: "success", message: "Event deleted successfully." };
   } catch (error: any) {
     return {

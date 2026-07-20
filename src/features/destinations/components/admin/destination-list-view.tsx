@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { deleteDestinationAction } from "../../actions/destination.actions";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 
 interface AdminDestination {
   id: string;
@@ -25,19 +25,44 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
   const t = useTranslations("Admin.destinations");
   const tCommon = useTranslations("Admin.common");
   const locale = useLocale();
+  const router = useRouter();
+  const [items, setItems] = useState(destinations);
+  const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
-    if (confirm(locale === "id" ? "Yakin ingin menghapus destinasi ini?" : "Are you sure you want to delete this destination?")) {
-      startTransition(() => {
-        deleteDestinationAction(id);
-      });
+    e.stopPropagation();
+    if (
+      !confirm(
+        locale === "id"
+          ? "Yakin ingin menghapus destinasi ini?"
+          : "Are you sure you want to delete this destination?",
+      )
+    ) {
+      return;
     }
+
+    setError(null);
+    startTransition(async () => {
+      const result = await deleteDestinationAction(id);
+      if (result.status === "error") {
+        setError(
+          result.message ||
+            (locale === "id"
+              ? "Gagal menghapus destinasi."
+              : "Failed to delete destination."),
+        );
+        return;
+      }
+
+      setItems((prev) => prev.filter((item) => item.id !== id));
+      router.refresh();
+    });
   };
 
-  const featuredDestinations = destinations.filter((d) => d.isFeatured).slice(0, 2);
-  const standardDestinations = destinations.filter((d) => !featuredDestinations.find(f => f.id === d.id));
+  const featuredDestinations = items.filter((d) => d.isFeatured).slice(0, 2);
+  const standardDestinations = items.filter((d) => !featuredDestinations.find(f => f.id === d.id));
 
   return (
     <div className="w-full max-w-[1200px] mx-auto p-4 sm:p-6 lg:p-8 font-sans">
@@ -60,6 +85,12 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
           </Link>
         </div>
       </div>
+
+      {error && (
+        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
       {/* Featured Destinations (Top 2) */}
       {featuredDestinations.length > 0 && (
@@ -156,7 +187,7 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
         ))}
       </div>
       
-      {destinations.length === 0 && (
+      {items.length === 0 && (
         <div className="w-full py-20 flex justify-center items-center text-gray-500">
           {locale === "id" ? "Destinasi tidak ditemukan." : "No destinations found."}
         </div>
