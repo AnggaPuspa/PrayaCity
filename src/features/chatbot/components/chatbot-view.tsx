@@ -126,11 +126,10 @@ export function ChatbotView({
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[92%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${
-                    msg.role === "user"
+                  className={`max-w-[92%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${msg.role === "user"
                       ? "bg-[#0066FF] text-white"
                       : "bg-zinc-100 text-zinc-800"
-                  }`}
+                    }`}
                 >
                   <ChatMessageContent content={msg.content} variant={msg.role} />
                 </div>
