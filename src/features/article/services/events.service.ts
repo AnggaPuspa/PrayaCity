@@ -22,7 +22,7 @@ export async function getLatestEvents(
       status: "PUBLISHED",
       categories: {
         some: {
-          category: { name: "Event" },
+          category: { name: "Events" },
         },
       },
     },
