@@ -18,7 +18,14 @@ export async function getLatestEvents(
   const l = lang(locale);
 
   const events = await prisma.event.findMany({
-    where: { status: "PUBLISHED" },
+    where: {
+      status: "PUBLISHED",
+      categories: {
+        some: {
+          category: { name: "Event" },
+        },
+      },
+    },
     orderBy: { createdAt: "desc" },
     take: limit,
     include: { categories: { include: { category: true } } },
