@@ -5,6 +5,19 @@ import { createEvent, updateEvent, deleteEvent } from "../services/events.servic
 import type { EventFormState } from "../types";
 import { revalidatePath } from "next/cache";
 
+function revalidateEventPaths(slug?: string) {
+  revalidatePath("/en/admin/events");
+  revalidatePath("/id/admin/events");
+  revalidatePath("/en/events");
+  revalidatePath("/id/events");
+  revalidatePath("/en");
+  revalidatePath("/id");
+  if (slug) {
+    revalidatePath(`/en/events/${slug}`);
+    revalidatePath(`/id/events/${slug}`);
+  }
+}
+
 export async function createEventAction(
   _prevState: EventFormState,
   formData: FormData,
@@ -43,8 +56,7 @@ export async function createEventAction(
 
   try {
     await createEvent(parsed.data);
-    revalidatePath("/(marketing)/events", "page");
-    revalidatePath("/(marketing)/", "page");
+    revalidateEventPaths(parsed.data.slug);
     return { status: "success", message: "Event created successfully." };
   } catch (error: any) {
     return {
@@ -103,8 +115,7 @@ export async function updateEventAction(
 
   try {
     await updateEvent(id, parsed.data);
-    revalidatePath("/(marketing)/events", "page");
-    revalidatePath("/(marketing)/", "page");
+    revalidateEventPaths(parsed.data.slug);
     return { status: "success", message: "Event updated successfully." };
   } catch (error: any) {
     return {
@@ -117,14 +128,7 @@ export async function updateEventAction(
 export async function deleteEventAction(id: string): Promise<EventFormState> {
   try {
     await deleteEvent(id);
-    // Admin list pages (locale-prefixed)
-    revalidatePath("/en/admin/events");
-    revalidatePath("/id/admin/events");
-    // Public pages
-    revalidatePath("/en/events");
-    revalidatePath("/id/events");
-    revalidatePath("/en");
-    revalidatePath("/id");
+    revalidateEventPaths();
     return { status: "success", message: "Event deleted successfully." };
   } catch (error: any) {
     return {

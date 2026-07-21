@@ -150,6 +150,22 @@ async function withAutoCoordinates<
   };
 }
 
+function revalidateDestinationPaths(slug?: string) {
+  // Admin list pages
+  revalidatePath("/en/admin/destinations");
+  revalidatePath("/id/admin/destinations");
+  // Public list + home
+  revalidatePath("/en/destinations");
+  revalidatePath("/id/destinations");
+  revalidatePath("/en");
+  revalidatePath("/id");
+  // Public detail (if slug known)
+  if (slug) {
+    revalidatePath(`/en/destinations/${slug}`);
+    revalidatePath(`/id/destinations/${slug}`);
+  }
+}
+
 export async function createDestinationAction(
   _prevState: DestinationFormState,
   formData: FormData,
@@ -165,8 +181,7 @@ export async function createDestinationAction(
       typeof payload.latitude === "number" &&
       typeof payload.longitude === "number";
 
-    revalidatePath("/(marketing)/destinations", "page");
-    revalidatePath("/(marketing)/", "page");
+    revalidateDestinationPaths(payload.slug);
     return {
       status: "success",
       message: hasCoords
@@ -207,9 +222,7 @@ export async function updateDestinationAction(
       typeof payload.latitude === "number" &&
       typeof payload.longitude === "number";
 
-    revalidatePath("/(marketing)/destinations", "page");
-    revalidatePath("/(marketing)/destinations/[id]", "page");
-    revalidatePath("/(marketing)/", "page");
+    revalidateDestinationPaths(payload.slug);
     return {
       status: "success",
       message: hasCoords
@@ -239,14 +252,7 @@ export async function deleteDestinationAction(
 ): Promise<DestinationFormState> {
   try {
     await deleteDestination(id);
-    // Admin list pages (locale-prefixed)
-    revalidatePath("/en/admin/destinations");
-    revalidatePath("/id/admin/destinations");
-    // Public pages
-    revalidatePath("/en/destinations");
-    revalidatePath("/id/destinations");
-    revalidatePath("/en");
-    revalidatePath("/id");
+    revalidateDestinationPaths();
     return { status: "success", message: "Destination deleted successfully." };
   } catch (error: any) {
     return {

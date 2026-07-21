@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { deleteEventAction } from "../../actions/event.actions";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 interface AdminEvent {
   id: string;
@@ -29,6 +29,11 @@ export function EventListView({ events }: EventListViewProps) {
   const [items, setItems] = useState(events);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  // Keep local list in sync when server data changes (create/update/refresh).
+  useEffect(() => {
+    setItems(events);
+  }, [events]);
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();

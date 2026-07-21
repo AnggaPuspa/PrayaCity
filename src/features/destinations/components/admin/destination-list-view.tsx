@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { deleteDestinationAction } from "../../actions/destination.actions";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 interface AdminDestination {
   id: string;
@@ -29,6 +29,11 @@ export function DestinationListView({ destinations }: DestinationListViewProps) 
   const [items, setItems] = useState(destinations);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  // Keep local list in sync when server data changes (create/update/refresh).
+  useEffect(() => {
+    setItems(destinations);
+  }, [destinations]);
 
   const handleDelete = (id: string, e: React.MouseEvent) => {
     e.preventDefault();

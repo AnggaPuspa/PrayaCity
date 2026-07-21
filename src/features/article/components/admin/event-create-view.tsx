@@ -3,19 +3,34 @@
 import { Typography } from "@/components/atoms";
 import { EventForm } from "./event-form";
 import { createEventAction } from "../../actions/event.actions";
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import type { EventFormState } from "../../types";
 
 export function EventCreateView({ categories }: { categories: string[] }) {
-  const locale = useLocale();
   const t = useTranslations("Admin.events");
   const tCommon = useTranslations("Admin.common");
+  const router = useRouter();
+
+  async function action(
+    prev: EventFormState,
+    formData: FormData,
+  ): Promise<EventFormState> {
+    const result = await createEventAction(prev, formData);
+    if (result.status === "success") {
+      queueMicrotask(() => {
+        router.push("/admin/events");
+        router.refresh();
+      });
+    }
+    return result;
+  }
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       <div className="flex items-center gap-4">
         <Link
-          href={`/${locale}/admin/events`}
+          href="/admin/events"
           className="text-gray-500 hover:text-gray-900"
         >
           {tCommon("back")}
@@ -26,7 +41,7 @@ export function EventCreateView({ categories }: { categories: string[] }) {
       </div>
       <EventForm
         availableCategories={categories}
-        action={createEventAction}
+        action={action}
         submitLabel={t("createSubmit")}
       />
     </div>
