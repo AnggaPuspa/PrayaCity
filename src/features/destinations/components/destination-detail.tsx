@@ -6,9 +6,9 @@ import type { DestinationDetailContent } from "../types";
 
 export async function DestinationDetail({ id, locale }: { id: string, locale: string }) {
   const t = await getTranslations("DestinationsPage");
-  
+
   const item = await getDestinationBySlug(id, locale);
-  
+
   if (!item) {
     notFound();
   }
