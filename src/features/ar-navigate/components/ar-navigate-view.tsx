@@ -1,18 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import type { RefObject } from "react";
 import type { ArCameraStatus } from "../controllers/use-ar-navigate-controller";
+import type { ArGpsStatus, ArLatLng, ArNavigateDestination } from "../types";
 
-/* ── dummy data ─────────────────────────────── */
-const DUMMY = {
-  name: "Pantai Kuta Mandalika",
-  distance: "2,4 km",
-  duration: "6 menit",
-  subtitle: "Destinasi unggulan di Praya",
-  imageSrc: "/destination/detaildestination/kuta-mandalika-detail.jpg",
-};
+const ArMiniMap = dynamic(
+  () => import("./ar-mini-map").then((m) => m.ArMiniMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center rounded-2xl bg-[#EAF2FF] text-[11px] text-zinc-500">
+        Memuat peta…
+      </div>
+    ),
+  },
+);
 
 /* ── inline SVG icons ───────────────────────── */
 function CompassIcon() {
@@ -119,14 +124,36 @@ function cameraBadgeCopy(status: ArCameraStatus) {
   }
 }
 
+function gpsHint(status: ArGpsStatus) {
+  switch (status) {
+    case "ready":
+      return "GPS aktif";
+    case "requesting":
+      return "Mencari GPS…";
+    case "denied":
+      return "GPS ditolak";
+    case "unsupported":
+      return "GPS tidak tersedia";
+    default:
+      return "Menyiapkan GPS…";
+  }
+}
+
 export interface ArNavigateViewProps {
   videoRef: RefObject<HTMLVideoElement | null>;
   mounted: boolean;
   muted: boolean;
   cameraStatus: ArCameraStatus;
+  gpsStatus: ArGpsStatus;
+  userLocation: ArLatLng | null;
+  destination: ArNavigateDestination;
+  destinationPoint: ArLatLng;
+  distanceLabel: string;
+  durationLabel: string;
   handleClose: () => void;
   handleToggleMute: () => void;
   handleRetryCamera: () => void;
+  handleViewDetail: () => void;
 }
 
 /* ── main view ───────────────────────────────── */
@@ -135,22 +162,30 @@ export function ArNavigateView({
   mounted,
   muted,
   cameraStatus,
+  gpsStatus,
+  userLocation,
+  destination,
+  destinationPoint,
+  distanceLabel,
+  durationLabel,
   handleClose,
   handleToggleMute,
   handleRetryCamera,
+  handleViewDetail,
 }: ArNavigateViewProps) {
   if (!mounted) return null;
 
   const badge = cameraBadgeCopy(cameraStatus);
   const showFallback = cameraStatus !== "ready";
+  const imageSrc = destination.imageSrc || "/destination/detaildestination/kuta-mandalika-detail.jpg";
+  const subtitle = destination.subtitle || "Destinasi unggulan di Praya";
 
   return createPortal(
     <div className="fixed inset-0 z-[10000] overflow-hidden select-none bg-zinc-900">
       {/* ── live camera / fallback world ── */}
       <div className="absolute inset-0">
-        {/* Bright scenic base so the screen never looks empty while camera boots */}
         <Image
-          src={DUMMY.imageSrc}
+          src={imageSrc}
           alt=""
           fill
           priority
@@ -160,7 +195,6 @@ export function ArNavigateView({
           }`}
         />
 
-        {/* Always mount <video> so getUserMedia can attach as soon as permission lands */}
         <video
           ref={videoRef}
           autoPlay
@@ -171,7 +205,6 @@ export function ArNavigateView({
           }`}
         />
 
-        {/* Soft AR grade — keeps UI readable without making the world dark */}
         <div className="ar-world-grade pointer-events-none absolute inset-0" />
         <div className="ar-scanlines pointer-events-none absolute inset-0" />
         <div className="ar-reticle pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2" />
@@ -182,7 +215,6 @@ export function ArNavigateView({
         <span className="text-white text-xl font-bold leading-none drop-shadow-md">Praya</span>
         <span className="text-white/70 text-[11px] mt-0.5 drop-shadow">Praya City Guide</span>
 
-        {/* mini compass */}
         <div className="mt-4 w-14 h-14 rounded-full bg-zinc-900/55 border border-white/15 backdrop-blur-md flex items-center justify-center shadow-lg shadow-black/20">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shadow-lg shadow-blue-500/30">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
@@ -232,8 +264,8 @@ export function ArNavigateView({
             <WavesIcon />
           </div>
           <div className="flex-1">
-            <h2 className="text-white font-bold text-[15px] leading-snug">{DUMMY.name}</h2>
-            <p className="text-blue-100 text-sm mt-0.5">{DUMMY.distance}</p>
+            <h2 className="text-white font-bold text-[15px] leading-snug">{destination.title}</h2>
+            <p className="text-blue-100 text-sm mt-0.5">{distanceLabel}</p>
           </div>
           <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-white">
             <ArrowIcon />
@@ -292,30 +324,50 @@ export function ArNavigateView({
         </div>
       </div>
 
-      {/* ── bottom destination card ── */}
-      <div className="absolute bottom-5 left-5 z-10 max-w-[300px]">
+      {/* ── bottom-left: destination card + mini map ── */}
+      <div className="absolute bottom-5 left-5 z-10 flex flex-col gap-3 w-[min(300px,calc(100vw-7.5rem))]">
         <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 flex items-center gap-3 shadow-2xl shadow-black/40 border border-white/40">
           <div className="relative flex-shrink-0 w-[68px] h-[68px] rounded-xl overflow-hidden">
             <Image
-              src={DUMMY.imageSrc}
-              alt={DUMMY.name}
+              src={imageSrc}
+              alt={destination.title}
               fill
               className="object-cover"
               sizes="68px"
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-zinc-900 font-bold text-sm leading-tight">{DUMMY.name}</h3>
+            <h3 className="text-zinc-900 font-bold text-sm leading-tight">{destination.title}</h3>
             <p className="text-blue-600 text-[12px] font-semibold mt-0.5">
-              {DUMMY.distance} • {DUMMY.duration}
+              {distanceLabel} • {durationLabel}
             </p>
-            <p className="text-zinc-500 text-[11px] mt-0.5">{DUMMY.subtitle}</p>
+            <p className="text-zinc-500 text-[11px] mt-0.5 truncate">{subtitle}</p>
             <button
               type="button"
+              onClick={handleViewDetail}
               className="text-blue-600 text-[12px] font-semibold mt-1 hover:underline cursor-pointer"
             >
               Lihat Detail &gt;
             </button>
+          </div>
+        </div>
+
+        {/* Mini map */}
+        <div className="ar-mini-map-shell relative h-[148px] w-full overflow-hidden rounded-2xl border border-white/35 shadow-2xl shadow-black/40">
+          <ArMiniMap
+            user={userLocation}
+            destination={destinationPoint}
+            className="absolute inset-0 h-full w-full"
+          />
+          <div className="pointer-events-none absolute left-2 top-2 rounded-full bg-zinc-900/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+            <span
+              className={`mr-1.5 inline-block h-1.5 w-1.5 rounded-full ${
+                gpsStatus === "ready"
+                  ? "bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"
+                  : "bg-amber-300"
+              }`}
+            />
+            {gpsHint(gpsStatus)}
           </div>
         </div>
       </div>

@@ -440,3 +440,18 @@ body {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.62);
 }
+
+/* Mini-map HUD chrome */
+.ar-mini-map-shell {
+  background: #eaf2ff;
+}
+
+.ar-mini-map-shell .leaflet-container {
+  border-radius: 1rem;
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+}
+
+.ar-map-pin {
+  background: transparent !important;
+  border: 0 !important;
+}
