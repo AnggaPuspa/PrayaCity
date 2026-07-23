@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import { Smartphone, Compass } from "lucide-react";
 import type { DestinationDetailContent } from "../types";
 
@@ -99,13 +100,13 @@ export function DestinationDetailView({
             </div>
 
             {/* CTA Button */}
-            <button
-              type="button"
+            <Link
+              href={`/ar-navigate/${content.id}`}
               className="flex-shrink-0 flex items-center gap-2 px-6 py-3 bg-white text-[#0066FF] font-semibold text-[14px] md:text-[15px] rounded-lg hover:bg-white/90 transition-colors cursor-pointer"
             >
               <Compass size={18} className="text-[#0066FF]" strokeWidth={1.5} />
               Start AR Navigation &gt;
-            </button>
+            </Link>
           </div>
         </div>
       </div>

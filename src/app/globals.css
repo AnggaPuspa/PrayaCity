@@ -281,3 +281,162 @@ body {
 .leaflet-container {
   font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
 }
+
+/* ─────────────────────────────────────────────
+   AR Navigation — camera world + HUD chrome
+   ───────────────────────────────────────────── */
+
+@keyframes arChevronPulse {
+  0% {
+    opacity: 0.2;
+    transform: translateY(16px) scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(-16px) scale(0.92);
+  }
+}
+
+@keyframes arScanSweep {
+  0% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(130%);
+    opacity: 0;
+  }
+}
+
+@keyframes arReticlePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+.ar-chevron {
+  animation: arChevronPulse 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.55));
+}
+
+/* Keep the real world bright; only darken edges for HUD readability */
+.ar-world-grade {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.22) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0%, transparent 18%, transparent 72%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.ar-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.02) 3px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
+  mix-blend-mode: soft-light;
+}
+
+.ar-scanlines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(96, 165, 250, 0.12),
+    transparent
+  );
+  animation: arScanSweep 4.8s ease-in-out infinite;
+}
+
+.ar-reticle {
+  width: 88px;
+  height: 88px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(0, 102, 255, 0.15),
+    0 0 24px rgba(59, 130, 246, 0.2);
+  animation: arReticlePulse 2.4s ease-in-out infinite;
+}
+
+.ar-reticle::before,
+.ar-reticle::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.ar-reticle::before {
+  left: 50%;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.ar-reticle::after {
+  top: 50%;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.ar-ground-glow {
+  position: absolute;
+  bottom: -18px;
+  width: 140px;
+  height: 36px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.45), transparent 70%);
+  filter: blur(2px);
+}
+
+.ar-toolbar-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(24, 24, 27, 0.48);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.82);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.ar-toolbar-btn:hover {
+  background: rgba(24, 24, 27, 0.72);
+  color: #fff;
+}
+
+.ar-toolbar-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}

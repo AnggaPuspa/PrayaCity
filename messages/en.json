@@ -656,5 +656,22 @@
       "Tell me about Praya history",
       "Any latest events?"
     ]
+  },
+  "ArNavigate": {
+    "metaTitle": "AR Navigation",
+    "metaDescription": "Augmented reality navigation to tourism destinations in Praya City.",
+    "brandTitle": "Praya",
+    "brandSubtitle": "Praya City Guide",
+    "usingAr": "Using AR",
+    "pointCamera": "Point your camera at the road",
+    "followArrows": "Follow the Arrows",
+    "compass": "Compass",
+    "destination": "Destination",
+    "sound": "Sound",
+    "scan": "Scan",
+    "featuredTag": "Featured destination in Praya",
+    "viewDetail": "View Detail",
+    "close": "Close",
+    "minutes": "min"
   }
 }

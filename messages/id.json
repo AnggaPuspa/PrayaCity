@@ -656,5 +656,22 @@
       "Ceritakan sejarah Praya",
       "Ada event terbaru?"
     ]
+  },
+  "ArNavigate": {
+    "metaTitle": "Navigasi AR",
+    "metaDescription": "Navigasi augmented reality ke destinasi wisata di Praya City.",
+    "brandTitle": "Praya",
+    "brandSubtitle": "Praya City Guide",
+    "usingAr": "Menggunakan AR",
+    "pointCamera": "Arahkan kamera ke jalan",
+    "followArrows": "Ikuti Arah Panah",
+    "compass": "Kompas",
+    "destination": "Tujuan",
+    "sound": "Suara",
+    "scan": "Pindai",
+    "featuredTag": "Destinasi unggulan di Praya",
+    "viewDetail": "Lihat Detail",
+    "close": "Tutup",
+    "minutes": "menit"
   }
 }
