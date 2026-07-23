@@ -2,11 +2,7 @@
 
 import { useMemo } from "react";
 import { useMapExplorer } from "../controllers/use-map-explorer";
-import type {
-  MapExplorerLabels,
-  MapSpot,
-  MapSpotId,
-} from "../types";
+import type { MapExplorerLabels, MapSpot } from "../types";
 import { MapExplorerView } from "./map-explorer-view";
 
 interface MapExplorerInteractiveProps {
@@ -21,12 +17,11 @@ export function MapExplorerInteractive({
   labels,
   spots,
 }: MapExplorerInteractiveProps) {
-  const spotIds = useMemo(
-    () => spots.map((spot) => spot.id as MapSpotId),
-    [spots],
-  );
-  const initialId = spots[0]?.id ?? "praya";
+  const spotIds = useMemo(() => spots.map((spot) => spot.id), [spots]);
+  const initialId = spots[0]?.id ?? "";
   const controller = useMapExplorer(initialId, spotIds);
+
+  if (!spots.length) return null;
 
   return (
     <MapExplorerView labels={labels} spots={spots} {...controller} />

@@ -104,9 +104,25 @@ function serializeAdminEvent<T extends { createdAt: Date; updatedAt: Date }>(
 }
 
 export async function getAdminEvents() {
+  // List view only — skip bodyEn/bodyId (heavy text arrays) and unused fields.
   const items = await prisma.event.findMany({
     orderBy: { createdAt: "desc" },
-    include: { categories: { include: { category: true } } },
+    select: {
+      id: true,
+      slug: true,
+      titleEn: true,
+      status: true,
+      isFeatured: true,
+      image: true,
+      dateEn: true,
+      createdAt: true,
+      updatedAt: true,
+      categories: {
+        select: {
+          category: { select: { name: true } },
+        },
+      },
+    },
   });
   return items.map(serializeAdminEvent);
 }

@@ -1,45 +1,33 @@
-import { getTranslations } from "next-intl/server";
-import { MAP_SPOT_MEDIA } from "../data/map-spots";
-import type { MapSpot, MapSpotId } from "../types";
+import { getTranslations, getLocale } from "next-intl/server";
+import { getMapExplorerDestinations } from "@/features/destinations";
+import type { MapSpot } from "../types";
 import { MapExplorerInteractive } from "./map-explorer-interactive";
 
 /**
- * Server container: merges i18n copy with real coordinates + media,
- * then hands off to the interactive client boundary.
+ * Server container: loads published destinations with coordinates from DB,
+ * then hands them to the interactive map client boundary.
+ * Heading/intro stay in i18n; pin content is no longer hardcoded.
  */
 export async function MapExplorerSection() {
   const t = await getTranslations("MapExplorer");
-  const items = t.raw("spots") as Array<{
-    id: MapSpotId;
-    title: string;
-    subtitle: string;
-    description: string;
-    tag: string;
-  }>;
+  const locale = await getLocale();
+  const destinations = await getMapExplorerDestinations(locale, 12);
 
-  const mediaById = new Map(
-    MAP_SPOT_MEDIA.map((item) => [item.id as MapSpotId, item]),
-  );
+  const spots: MapSpot[] = destinations.map((d) => ({
+    id: d.id,
+    title: d.title,
+    subtitle: d.subtitle,
+    description: d.description,
+    tag: d.tag,
+    image: d.image,
+    href: d.href,
+    latitude: d.latitude,
+    longitude: d.longitude,
+    region: d.region,
+    iconType: d.iconType,
+  }));
 
-  const spots: MapSpot[] = [];
-  for (const item of items) {
-    const media = mediaById.get(item.id);
-    if (!media) continue;
-
-    spots.push({
-      id: item.id,
-      title: item.title,
-      subtitle: item.subtitle,
-      description: item.description,
-      tag: item.tag,
-      image: media.image,
-      href: media.href,
-      latitude: media.latitude,
-      longitude: media.longitude,
-      region: media.region,
-      iconType: media.iconType,
-    });
-  }
+  if (spots.length === 0) return null;
 
   return (
     <MapExplorerInteractive

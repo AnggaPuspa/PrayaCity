@@ -32,13 +32,8 @@ export interface DiscoverHeader {
   intro: string;
 }
 
-export type MapSpotId =
-  | "praya"
-  | "kutaMandalika"
-  | "bukitMerese"
-  | "bukitLancing"
-  | "gerupuk"
-  | "sade";
+/** Dynamic spot id (destination slug from DB). */
+export type MapSpotId = string;
 
 export type MapSpotIconType = "city" | "sea" | "hill" | "culture";
 

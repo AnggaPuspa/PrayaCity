@@ -68,6 +68,78 @@ export async function getDestinationBySlug(slug: string, locale: string) {
   };
 }
 
+/**
+ * Destinations with coordinates for the map explorer section
+ * (history page + home). Skips rows without lat/lng.
+ */
+export async function getMapExplorerDestinations(locale: string, limit = 12) {
+  const l = lang(locale);
+  const items = await prisma.destination.findMany({
+    where: {
+      status: "PUBLISHED",
+      latitude: { not: null },
+      longitude: { not: null },
+    },
+    orderBy: [{ isFeatured: "desc" }, { sortOrder: "desc" }, { createdAt: "desc" }],
+    take: limit,
+    select: {
+      slug: true,
+      imageSrc: true,
+      titleEn: true,
+      titleId: true,
+      descriptionEn: true,
+      descriptionId: true,
+      locationEn: true,
+      locationId: true,
+      tags: true,
+      latitude: true,
+      longitude: true,
+    },
+  });
+
+  return items.map((item) => {
+    const tags = item.tags as string[];
+    const primaryTag = tags[0] ?? "";
+    return {
+      id: item.slug,
+      title: l === "id" ? item.titleId : item.titleEn,
+      subtitle:
+        (l === "id" ? item.locationId : item.locationEn) ||
+        (l === "id" ? item.descriptionId : item.descriptionEn),
+      description: l === "id" ? item.descriptionId : item.descriptionEn,
+      tag: primaryTag,
+      image: item.imageSrc,
+      href: `/destinations/${item.slug}`,
+      latitude: item.latitude as number,
+      longitude: item.longitude as number,
+      region: primaryTag.toLowerCase() || "center",
+      iconType: mapTagToIconType(tags),
+    };
+  });
+}
+
+function mapTagToIconType(tags: string[]): "city" | "sea" | "hill" | "culture" {
+  const normalized = tags.map((t) => t.toLowerCase());
+  if (normalized.some((t) => t.includes("beach") || t.includes("pantai") || t.includes("sea"))) {
+    return "sea";
+  }
+  if (normalized.some((t) => t.includes("hill") || t.includes("bukit") || t.includes("nature"))) {
+    return "hill";
+  }
+  if (
+    normalized.some(
+      (t) =>
+        t.includes("heritage") ||
+        t.includes("culture") ||
+        t.includes("budaya") ||
+        t.includes("desa"),
+    )
+  ) {
+    return "culture";
+  }
+  return "city";
+}
+
 // ──────────────────────────────────────────────────────────
 // ADMIN CRUD OPERATIONS
 // ──────────────────────────────────────────────────────────

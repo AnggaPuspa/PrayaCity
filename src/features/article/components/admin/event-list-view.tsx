@@ -98,7 +98,7 @@ export function EventListView({ events }: EventListViewProps) {
       {/* Featured Blogs (Top 2) */}
       {featuredEvents.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {featuredEvents.map((event) => (
+          {featuredEvents.map((event, index) => (
             <div key={event.id} className="block group relative w-full h-[360px] md:h-[400px] rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gray-200">
                 <Link href={`/admin/events/${event.id}/edit`}>
@@ -106,7 +106,10 @@ export function EventListView({ events }: EventListViewProps) {
                     src={event.image}
                     alt={event.titleEn}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority={index < 2}
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </Link>
               </div>
@@ -158,7 +161,9 @@ export function EventListView({ events }: EventListViewProps) {
                 src={event.image}
                 alt={event.titleEn}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                quality={70}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </Link>
 
